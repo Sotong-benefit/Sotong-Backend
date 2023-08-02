@@ -8,7 +8,7 @@
 3. 다운 받은 폴더 위치로 이동한다. (최상위 폴더에 manage.py 파일이 위치하도록) ex) `cd bugiton`
 <br>   만약 현재 폴더 위치에 manage.py 파일이 있다면 이동할 필요 없다.
 <br><br>
-5. 가상환경을 만들어준다.
+4. 가상환경을 만들어준다.
 <h3>window</h3>
 python -m venv venv
 
@@ -16,7 +16,7 @@ python -m venv venv
 python3 -m venv venv
 
 <br><br>
-6. 가상환경을 실행한다.
+5. 가상환경을 실행한다.
 <h3>window</h3>
 venv/scripts/activate
 
@@ -24,11 +24,11 @@ venv/scripts/activate
 source venv/bin/activate
 
 <br><br>
-7. pip install -r requirements.txt 를 터미널 창에서 실행한다.
+6. pip install -r requirements.txt 를 터미널 창에서 실행한다.
 
 <br><br>
-8번 이후부터 mac일 경우 python 대신 python3로 쓴다.<br>
-8. python manage.py makemigrations<br>
-9. python manage.py migrate<br>
-10. python manage.py migrate --run-syncdb<br>
-11. 서버 실행 python manage.py runserver<br>
+7번 이후부터 mac일 경우 python 대신 python3로 쓴다.<br>
+7. python manage.py makemigrations<br>
+8. python manage.py migrate<br>
+9. python manage.py migrate --run-syncdb<br>
+10. 서버 실행 python manage.py runserver<br>
