@@ -5,7 +5,7 @@
 <br><br>
 2. 터미널 창에서 원하는 폴더 위치에서 `git clone "복사한 링크"` 를 입력한다. (git 설치 필수)
 <br><br>
-3. 다운 받은 폴더 위치로 이동한다. (최상위 폴더에 manage.py 파일이 위치하도록) ex) `cd bugiton`
+3. 다운 받은 폴더 위치로 이동한다. (최상위 폴더에 manage.py 파일이 위치하도록) ex) `cd Sotong-Backend`
 <br>   만약 현재 폴더 위치에 manage.py 파일이 있다면 이동할 필요 없다.
 <br><br>
 4. 가상환경을 만들어준다.
