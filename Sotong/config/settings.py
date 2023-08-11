@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     
     'findbenefit',
     'tongtong',
+    'communities',
+    'tag',
 ]
 
 MIDDLEWARE = [
