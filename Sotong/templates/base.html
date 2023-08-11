@@ -24,7 +24,7 @@
         <!-- 메인 프레임 header -->
         <header>
             <div class="main-header">
-                <a href="/main-pages/main-page.html"><img src="{% static 'images/main-logo.svg' %} " class="main-logo"></a>
+                <a href="{% url 'index'%}"><img src="{% static 'images/main-logo.svg' %} " class="main-logo"></a>
                 <div class="myInfo-wrap">
                     <div class="myInfo-sec" style="margin-top: 0.5rem;">
                         <div><img src="{% static 'images/myInfo-img.svg' %} " class="myInfo-logo-img">
@@ -41,7 +41,7 @@
             </div>
 
             <nav class="main-nav">
-                <a href="/main-pages/main-page.html">
+                <a href="{% url 'index'%}">
                     <p class="main-nav-letter" id="main-page-link" style="color: var(--1, #00C2FF);">메인</p>
                 </a>
                 <img src="{% static 'images/horizontal-line.svg' %} ">
