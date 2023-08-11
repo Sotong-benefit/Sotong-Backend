@@ -2,6 +2,9 @@ from django.shortcuts import render, redirect
 from .models import UploadedImage, Counter
 from .forms import UploadImageForm
 
+def tongtong(request):
+    return render(request, 'TongTong.html')
+
 def upload_image(request):
     if request.method == 'POST':
         form = UploadImageForm(request.POST, request.FILES)
