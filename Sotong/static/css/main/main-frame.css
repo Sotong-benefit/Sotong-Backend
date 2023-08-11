@@ -1,0 +1,187 @@
+/* 메인 프레임 css 시작 */
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css");
+
+a{
+    text-decoration: none;
+}
+
+@media screen and (max-width: 1680px) {
+    *{
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        text-decoration: none;
+        /* page 전체 크기 결정(rem) */
+        font-size: 80%;
+    }
+}
+@media screen and (max-width: 1400px) {
+    *{
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        text-decoration: none;
+        /* page 전체 크기 결정(rem) */
+        font-size: 75%;
+    }
+} 
+@media screen and (max-width: 1280px) {
+    *{
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        text-decoration: none;
+        /* page 전체 크기 결정(rem) */
+        font-size: 75%;
+    }
+}
+
+@media screen and (max-width: 1199px) {
+    *{
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        text-decoration: none;
+        /* page 전체 크기 결정(rem) */
+        font-size: 75%;
+    }
+}
+@media screen and (max-width: 1024px) {
+    *{
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        text-decoration: none;
+        /* page 전체 크기 결정(rem) */
+        font-size: 75%;
+    }
+} 
+@media screen and (max-width: 991px) {
+    *{
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        text-decoration: none;
+        /* page 전체 크기 결정(rem) */
+        font-size: 70%;
+    }
+} 
+@media screen and (max-width: 767px) {
+    *{
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        text-decoration: none;
+        /* page 전체 크기 결정(rem) */
+        font-size: 59%;
+    }
+} 
+@media screen and (max-width: 600px) {
+    *{
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        text-decoration: none;
+        /* page 전체 크기 결정(rem) */
+        font-size: 56%;
+    }
+}
+@media screen and (max-width: 575px) {
+    *{
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        text-decoration: none;
+        /* page 전체 크기 결정(rem) */
+        font-size: 47%;
+    }
+} 
+@media screen and (max-width: 480px) {
+    *{
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        text-decoration: none;
+        /* page 전체 크기 결정(rem) */
+        font-size: 31%;
+    }
+}
+
+@media screen and (max-width: 280px) {
+    *{
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        text-decoration: none;
+        /* page 전체 크기 결정(rem) */
+        font-size: 16%;
+    }
+}
+
+.main-logo{
+    width: 15.26838rem;
+    height: 9.5625rem;
+    flex-shrink: 0;
+}
+
+.myInfo-logo-img{
+    width: 2.8125rem;
+    height: 2.5rem;
+    flex-shrink: 0;
+}
+
+.main-header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 4rem 0rem 3.44rem;
+}
+
+a > img{
+    margin-right: 29.11rem;
+}
+
+.myInfo-sec{
+    display: flex;
+}
+
+.myInfo-wrap{
+    display: flex;
+}
+
+.myInfo-wrap > img{
+    margin: 0.5rem;
+    height: 2.375rem;
+}
+
+nav{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+nav img{
+    height: 2.5rem;
+}
+
+.myInfo-info-letter{
+    color: #848484;     
+    font-family: Pretendard;
+    font-size: 1.5625rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin: 0.25rem;
+}
+
+.main-nav-letter{
+    color: var(--3, #848484);
+    font-family: Pretendard;
+    font-size: 1.5625rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin: 4rem;
+}
+
+/* 메인 프레임 css 끝 */
