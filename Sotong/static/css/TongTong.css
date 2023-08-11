@@ -1,0 +1,555 @@
+/* 상단 통통이 갯수 정보 */
+html {
+    height: 170.375rem;
+}
+
+.TongTong-wrap {
+    border-radius: 0.625rem;
+    background: var(--5, #F1F1F1);
+    box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.15);
+    padding: 0.5rem 0.5rem;
+    height: auto;
+    width: auto;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.TongTong-wrap img {
+    width: 2.8125rem;
+    height: 2.5rem;
+    flex-shrink: 0;
+}
+
+.TongTong {
+    color: var(--1, #00C2FF);
+    font-family: Pretendard;
+    font-size: 1.5625rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+#TongTong-num {
+    color: #848484;
+    font-family: Pretendard;
+    font-size: 1.5625rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+/* 혜택 인증하고 통통이 받기 */
+
+.screenShot-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.screenShot-wrap {
+    width: 56.25rem;
+    height: 23.6875rem;
+    flex-shrink: 0;
+    background: var(--5, #F1F1F1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.TongTong-title {
+    display: flex;
+    text-align: center;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+#TongTong-title {
+    color: #000;
+    font-family: Pretendard;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-right: 43rem;
+}
+
+#TongTong-subTitle {
+    color: var(--unnamed, #FF7474);
+    font-family: Pretendard;
+    font-size: 0.9375rem;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    margin-right: 40rem;
+}
+
+/* 이미지 업로드 */
+.contents {
+    display: flex;
+    flex-direction: row;
+    width: 37.875rem;
+    height: auto;
+    flex-shrink: 0;
+}
+
+.contents .upload-box {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.file-input-container {
+    display: flex;
+    align-items: center;
+    margin-top: 1.31rem;
+    /* 수직 정렬 */
+    gap: 0;
+    /* 요소 간격 조절 */
+    margin-left: 3rem;
+    
+}
+
+.message {
+    color: var(--3, #848484);
+    font-family: Pretendard;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.contents .upload-box .drag-file {
+    position: relative;
+    width: 100%;
+    height: 15.9375rem;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.625rem;
+    background: var(--unnamed, rgba(255, 255, 255, 0.95));
+}
+
+.contents .upload-box .drag-file.highlight {
+    border: 2px dashed var(--1, #00C2FF);
+}
+
+.contents .upload-box .drag-file .image {
+    width: 5.875rem;
+    height: 5.875rem;
+    flex-shrink: 0;
+    margin-bottom: 2.56rem;
+}
+
+.contents .upload-box .drag-file .message {
+    margin-bottom: 0;
+}
+
+.contents .upload-box .drag-file .preview {
+    display: none;
+    position: absolute;
+    left: 0;
+    height: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* 사진 선택 버튼 label */
+.contents .upload-box .file-label {
+    margin-left: 18rem;
+    width: 6.8125rem;
+    height: 3.1875rem;
+    flex-shrink: 0;
+    border-radius: 0.3125rem;
+    background: var(--3, #B2EDFF);
+    text-align: center;
+
+    color: var(--1, #333);
+    font-family: Pretendard;
+    font-size: 1.5625rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contents .upload-box .file {
+    display: none;
+}
+
+/* 사진 등록 button */
+#registrationFile {
+    width: 6.8125rem;
+    height: 3.1875rem;
+    flex-shrink: 0;
+    border-radius: 0.3125rem;
+    background: var(--3, #B2EDFF);
+    color: var(--1, #333);
+    font-family: Pretendard;
+    font-size: 1.5625rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    border: none;
+    margin-left: 1rem;
+}
+
+.active-btn:hover {
+    width: 6.8125rem;
+    height: 3.1875rem;
+    flex-shrink: 0;
+    border-radius: 0.3125rem;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}
+
+#TongTong-tag {
+    display: inline-flex;
+    padding: 0.8125rem 1.9375rem;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.3125rem;
+    background: var(--4, #CECECE);
+    border: none;
+
+    color: var(--2, #434343);
+    font-family: Pretendard;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 200;
+    line-height: normal;
+}
+
+#TongTong-tag::placeholder {
+    color: var(--2, #434343);
+    font-family: Pretendard;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 200;
+    line-height: normal;
+}
+
+/* 등록 버튼 블러 효과 */
+/* 등록 완료 메시지 */
+.upload-complete-message {
+    display: none;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 1rem;
+    z-index: 1;
+
+    color: var(--2, #434343);
+    text-align: center;
+    font-family: Pretendard;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+/* 통통이 혜택 */
+.TongTong-benefit-container {
+    text-align: center;
+    margin-top: 7.5rem;
+    height: auto;
+}
+
+.TongTong-benefit-container>p {
+    margin-right: 50rem;
+    color: #000;
+    font-family: Pretendard;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 2.5rem;
+}
+
+.TongTong-benefit-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 5.75rem;
+    height: auto;
+}
+
+.benefit-item {
+    width: 25.25rem;
+    flex-shrink: 0;
+    background-color: var(--5, #F1F1F1);
+    filter: drop-shadow(4px 4px 6px rgba(0, 0, 0, 0.15));
+}
+
+.benefit-item:hover {
+    background-color: var(--3, #B2EDFF);
+    filter: drop-shadow(4px 4px 6px rgba(0, 0, 0, 0.15));
+}
+
+.benefit-item img {
+    width: 19.5625rem;
+    height: 15.875rem;
+    flex-shrink: 0;
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.desc-list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.desc {
+    color: var(--1, #333);
+    font-family: Pretendard;
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    width: 17.75rem;
+}
+
+.desc-tt {
+    color: var(--1, #333);
+    font-family: Pretendard;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    /* text-indent: -11rem; */
+}
+
+/* 혜택받기 블러 */
+.confirmation-popup {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -69rem);
+    z-index: 1;
+    color: var(--2, #434343);
+    text-align: center;
+    font-family: Pretendard;
+    font-size: 1.875rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.confirmation-button {
+    display: inline-block;
+    padding: 0.5rem 1.5rem;
+    margin: 0.5rem;
+    border: none;
+    border-radius: 0.3125rem;
+    background-color: var(--3, #B2EDFF);
+    color: var(--1, #333);
+    font-family: Pretendard;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+}
+
+.confirmation-button:hover {
+    color: var(--2, #434343);
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+/* 통통이 구매 */
+.TongTong-buy-container {
+    text-align: center;
+    margin-top: 7.5rem;
+    position: relative;
+}
+
+.TongTong-buy-container>p {
+    margin-right: 50rem;
+    color: #000;
+    font-family: Pretendard;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 2.5rem;
+
+}
+
+.TongTong-buy-wrap {
+    width: 56.25rem;
+    height: 6.9375rem;
+    flex-shrink: 0;
+    background: var(--grey-0, #F3F3F3);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.buy-num {
+    margin-left: 3.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.buy-num>img {
+    width: 4.4375rem;
+    height: 3.9375rem;
+    flex-shrink: 0;
+    margin-right: 2.5rem;
+}
+
+.buy-num>span {
+    color: var(--2, #434343);
+    font-family: Pretendard;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-right: 26.44rem;
+}
+
+.buy-money {
+    width: 10.4375rem;
+    height: 3.1875rem;
+    flex-shrink: 0;
+    background-color: var(--3, #B2EDFF);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--1, #333);
+    font-family: Pretendard;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+/* 통통이 구매 blur */
+.purchase-popup {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -39rem);
+    text-align: center;
+    z-index: 9999;
+    color: var(--2, #434343);
+    text-align: center;
+    font-family: Pretendard;
+    font-size: 1.875rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.purchase-text {
+    font-size: 1.25rem;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.count-text {
+    margin-bottom: 10px;
+    font-size: 1.25rem;
+    font-weight: 500;
+    line-height: normal;
+    color: var(--1, #00C2FF);
+}
+
+.purchase-button {
+    display: inline-block;
+    padding: 0.5rem 1.5rem;
+    margin: 0.5rem;
+    border: none;
+    border-radius: 0.3125rem;
+    background-color: var(--3, #B2EDFF);
+    color: var(--1, #333);
+    font-family: Pretendard;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+}
+
+.purchase-button:hover {
+    color: var(--2, #434343);
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+/* 내가 인증한 혜택 */
+.TongTong-certified-container {
+    text-align: center;
+    margin-top: 7.5rem;
+}
+
+.TongTong-certified-container > p {
+    margin-right: 50rem;
+    color: #000;
+    font-family: Pretendard;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 2.5rem;
+}
+
+.TongTong-certified-wrap {
+    width: 56.25rem;
+    height: 6.9375rem;
+    flex-shrink: 0;
+    background: var(--grey-0, #F3F3F3);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.certified-name{
+    margin-left: 3.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.certified-name > span {
+    color: var(--2, #434343);
+    font-family: Pretendard;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-right: 28.75rem;
+}
+
+.certified-num{
+    width: 10.4375rem;
+    height: 3.1875rem;
+    flex-shrink: 0;
+    background-color: var(--3, #B2EDFF);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--1, #333);
+    font-family: Pretendard;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}

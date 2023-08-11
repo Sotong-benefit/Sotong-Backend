@@ -1,0 +1,135 @@
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.container-wrap{
+    display: flex;
+    flex-direction: column;
+}
+
+.main-logo-container{
+    margin-bottom: 2rem;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.main-logo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.main-logo-container img{
+    margin-top: 10rem;
+    margin-bottom: 5.72rem;
+    width: 34.875rem;
+    height: 21.84206rem;
+    flex-shrink: 0;
+}
+
+img{
+    margin-top: 4.5rem;
+    margin-left: 2.51rem;
+    width: 11.6875rem;
+    height: 7.1875rem;
+    flex-shrink: 0;
+}
+
+form{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input-form{
+    width: 37.5625rem;
+    height: 3.5rem;
+    flex-shrink: 0;
+    border-radius: 1.25rem;
+    border: 2px solid var(--5, #CECECE);
+}
+
+input{
+    padding-left: 1.5rem;
+    color: var(--5, #CECECE);
+    font-size: 1.25rem;
+    font-family: 'Pretendard';
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    text-indent: 2rem;
+}
+
+input::placeholder {
+    color: var(--5, #CECECE);
+    font-size: 1.25rem;
+    font-family: 'Pretendard';
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+}
+
+#login_submitbtn{
+    width: 15.125rem;
+    height: 3.4375rem;
+    flex-shrink: 0;
+    border-radius: 1.25rem;
+    background: var(--2, #74DEFF);
+    color: #FFF;
+    font-size: 1.875rem;
+    font-family: 'Pretendard';
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    border: 0;
+    cursor: pointer;
+}
+
+a{
+    text-decoration: none;
+    color: var(--5, #CECECE);
+    font-size: 1.25rem;
+    font-family: 'Pretendard';
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+}
+
+
+.password-label{
+    position: relative;
+    display: inline-block;
+}
+  
+.password-label .toggle-image1 {
+    position: absolute;
+    width: 1.5625rem;
+    height: 1.1875rem;
+    flex-shrink: 0;
+    cursor: pointer;
+    right: 1.5rem;
+    top: -3.2rem;
+}
+
+.login_alert {
+    color: var(--unnamed, #FF7474);
+    font-family: Pretendard;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    margin-left: 0.8rem;
+    position: absolute;
+    width: 37.5625rem;
+}
+
+input:focus{
+    outline: none;
+}

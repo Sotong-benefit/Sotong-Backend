@@ -1,0 +1,280 @@
+<!-- main-frame -->
+<!-- 프레임 형성 후 프레임 내 세부 내용 채워 넣는 듯이 개발 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>소득분위 계산결과</title>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
+    <link rel="stylesheet" type="text/css" href="/main-frame/main-frame.css">
+    <link rel="stylesheet" type="text/css" href="/calc-res-page/calc-res-page.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+</head>
+
+<style>
+    a {
+        text-decoration: none;
+    }
+</style>
+
+<body>
+    <!-- 반응형 container -->
+    <div class="container-fluid" style="padding: 0;">
+        <!-- Content here -->
+        <!-- 메인 프레임 header -->
+        <header>
+            <div class="main-header">
+                <a href="/main-pages/main-page.html"><img src="/public/images/main-logo.svg" class="main-logo"></a>
+                <div class="myInfo-wrap">
+                    <div class="myInfo-sec" style="margin-top: 0.5rem;">
+                        <div><img src="/public/images/myInfo-img.svg" class="myInfo-logo-img">
+                        </div>
+                        <div class="myInfo-info-letter" id="myInfo-UserName"><a href="/Tong-Tong-E/TongTong.html"
+                                style="color:#848484;" >통통이</a></div>
+                    </div>
+                    <img src="/public/images/horizontal-line.svg">
+                    <div style="margin-top: 0.5rem;">
+                        <div class="myInfo-info-letter" id="myInfo-myInformation"><a href="/my-page/my-page.html"
+                            style="color:#848484;" >내정보</a></div>
+                    </div>
+                </div>
+            </div>
+
+            <nav class="main-nav">
+                <a href="/main-pages/main-page.html">
+                    <p class="main-nav-letter" id="main-page-link">메인</p>
+                </a>
+                <img src="/public/images/horizontal-line.svg">
+                <a href="/calc-page/calc-page.html">
+                    <p class="main-nav-letter" id="calc-page-link" style="color: var(--1, #00C2FF);">소득분위 모의 계산기</p>
+                </a>
+                <img src="/public/images/horizontal-line.svg">
+                <a href="/benefit-album-page/benefit-album-page.html">
+                    <p class="main-nav-letter" id="benefit-page-link">혜택 찾아보기</p>
+                </a>
+                <img src="/public/images/horizontal-line.svg">
+                <a href="/community-main-page/community-main-page.html">
+                    <p class="main-nav-letter" id="community-page-link">커뮤니티</p>
+                </a>
+            </nav>
+        </header>
+        <!-- 메인 프레임 header끝 -->
+            <section class="calc">
+                <div class="calc-background">
+                    <div class="calc-title">소득분위 모의 계산결과</div>
+                    <div class="save" onclick="showAlert()">저장</div>
+
+                    <div class="res-section">
+                        <div class="res-title">소득인정액 모의계산 예상결과</div>
+                        <div class="line1">소득인정액은 
+                            <div class="income">1234567</div> 
+                        원 입니다.</div>
+                        <div class="line2">매년 보건복지부에서 발표하는 기준중위소득과 연계하여 </div>
+                        <div class="line3">학기 단위로 경곗값이 조정되는 지원구간 경곗값에 따르면,
+                            <div class="result">9</div> 
+                        구간에 해당합니다.</div>
+                    </div>
+
+                    <div class="scholar">
+                        <div class="scholar-title">2023 1학기 학자금 지원구간 경곗값</div>
+                        <div class="chart-index">
+                            <div class="idx1">구간</div>
+                            <div class="idx2">지원구간 경곗값 </div>
+                            <div class="idx3">기준 중위소득 비율 </div>
+                        </div>
+
+                        <div class="chart-line"></div>
+                        <div class="chart-sec1">
+                            <div class="val1">1구간</div>
+                            <div class="val2">1,620,289원(이하)</div>
+                            <div class="val3">30%</div>
+                        </div>
+
+                        <div class="chart-sec2">
+                            <div class="val1">2구간</div>
+                            <div class="val2">2,700,482원(이하)</div>
+                            <div class="val3">50%</div>
+                        </div>
+
+                        <div class="chart-sec3">
+                            <div class="val1">3구간</div>
+                            <div class="val2">3,780,675원(이하)</div>
+                            <div class="val3">70%</div>
+                        </div>
+
+                        <div class="chart-sec4">
+                            <div class="val1">4구간</div>
+                            <div class="val2">4,860,868원(이하)</div>
+                            <div class="val3">90%</div>
+                        </div>
+
+                        <div class="chart-sec5">
+                            <div class="val1">5구간</div>
+                            <div class="val2">5,400,964원(이하)</div>
+                            <div class="val3">100%</div>
+                        </div>
+
+                        <div class="chart-sec6">
+                            <div class="val1">6구간</div>
+                            <div class="val2">7,021,253원(이하)</div>
+                            <div class="val3">130%</div>
+                        </div>
+
+                        <div class="chart-sec7">
+                            <div class="val1">7구간</div>
+                            <div class="val2">8,101,446원(이하)</div>
+                            <div class="val3">150%</div>
+                        </div>
+
+                        <div class="chart-sec8">
+                            <div class="val1">8구간</div>
+                            <div class="val2">10,801,928원(이하)</div>
+                            <div class="val3">200%</div>
+                        </div>
+
+                        <div class="chart-sec9">
+                            <div class="val1">9구간</div>
+                            <div class="val2">16,202,892원(이하)</div>
+                            <div class="val3">300%</div>
+                        </div>
+
+                        <div class="chart-sec10">
+                            <div class="val1">10구간</div>
+                            <div class="val2">16,202,892원(초과)</div>
+                        </div>
+                    </div>
+
+                    <div class="chart-info">*학자금 지원구간 경곗값 = 기준중위소득 x 구간별 기준중위소득 대비 비율</div>
+
+                    </div>
+                </div>
+                <div class="warning">
+                    <p>소득분위 모의 계산기는 소득분위를 가장 적극적으로 활용하고있는 한국장학재단의 기준으로 계산됩니다. 
+                        그러므로 신청하시려는 프로그램의 기준과는 다를 수 있으며, <br>
+                        입력하신 자료를 기초로 제공되며 실제 정확한 설정 여부 판단은 서비스 신청 후 공적자료 조사를 통해 가능합니다. <br> 
+                        소득분위 모의 계산기로 조회하신 결과는 단순 참고용으로만 활용하여 주시기 바랍니다.</p>
+                </div>
+
+                <section class="recommend">
+                    <div class="reco">
+                        <div class="reco-title">
+                            <div class="reco-num">1</div>
+                            <div class="reco-name">구간에 해당하는 복지혜택 추천</div>
+                        </div>
+
+                        <div class="activity">
+
+                            <div class="activity1">
+                                
+                                <div class="act-idx">
+                                    <div class="deadline">D-11</div>
+                                    <div class="act-sec">모두</div>
+                                </div>
+    
+                                <div class="act-content" onclick="actDetail()">
+                                    <div class="star"><img src="/public/images/Star7.png" class="starImage"></div>
+                                    <img src="/public/images/image12.png" >
+                                    <div class="act-name">소득연계형 국가장학금</div>
+                                    <div class="act-tag">#국가장학금</div>
+                                    <div class="act-info1">신청 : 2023.08.01~2023.08.02</div>
+                                    <div class="act-info2">진행 : 2023.08.03~2023.08.04</div>
+                                </div>
+                            </div>
+
+                            <div class="activity2">
+                                <div class="act-idx">
+                                    <div class="deadline">D-2</div>
+                                    <div class="act-sec">1구간</div>
+                                </div>
+    
+                                <div class="act-content" onclick="actDetail()">
+                                    <div class="star"><img src="/public/images/Star7.png" class="starImage"></div>
+                                    <img src="/public/images/image12.png" >
+                                    <div class="act-name">복지멤버십(맞춤형 급여 안내)</div>
+                                    <div class="act-tag">#사회보장 서비스</div>
+                                    <div class="act-info1">신청 : 2023.08.01~2023.08.02</div>
+                                    <div class="act-info2">진행 : 2023.08.03~2023.08.04</div>
+                                </div>
+                            </div>
+
+                            <div class="activity3">
+                                <div class="act-idx">
+                                    <div class="deadline">D-11</div>
+                                    <div class="act-sec">2구간</div>
+                                </div>
+    
+                                <div class="act-content" onclick="actDetail()">
+                                    <div class="star"><img src="/public/images/Star7.png" class="starImage"></div>
+                                    <img src="/public/images/image12.png" >
+                                    <div class="act-name">소득연계형 국가장학금</div>
+                                    <div class="act-tag">#국가장학금</div>
+                                    <div class="act-info1">신청 : 2023.08.01~2023.08.02</div>
+                                    <div class="act-info2">진행 : 2023.08.03~2023.08.04</div>
+                                </div>
+                            </div>
+                        </div>    
+                    </div>
+                    
+                </section>
+                <div class="morebtn"><button class="more" onclick="showMore()">더보기</button></div>
+
+                <section class="recommend2">
+                    <div class="reco2">
+                        <div class="reco-title">
+                            <div class="reco-num">1</div>
+                            <div class="reco-name">구간에 해당하는 게시글 추천</div>
+                        </div>
+
+                        <div class="reco-idx">
+                            <div>구간</div>
+                            <div>작성 정보 </div>
+                        </div>
+
+                        <div class="post-content" onclick="postDetail()">
+                            <div class="post-title">가나다라마바사아자차 </div>
+                            <div class="post-info-container">
+                                <div class="post-info1">-작성내용 관련 태그/작성일</div>
+                                <div class="post-info2">-작성자 닉네임</div>
+                            </div>
+                        </div>
+
+                        <div class="post-content" onclick="postDetail()">
+                            <div class="post-title">게시글 제목 </div>
+                            <div class="post-info-container">
+                                <div class="post-info1">-작성내용 관련 태그/작성일</div>
+                                <div class="post-info2">-작성자 닉네임</div>
+                            </div>
+                        </div>
+
+                        <div class="post-content" onclick="postDetail()">
+                            <div class="post-title">게시글 제목 </div>
+                            <div class="post-info-container">
+                                <div class="post-info1">-작성내용 관련 태그/작성일</div>
+                                <div class="post-info2">-작성자 닉네임</div>
+                            </div>
+                        </div>
+
+                        <div class="post-content" onclick="postDetail()">
+                            <div class="post-title">게시글 제목 </div>
+                            <div class="post-info-container">
+                                <div class="post-info1">-작성내용 관련 태그/작성일</div>
+                                <div class="post-info2">-작성자 닉네임</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                
+                
+            </section>
+    </div>
+    <!-- 반응형 container 끝 -->
+    <script src="calc-res-page.js"></script>
+</body>
+
+</html>

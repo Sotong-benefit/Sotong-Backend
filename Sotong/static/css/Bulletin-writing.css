@@ -1,0 +1,138 @@
+button:hover {
+    color: var(--2, #434343);
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+button{
+    border: none;
+}
+
+html{
+    height: 127.75rem;
+}
+
+section{
+
+    margin-top: 8.44rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;    
+}
+
+#submitBtn{
+    width: 4rem;
+    height: 3.1875rem;
+    flex-shrink: 0;
+    color: var(--1, #333);
+    font-family: Pretendard;
+    font-size: 1.5625rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    border-radius: 0.3125rem;
+    background: var(--3, #B2EDFF);
+    margin-left: 52rem;
+    margin-bottom: 1rem;
+    margin-top: 10.44rem;
+    border: none;
+    outline: none;
+}
+
+.bulletin-container{
+    width: 56.25rem;
+    height: auto;
+    flex-shrink: 0;
+    margin: auto;
+    background-color: var(--5, #F1F1F1);
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f2f2f2;
+    border-bottom: 1px solid #CECECE;
+}
+
+#currentDate{
+    color: var(--2, #434343);
+    font-family: Pretendard;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;   
+    margin-bottom: 10rem;
+}
+
+#postTitle {
+    color: var(--3, #848484);
+    text-align: center;
+    font-family: Pretendard;
+    font-size: 1.875rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    border: none;
+    background: var(--5, #F1F1F1);
+    border: none;
+    outline: none;
+    width: auto;;
+    margin-bottom: 6.25rem;
+    margin-left: 2rem;
+}
+
+.tags {
+    display: flex;
+    align-items: center;
+    margin-top: 10rem;
+    margin-bottom: 2.5rem;
+    width: 11.5rem;
+}
+
+.tag-input {
+    border: none;
+    outline: none;
+    color: var(--3, #848484);
+    font-family: Pretendard;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    background-color: var(--5, #F1F1F1);
+    height: auto;
+    width: 11.5rem;
+}
+
+.date {
+    margin-bottom: 10rem;
+    margin-left: 1rem;
+}
+
+.media-buttons {
+    display: flex;
+    gap: 2.25rem;
+    margin-top: 1.2rem;
+    margin-left: 2.8rem;
+}
+
+.write-area {
+    padding: 2.5rem;
+    border: none
+
+}
+
+.write-area textarea {
+    width: 100%;
+    height: 45.875rem;
+    border: none;
+    outline: none;
+    resize: none;
+    background-color: var(--4, #CECECE);
+    text-align: center;
+    font-family: Pretendard;
+    font-size: 1.5625rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 2.5rem; /* 160% */
+    padding-top: 5rem;
+}

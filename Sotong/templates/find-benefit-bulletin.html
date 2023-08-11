@@ -1,0 +1,132 @@
+<!-- main-frame -->
+<!-- 프레임 형성 후 프레임 내 세부 내용 채워 넣는 듯이 개발 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>혜택찾아보기-게시글</title>
+
+    <link rel="stylesheet" type="text/css" href="/main-frame/main-frame.css">
+    <link rel="stylesheet" type="text/css" href="/find-benefit-detail/find-benefit-bulletin.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+</head>
+
+<style>
+    a{text-decoration: none;}
+</style>
+
+<body>
+    <!-- 반응형 container -->
+    <div class="container-fluid" style="padding: 0;">
+        <!-- Content here -->
+        <!-- 메인 프레임 header -->
+        <header>
+            <div class="main-header">
+                <a href="/main-pages/main-page.html"><img src="/public/images/main-logo.svg" class="main-logo"></a>
+                <div class="myInfo-wrap">
+                    <div class="myInfo-sec" style="margin-top: 0.5rem;">
+                        <div><img src="/public/images/myInfo-img.svg" class="myInfo-logo-img">
+                        </div>
+                        <div class="myInfo-info-letter" id="myInfo-UserName"><a href="/Tong-Tong-E/TongTong.html"
+                                style="color:#848484;" >통통이</a></div>
+                    </div>
+                    <img src="/public/images/horizontal-line.svg">
+                    <div style="margin-top: 0.5rem;">
+                        <div class="myInfo-info-letter" id="myInfo-myInformation"><a href="/Tong-Tong-E/TongTong.html"
+                            style="color:#848484;" >내정보</a></div>
+                    </div>
+                </div>
+            </div>
+
+            <nav class="main-nav">
+                <a href="/main-pages/main-page.html">
+                    <p class="main-nav-letter" id="main-page-link">메인</p>
+                </a>
+                <img src="/public/images/horizontal-line.svg">
+                <a href="/calc-page/calc-page.html">
+                    <p class="main-nav-letter" id="calc-page-link">소득분위 모의 계산기</p>
+                <img src="/public/images/horizontal-line.svg">
+                <a href="/benefit-album-page/benefit-album-page.html">
+                    <p class="main-nav-letter" id="benefit-page-link" style="color: var(--1, #00C2FF);">혜택 찾아보기</p>
+                </a>
+                <img src="/public/images/horizontal-line.svg">
+                <a href="/community-main-page/community-main-page.html">
+                    <p class="main-nav-letter" id="community-page-link">커뮤니티</p>
+                </a>
+            </nav>
+        </header>
+        <!-- 메인 프레임 header끝 -->
+
+        <section class="bulletin-title-container">
+            <img src="/public/images/bulletin-sample-img.png" id="bullitin-img">
+            <div class="bulletin-info-wrap">
+                <p class="bulletin-info" id="bulletin-Dday">D-50</p>
+                <p class="bulletin-info" id="bulletin-sec">1구간</p>
+                <p id="bulletin-count"><img src="/public/images/bulletin-star.svg">100</p>
+            </div>
+            <div class="bulletin-contents-wrap">
+                <p id="bulletin-title">복지멤버십<span>(맞춤형 급여 안내)</span></p>
+                <p class="bulletin-contents">모집대상 : 1~5구간 서울시 거주민</p>
+                <p class="bulletin-contents">실행기구 : 보건복지부</p>
+            </div>
+        </section>
+        <hr>
+        <section class="bulletin-detail-container">
+            <div class="detail-title">
+                <p>세부 내용</p>
+            </div>
+            <div class="detail-detail" id="detail-detail-contents">
+                <p>차세대 사회보장정보시스템(차세대 시스템)이 2차 개통함에 따라 모든 국민으로 대상이 확대.<br>
+                    복지멤버십은 복지로를 통해 온라인으로 신청하거나 주소지와 관계없이<br>
+                    가까운 행정복지센터에 방문하면 된다.<br>
+                    차세대 시스템 2차 개통 준비로 지난 2일 오후 10시부터 일시 중단됐던<br>
+                    정부 운영 복지포털 사이트 '복지로'도 이날 오전 9시 다시 재개.
+                </p>
+            </div>
+        </section>
+        <hr>
+        <section class="bulletin-detail-container">
+            <div class="detail-title">
+                <p>상세일정 및 신청</p>
+            </div>
+            <div class="detail-detail" id="detail-schedule-contents">
+                <p id="program-schedule">프로그램 일정</p>
+                <div id="program-title-contents">
+                    <p id="program-title">복지멤버십(맞춤 급여 안내)</p>
+                    <p class="program-title-schedule">신청 : 2023. 08. 01 ~ 2023. 08 .03</p>
+                    <p class="program-title-schedule">진행 : 2023. 08. 03 ~ 2023. 08 .04</p>
+                </div>
+            </div>
+        </section>
+        <hr>
+        <section class="bulletin-detail-container">
+            <div class="detail-title">
+                <p>신청 방법</p>
+            </div>
+            <div class="detail-detail" id="detail-way-contents">
+                <p>복지로를 통해 온라인으로 신청하거나<br>
+                    주소지와 관계없이 가까운 행정복지센터에 방문
+                </p>
+            </div>
+        </section>
+        <hr>
+        <section class="bulletin-detail-container">
+            <div class="detail-title">
+                <p>관련 사이트</p>
+            </div>
+            <div id="detail-site-contents">
+                <p>관련 사이트 주소 : <a
+                        href="https://www.bokjiro.go.kr/ssis-tbu/index.do">https://www.bokjiro.go.kr/ssis-tbu/index.do</a>
+                </p>
+            </div>
+        </section>
+    </div>
+    <!-- 반응형 container 끝 -->
+</body>
+
+</html>

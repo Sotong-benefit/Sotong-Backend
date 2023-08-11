@@ -1,0 +1,310 @@
+<!-- main-frame -->
+<!-- 프레임 형성 후 프레임 내 세부 내용 채워 넣는 듯이 개발 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>게시글 내용-내가쓴글</title>
+
+    <link rel="stylesheet" type="text/css" href="/main-frame/main-frame.css">
+    <link rel="stylesheet" type="text/css" href="/Bulletin-pages/writing/Bulletin-writing.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+</head>
+<style>
+    a{text-decoration: none;}
+
+    .btnContainer {
+        display: flex;
+        justify-content: center;
+        margin-top: 5rem;
+        margin-left: 48rem;
+        gap: 0.5rem;
+    }
+
+    #ModifyBtn,
+    #DeleteBtn {
+        width: 4rem;
+        height: 3.1875rem;
+        flex-shrink: 0;
+        border-radius: 0.3125rem;
+        background: var(--3, #B2EDFF);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        color: var(--1, #333);
+        font-family: Pretendard;
+        font-size: 1.5625rem;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+    }
+
+    .write-area {
+        height: auto;
+    }
+
+    .write-area p {
+        height: 50.125rem;
+        flex-shrink: 0;
+        color: var(--1, #333);
+        text-align: center;
+        font-family: Pretendard;
+        font-size: 1.5625rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 2.5rem;
+        /* 160% */
+        text-align: center;
+    }
+
+    .comments {
+        width: 56.25rem;
+        height: 5.4375rem;
+        background: var(--5, #F1F1F1);
+        margin-top: 2.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .comment {
+        margin-left: 1.5rem;
+        color: var(--1, #333);
+        text-align: center;
+        font-family: Pretendard;
+        font-size: 1.5625rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+    }
+
+    .comment-id {
+        color: var(--1, #333);
+        text-align: center;
+        font-family: Pretendard;
+        font-size: 1.875rem;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+        margin-left: 2rem;
+        margin-right: 1rem;
+    }
+
+    #MD-btn {
+        display: flex;
+        margin-left: auto;
+        gap: 0.5rem;
+        margin-right: 1.5rem;
+    }
+
+    input[type="button"] {
+        color: var(--1, #333);
+        border: none;
+        cursor: pointer;
+        color: var(--1, #333);
+        text-align: center;
+        font-family: Pretendard;
+        font-size: 1.5625rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+    }
+
+    input:hover {
+        color: var(--2, #434343);
+        box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+
+    /* 블러 스타일 추가 */
+    .blurred {
+        filter: blur(5px);
+    }
+
+    /* 삭제 팝업 스타일 */
+    .confirmation-popup {
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%, -70rem);
+        z-index: 1000;
+        display: none;
+    }
+
+    .confirmation-popup p{
+        color: var(--2, #434343);
+        text-align: center;
+        font-family: Pretendard;
+        font-size: 1.875rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+    }
+
+    .confirmation-popup button {
+        width: 5.5625rem;
+        height: 3.1875rem;
+        flex-shrink: 0;
+        border-radius: 0.3125rem;
+        background: var(--3, #B2EDFF);
+        /* Inner Shadow */
+        color: var(--1, #333);
+        font-family: Pretendard;
+        font-size: 1.5625rem;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        margin: 0.5rem;
+    }
+</style>
+
+<body>
+    <!-- 반응형 container -->
+    <div class="container-fluid" style="padding: 0;">
+        <!-- Content here -->
+        <!-- 메인 프레임 header -->
+        <header>
+            <div class="main-header">
+                <a href="/main-pages/main-page.html"><img src="/public/images/main-logo.svg" class="main-logo"></a>
+                <div class="myInfo-wrap">
+                    <div class="myInfo-sec" style="margin-top: 0.5rem;">
+                        <div><img src="/public/images/myInfo-img.svg" class="myInfo-logo-img">
+                        </div>
+                        <div class="myInfo-info-letter" id="myInfo-UserName"><a href="/Tong-Tong-E/TongTong.html"
+                                style="color:#848484;" >통통이</a></div>
+                    </div>
+                    <img src="/public/images/horizontal-line.svg">
+                    <div style="margin-top: 0.5rem;">
+                        <div class="myInfo-info-letter" id="myInfo-myInformation"><a href="/Tong-Tong-E/TongTong.html"
+                            style="color:#848484;" >내정보</a></div>
+                    </div>
+                </div>
+            </div>
+
+            <nav class="main-nav">
+                <a href="/main-pages/main-page.html">
+                    <p class="main-nav-letter" id="main-page-link">메인</p>
+                </a>
+                <img src="/public/images/horizontal-line.svg">
+                <a href="/calc-page/calc-page.html">
+                    <p class="main-nav-letter" id="calc-page-link">소득분위 모의 계산기</p>
+                </a>
+                <img src="/public/images/horizontal-line.svg">
+                <a href="/benefit-album-page/benefit-album-page.html">
+                    <p class="main-nav-letter" id="benefit-page-link">혜택 찾아보기</p>
+                </a>
+                <img src="/public/images/horizontal-line.svg">
+                <a href="/community-main-page/community-main-page.html">
+                    <p class="main-nav-letter" id="community-page-link" style="color: var(--1, #00C2FF);">커뮤니티</p>
+                </a>
+            </nav>
+        </header>
+        <!-- 메인 프레임 header끝 -->
+        <div class="btnContainer">
+            <button id="ModifyBtn">수정</button>
+            <input type="button" id="DeleteBtn" value="삭제">
+        </div>
+        <section style="margin-top: 1.2rem;" id="contentSection">
+            <div class="bulletin-container">
+                <div class="header">
+                    <div class="date"><span id="currentDate"></span></div>
+                    <!-- 게시글 제목 입력 -->
+                    <p id="postTitle">제목</p>
+                    <div class="tags">
+                        <p class="tag-input">#태그</p>
+                    </div>
+                    <!-- 등록 버튼 추가 -->
+                </div>
+                <div class="write-area">
+                    <div id="postContent">
+                        <p>게시글 내용</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="comments-container" style="margin-bottom: 7.5rem;">
+                <div class="comments" id="my-comments">
+                    <span class="comment-id" id="my-comment-id">내계정명</span>
+                    <span>:</span>
+                    <span class="comment" id="my-comment">내 계정에서 쓴 글</span>
+                    <div id="MD-btn">
+                        <input type="button" value="수정 /">
+                        <input type="button" value="삭제">
+                    </div>
+                </div>
+
+                <div class="comments" id="other-comments">
+                    <span class="comment-id" id="other-comment-id">남의계정명</span>
+                    <span>:</span>
+                    <span class="comment" id="other-comment">남의 계정에서 쓴 글</span>
+                    <div id="MD-btn">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div id="confirmationPopup" class="confirmation-popup">
+            <p id="deleteStatus">삭제하시겠습니까?</p>
+
+            <button id="confirmDelete">예</button>
+            <button id="cancelDelete">아니오</button>
+        </div>
+    </div>
+    <!-- 반응형 container 끝 -->
+    <script>
+        const currentDateElem = document.getElementById('currentDate');
+        const postContentElem = document.getElementById('postContent');
+        const postTitleElem = document.getElementById('postTitle');
+        const submitBtn = document.getElementById('submitBtn');
+        const mediaButtons = document.querySelectorAll('.media-button');
+
+        // 오늘 날짜 표시
+        const currentDate = new Date();
+        const options = { year: 'numeric', month: 'numeric', day: 'numeric' };
+        currentDateElem.textContent = currentDate.toLocaleDateString();
+
+
+        // 스크립트 코드
+        const deleteBtn = document.getElementById('DeleteBtn');
+        const confirmationPopup = document.getElementById('confirmationPopup');
+        const confirmDeleteBtn = document.getElementById('confirmDelete');
+        const cancelDeleteBtn = document.getElementById('cancelDelete');
+        const bulletinContainer = document.querySelector('.bulletin-container');
+        const deleteStatusElem = document.getElementById('deleteStatus');
+
+        // 삭제 버튼 클릭 시 팝업을 보여주고 블러 처리
+        deleteBtn.addEventListener('click', () => {
+            bulletinContainer.classList.add('blurred');
+            confirmationPopup.style.display = 'block';
+        });
+
+        // 예 버튼 클릭 시 삭제 처리 후 메시지 출력 및 팝업 닫기
+        confirmDeleteBtn.addEventListener('click', () => {
+            // 삭제 로직 처리 (필요한 내용을 추가하세요)
+
+            // 문구 변경
+            deleteStatusElem.textContent = '삭제되었습니다.';
+
+            // 팝업 닫기
+            confirmationPopup.style.display = 'none';
+
+            // 2초 후에 원하는 링크로 이동
+            setTimeout(() => {
+                window.location.replace = '/../../community-main-page/community-main-page.html'; // 원하는 링크로 변경
+            }, 1000);
+        });
+
+        // 아니오 버튼 클릭 시 팝업만 닫기
+        cancelDeleteBtn.addEventListener('click', () => {
+            bulletinContainer.classList.remove('blurred');
+            confirmationPopup.style.display = 'none';
+        });
+
+
+    </script>
+</body>
+
+</html>

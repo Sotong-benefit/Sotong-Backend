@@ -1,0 +1,176 @@
+<!-- main-frame -->
+<!-- 프레임 형성 후 프레임 내 세부 내용 채워 넣는 듯이 개발 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>TongTongE-page</title>
+
+    <link rel="stylesheet" type="text/css" href="/main-frame/main-frame.css">
+    <link rel="stylesheet" type="text/css" href="/Tong-Tong-E/TongTong.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+</head>
+
+<style>
+    a{
+        text-decoration: none;
+    }
+</style>
+
+<body>
+    <!-- 반응형 container -->
+    <div class="container-fluid" style="padding: 0;">
+        <!-- Content here -->
+        <!-- 메인 프레임 header -->
+        <header>
+            <div class="main-header">
+                <a href="/main-pages/main-page.html"><img src="/public/images/main-logo.svg" class="main-logo"></a>
+                <div class="myInfo-wrap">
+                    <div class="myInfo-sec" style="margin-top: 0.5rem;">
+                        <div><img src="/public/images/myInfo-img.svg" class="myInfo-logo-img">
+                        </div>
+                        <div class="myInfo-info-letter" id="myInfo-UserName" style="color: var(--1, #00C2FF);"><a href="/Tong-Tong-E/TongTong.html" style="color: var(--1, #00C2FF);">통통이</a></div>
+                    </div>
+                    <img src="/public/images/horizontal-line.svg">
+                    <div style="margin-top: 0.5rem;">
+                        <div class="myInfo-info-letter" id="myInfo-myInformation"><a href="#" style="color: #848484;">내정보</a></div>
+
+                        <br>
+                        <!-- 통통이 갯수 -->
+                        <div class="TongTong-wrap">
+                            <img src="/public/images/myInfo-img.svg">
+                            <span class="TongTong">통통이 <span id="TongTong-num">10개</span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <nav class="main-nav">
+                <a href="/main-pages/main-page.html">
+                    <p class="main-nav-letter" id="main-page-link">메인</p>
+                </a>
+                <img src="/public/images/horizontal-line.svg">
+                <a href="#">
+                    <p class="main-nav-letter" id="calc-page-link">소득분위 모의 계산기</p>
+                </a>
+                <img src="/public/images/horizontal-line.svg">
+                <a href="#">
+                    <p class="main-nav-letter" id="benefit-page-link">혜택 찾아보기</p>
+                </a>
+                <img src="/public/images/horizontal-line.svg">
+                <a href="#">
+                    <p class="main-nav-letter" id="community-page-link">커뮤니티</p>
+                </a>
+            </nav>
+        </header>
+        <!-- 메인 프레임 header끝 -->
+
+        <!-- 혜택 인증하고 통통이 받기 -->
+        <div>
+            <div class="TongTong-title">
+                <p id="TongTong-title">혜택 인증하고 통통이 받기</p>
+                <p id="TongTong-subTitle">&bull; 혜택인증 완료시 통통이 3개가 지급됩니다.</p>
+            </div>
+            <!-- 사진 등록 부 -->
+            <div class="screenShot-container">
+                <div class="screenShot-wrap">
+                    <div class="contents">
+                        <div class="upload-box">
+                            <div id="drop-file" class="drag-file">
+                                <img src="/public/images/TongTong-screenshot.svg" alt="파일 아이콘" class="image">
+                                <p class="message">받은 혜택의 스크린샷을 넣어주세요</p>
+                                <img src="" alt="미리보기 이미지" class="preview">
+                            </div>
+                            <div class="file-input-container">
+                                <input id="TongTong-tag" type="text" placeholder="#태그를 입력해주세요">
+                                <label class="file-label active-btn" for="chooseFile">사진 선택</label>
+
+                                <input class="file" id="chooseFile" type="file"
+                                    onchange="dropFile.handleFiles(this.files)"
+                                    accept="image/png, image/jpeg, image/gif">
+                                <button type="button" id="registrationFile" class="active-btn">등록</button>
+                            </div>
+                            <div class="upload-complete-message" id="uploadCompleteMessage">
+                                <p>등록이 완료됐습니다</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 통통이 혜택 -->
+            <div class="TongTong-benefit-container">
+                <p>통통이 혜택</p>
+                <div class="TongTong-benefit-wrap">
+                    <div class="benefit-item" id="benefitItem1">
+                        <div class="img-box block">
+                            <img src="/public/images/main-page-benefitPlus-sample.png" alt="">
+                        </div>
+                        <div class="desc-list">
+                            <p class="desc">알폰스 무하 이모션 인 서울 50% 할인 쿠폰</p>
+                            <p class="desc-tt">사용기한<br>2023 .7. 22(토)~2023. 10. 30(월)</p>
+                        </div>
+                    </div>
+                    <div class="benefit-item" id="benefitItem2">
+                        <div class="img-box block">
+                            <img src="/public/images/main-page-benefitPlus-sample.png" alt="">
+                        </div>
+                        <div class="desc-list">
+                            <p class="desc">알폰스 무하 이모션 인 서울 50% 할인 쿠폰</p>
+                            <p class="desc-tt">사용기한<br>2023 .7. 22(토)~2023. 10. 30(월)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 통통이 구매 -->
+            <!-- 3개 -->
+            <div class="TongTong-buy-container">
+                <p>통통이 구매</p>
+                <!-- 3개 -->
+                <div class="TongTong-buy-wrap custom-buy-wrap" id="buyItem1">
+                    <div class="buy-num">
+                        <img src="/public/images/myInfo-img.svg">
+                        <span>통통이 3개</span>
+                    </div>
+                    <div class="buy-money" id="money-2th">2000원</div>
+                </div>
+                <!-- 5개 -->
+                <div class="TongTong-buy-wrap custom-buy-wrap" id="buyItem2">
+                    <div class="buy-num">
+                        <img src="/public/images/myInfo-img.svg">
+                        <span>통통이 5개</span>
+                    </div>
+                    <div class="buy-money" id="money-3th">3000원</div>
+                </div>
+            </div>
+
+            <!-- 내가 인증한 혜택 -->
+            <div class="TongTong-certified-container">
+                <p>내가 인증한 혜택</p>
+                <div class="TongTong-certified-wrap">
+                    <div class="certified-name">
+                        <span>국가장학금지급 인증</span>
+                    </div>
+                    <div class="certified-num">통통이 3개 +</div>
+                </div>
+                <!-- 5개 -->
+                <div class="TongTong-certified-wrap">
+                    <div class="certified-name">
+                        <span>국가장학금지급 인증</span>
+                    </div>
+                    <div class="certified-num">통통이 3개 +</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 반응형 container 끝 -->
+    <script src="/Tong-Tong-E/Tong-Tong.js"></script>
+</body>
+
+</html>

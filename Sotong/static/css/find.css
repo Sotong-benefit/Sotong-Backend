@@ -1,0 +1,155 @@
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+/* main-Frame*/
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.container-wrap{
+    display: flex;
+    flex-direction: column;
+}
+
+.main-logo-container{
+    margin-bottom: 2rem;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.main-logo{
+    margin-top: 31.38rem;
+    margin-bottom: 2.5rem;
+    border-radius: 3.125rem;
+    box-shadow: 5px 5px 10px var(--5, #CECECE);
+    width: 16.25rem;
+    height: 16.25rem;
+    flex-shrink: 0;
+}
+
+.main-logo-container img{
+    margin-top: 15rem;
+    margin-bottom: 5.72rem;
+    width: 34.875rem;
+    height: 21.84206rem;
+    flex-shrink: 0;
+}
+
+#main-title{
+    color: var(--5, #CECECE);
+    font-size: 2.1875rem;
+    font-family: 'Pretendard-regular';
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+#sub-title{
+    color: var(--5, #CECECE);
+    font-size: 1.875rem;
+    font-family: Pretendard;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+}
+
+form{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input-form{
+    width: 37.5625rem;
+    height: 3.5rem;
+    flex-shrink: 0;
+    border-radius: 1.25rem;
+    border: 2px solid var(--5, #CECECE);
+}
+
+input{
+    color: var(--5, #CECECE);
+    font-size: 1.25rem;
+    font-family: 'Pretendard-regular';
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    text-indent: 2rem;
+}
+
+input::placeholder {
+    color: var(--5, #CECECE);
+    font-size: 1.25rem;
+    font-family: 'Pretendard-regular';
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+}
+
+#find_submitbtn{
+    width: 15.125rem;
+    height: 3.4375rem;
+    flex-shrink: 0;
+    border-radius: 1.25rem;
+    background: var(--5, #CECECE);
+    color: #FFF;
+    font-size: 1.875rem;
+    font-family: 'Pretendard-regular';
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    border: 0;
+}
+
+.btn-login{
+    display: flex;
+    justify-content: center;
+}
+
+a{
+    text-decoration: none;
+    color: var(--5, #CECECE);
+    font-size: 1.25rem;
+    font-family: 'Pretendard-regular';
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+}
+
+
+.password-label{
+    position: relative;
+    display: inline-block;
+}
+  
+.password-label .toggle-image1 {
+    position: absolute;
+    width: 1.5625rem;
+    height: 1.1875rem;
+    flex-shrink: 0;
+    cursor: pointer;
+    right: 1.5rem;
+    top: -3.2rem;
+}
+
+.password-label .toggle-image2 {
+    position: absolute;
+    width: 1.5625rem;
+    height: 1.1875rem;
+    flex-shrink: 0;
+    cursor: pointer;
+    right: 1.5rem;
+    top: -3.2rem;
+}
+
+#find-out{
+    color: var(--5, #CECECE);
+    font-size: 1.25rem;
+    font-family: 'Pretendard-regular';
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+}

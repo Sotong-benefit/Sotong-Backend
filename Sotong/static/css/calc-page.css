@@ -1,0 +1,378 @@
+
+.calc{
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/*회색배경*/
+.calc-background{
+    margin: 7.31rem 31.87rem 7.5rem 31.87rem;
+    width: 56.25rem;
+    height: 114rem;
+    flex-shrink: 0;
+    background: var(--5, #F1F1F1);
+    position: relative;
+}
+
+/*계산기 제목*/
+.calc-title{
+    margin-top: 0rem;
+    margin-left: 3.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 18.4375rem;
+    height: 3.31681rem;
+    background-color: var(--1, #00C2FF);
+    border-radius: 0 0 0.625rem 0.625rem;
+
+    color: var(--unnamed, rgba(255, 255, 255, 0.95));
+    font-family: Pretendard;
+    font-size: 1.875rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+/*옵션*/
+.option1{
+    display:flex;
+    align-items:center;
+    margin-top: 4.19rem;
+    margin-left: 8.94rem;
+}
+
+.option2{
+    display:flex;
+    align-items:center;
+    margin-top: 2.87rem;
+    margin-left: 8.94rem;
+}
+
+.input-option{
+    display:flex;
+    flex-direction: column;
+    margin-top:2rem;
+}
+/*옵션 제목, 버튼*/
+.option-title{
+    margin-right:5.31rem;
+    color: var(--1, #333);
+    font-family: Pretendard;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.option-buttons{
+    display:flex;
+    align-items:center;
+    flex-direction: row;
+    gap:1.5rem;
+
+    color: var(--1, #333);
+    font-family: Pretendard;
+    font-size: 0.9375rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.option-btn{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    width: 4.9375rem;
+    height: 2.1875rem;
+    flex-shrink: 0;
+    border-radius: 0.3125rem;
+    border: none;
+    background: var(--unnamed, rgba(255, 255, 255, 0.95));
+}
+
+.option-btn.active {
+    background: var(--4, #CECECE);
+}
+
+.option1-info{
+    margin-top:1.69rem;
+    margin-left:10rem;
+    color: var(--2, #434343);
+    font-family: Pretendard;
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+}
+
+.option2-info{
+    margin-top:2rem;
+    margin-left:10rem;
+    color: var(--2, #434343);
+    font-family: Pretendard;
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+}
+
+/*input options*/
+.input1{
+    display: flex;
+    flex-direction: row;
+    margin-left:10rem;
+    margin-top:1rem;
+}
+
+.input2{
+    display: flex;
+    flex-direction: row;
+    margin-left:10rem;
+    margin-top:2rem;
+}
+
+.input3{
+    display: flex;
+    flex-direction: row;
+    margin-top:2rem;
+}
+
+
+.input3>.option-title{
+    display: flex;
+    align-items: center;
+    margin-left:8.94rem;
+    margin-right:0rem;
+}
+
+.input-option>.option-title{
+    margin-left:8.94rem;
+    margin-top: 2rem;
+}
+
+.sub-title{
+    display:flex;
+    align-items:center;
+    color: var(--1, #333);
+    font-family: Pretendard;
+    font-size: 0.9375rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.income{
+    margin-left:3.56rem;
+    border:none;
+    border-radius: 0.3125rem;
+    background: var(--unnamed, rgba(255, 255, 255, 0.95));
+    width: 17.1875rem;
+    height: 2.3125rem;
+    flex-shrink: 0;
+}
+
+.income2{
+    margin-left:2.75rem;
+    border:none;
+    border-radius: 0.3125rem;
+    background: var(--unnamed, rgba(255, 255, 255, 0.95));
+    width: 17.1875rem;
+    height: 2.3125rem;
+    flex-shrink: 0;
+}
+
+.asset1{
+    margin-left:2.5rem;
+    border:none;
+    border-radius: 0.3125rem;
+    background: var(--unnamed, rgba(255, 255, 255, 0.95));
+    width: 17.1875rem;
+    height: 2.3125rem;
+    flex-shrink: 0;
+}
+
+.asset2{
+    margin-left:5.19rem;
+    border:none;
+    border-radius: 0.3125rem;
+    background: var(--unnamed, rgba(255, 255, 255, 0.95));
+    width: 17.1875rem;
+    height: 2.3125rem;
+    flex-shrink: 0;
+}
+
+.asset3{
+    margin-left:2.75rem;
+    border:none;
+    border-radius: 0.3125rem;
+    background: var(--unnamed, rgba(255, 255, 255, 0.95));
+    width: 17.1875rem;
+    height: 2.3125rem;
+    flex-shrink: 0;
+}
+
+.asset4{
+    margin-left:3.56rem;
+    border:none;
+    border-radius: 0.3125rem;
+    background: var(--unnamed, rgba(255, 255, 255, 0.95));
+    width: 17.1875rem;
+    height: 2.3125rem;
+    flex-shrink: 0;
+}
+
+.car{
+    margin-left:2.12rem;
+    border:none;
+    border-radius: 0.3125rem;
+    background: var(--unnamed, rgba(255, 255, 255, 0.95));
+    width: 17.1875rem;
+    height: 2.3125rem;
+    flex-shrink: 0;
+}
+
+.search-car{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    width: 4.125rem;
+    height: 1.625rem;
+    flex-shrink: 0;
+    background-color: var(--4, #CECECE);
+    margin-left:2.75rem;
+    border:none;
+    border-radius:0.25rem;
+    align-self: center;
+
+    color: var(--2, #434343);
+    font-family: Pretendard;
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+}
+
+.finance{
+    margin-left:2.12rem;
+    border:none;
+    border-radius: 0.3125rem;
+    background: var(--unnamed, rgba(255, 255, 255, 0.95));
+    width: 17.1875rem;
+    height: 2.3125rem;
+    flex-shrink: 0;
+}
+
+.debt{
+    margin-left:4.62rem;
+    border:none;
+    border-radius: 0.3125rem;
+    background: var(--unnamed, rgba(255, 255, 255, 0.95));
+    width: 17.1875rem;
+    height: 2.3125rem;
+    flex-shrink: 0;
+}
+
+
+
+.unit{
+    display:flex;
+    color: var(--1, #333);
+    font-family: Pretendard;
+    font-size: 0.9375rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-left:1.56rem;
+    align-items:center;
+    justify-content:center;
+}
+
+.input-info{
+    margin-top:2rem;
+    margin-left:10rem;
+    color: var(--2, #434343);
+    font-family: Pretendard;
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+}
+
+/*save*/
+.save{
+    position:absolute;
+    left:48rem;
+    top:109.5rem;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width: 6.8125rem;
+    height: 3.1875rem;
+    flex-shrink: 0;
+    border-radius: 0.3125rem;
+    background-color: var(--1, #00C2FF);
+
+    color: var(--unnamed, rgba(255, 255, 255, 0.95));
+    font-family: Pretendard;
+    font-size: 1.5625rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.save:hover{
+    cursor:pointer;
+}
+
+/*결과보기 버튼*/
+.result-buttons{
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    flex-direction: row;
+    gap: 1.5rem;
+    margin-bottom:4.5rem;
+}
+
+.result-btn{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    width: 17.5625rem;
+    height: 3.1875rem;
+    flex-shrink: 0;
+    border-radius: 0.3125rem;
+    background: var(--3, #B2EDFF);
+    text-decoration: none;
+
+    color: var(--1, #333);
+    font-family: Pretendard;
+    font-size: 1.5625rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.result-btn:hover{
+    cursor:pointer;
+}
+
+.warning{
+    display:flex;
+    align-items: center;
+    justify-content:center;
+    text-align:center;
+    margin-bottom:11.25rem;
+    color: var(--unnamed, #FF7474);
+    text-align: center;
+    font-family: Pretendard;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}

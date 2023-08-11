@@ -1,0 +1,213 @@
+html{
+    height: 256.6875rem;
+}
+
+hr{
+    background: #CECECE;
+    height: 0.0625rem;
+}
+
+
+/*헤택찾기 게시글 - 타이틀 */
+
+.bulletin-title-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 4rem;
+}
+
+.bulletin-title-container > img{
+    width: 45.125rem;
+    height: 58.125rem;
+    flex-shrink: 0;
+    border-radius: 0.625rem;
+}
+
+/* 이미지 및 아이콘 */
+.bulletin-info-wrap{
+    display: flex;
+    margin-top: 2.5rem;
+    width: 100%;
+    justify-content: center;
+}
+
+.bulletin-info{
+    flex-shrink: 0;
+    margin-left: 2rem;
+    color: #FFF;
+    font-family: Pretendard;
+    font-size: 1.875rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    padding: 0.4rem 1rem;
+}
+
+#bulletin-Dday{
+    background-color: #00C2FF;
+    border-radius: 0.3rem;
+}
+
+#bulletin-sec{
+    background-color: #FFB2B2;
+    border-radius: 0.3rem;
+}
+
+#bulletin-count{
+    padding: 0.3rem 1rem;
+    flex-shrink: 0;
+    background-color: var(--1, #00C2FF);
+    border-radius: 0.3rem;
+
+    margin-left: 30rem;
+    color: #FFF;
+    font-family: Pretendard;
+    font-size: 1.875rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#bulletin-count > img{
+    width: 2.25rem;
+    height: 2.25rem;
+    flex-shrink: 0;
+    margin-right: 0.3rem;
+    text-align: center;
+}
+
+/* 타이틀 - 타이틀 */
+.bulletin-contents-wrap{
+    margin-top: 4.44rem;
+    margin-right: 14rem;
+    margin-bottom: 7.5rem;
+}
+
+#bulletin-title{
+    color: var(--1, #333);
+    font-family: Pretendard;
+    font-size: 3rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin-bottom: 2.5rem;
+}
+
+#bulletin-title span{
+    color: var(--1, #333);
+    font-family: Pretendard;
+    font-size: 3rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+/* 타이틀 - 모집대상 */
+
+.bulletin-contents{
+    color: var(--2, #434343);
+    font-family: Pretendard;
+    font-size: 1.875rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+/* 세부내용, 상세일정 및 신청, 관련 사이트 */
+.bulletin-detail-container{
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 7.5rem;
+}
+
+#detail-detail-contents{
+    width: 68.6875rem;
+    height: auto;
+    margin: auto;
+}
+
+.detail-title{
+    margin-bottom: 7.5rem;
+    margin-top: 4rem;
+    margin-right: 50rem;
+}
+
+.detail-title > p{
+    color: var(--2, #434343);
+    font-family: Pretendard;
+    font-size: 1.875rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.detail-detail > p{
+    color: var(--2, #434343);
+    text-align: center;
+    font-family: Pretendard;
+    font-size: 1.875rem;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 187.836%; /* 3.52194rem */
+}
+
+/* 프로그램 일정 */
+#program-schedule{
+    color: var(--2, #434343);
+    text-align: center;
+    font-family: Pretendard;
+    font-size: 1.875rem;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    margin-bottom: 7.25rem;
+}
+
+/* 프로그램 제목 */
+#program-title{
+    color: var(--2, #434343);
+    text-align: center;
+    font-family: Pretendard;
+    font-size: 2.25rem;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    margin-bottom: 4rem;
+}
+
+.program-title-schedule{
+    color: var(--2, #434343);
+    font-family: Pretendard;
+    font-size: 1.875rem;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    margin: 0.3rem;
+}
+
+
+/* 신청방법 컨텐츠 */
+#detail-way-contents > p{
+    width: 37rem;
+    margin: auto;
+}
+
+/* 관련사이트 주소 */
+#detail-site-contents{
+    color: var(--2, #434343);
+    font-family: Pretendard;
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-bottom: 20.69rem;
+}
+

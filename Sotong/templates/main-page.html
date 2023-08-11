@@ -1,0 +1,385 @@
+<!-- main-frame -->
+<!-- 프레임 형성 후 프레임 내 세부 내용 채워 넣는 듯이 개발 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>main-page</title>
+
+    <link rel="stylesheet" type="text/css" href="/main-frame/main-frame.css">
+    <link rel="stylesheet" type="text/css" href="/main-pages/main-page.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
+    <!-- Jquery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- slick  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css">
+
+    <!-- AOS-plug-in -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+</head>
+
+<style>
+    a {
+        text-decoration: none;
+    }
+</style>
+
+<body>
+    <!-- 반응형 container -->
+    <div class="container-fluid" style="padding: 0;">
+        <!-- Content here -->
+        <!-- 메인 프레임 header -->
+        <header>
+            <div class="main-header">
+                <a href="/main-pages/main-page.html"><img src="/public/images/main-logo.svg" class="main-logo"></a>
+                <div class="myInfo-wrap">
+                    <div class="myInfo-sec" style="margin-top: 0.5rem;">
+                        <div><img src="/public/images/myInfo-img.svg" class="myInfo-logo-img">
+                        </div>
+                        <div class="myInfo-info-letter" id="myInfo-UserName"><a href="/Tong-Tong-E/TongTong.html"
+                                style="color:#848484;" >통통이</a></div>
+                    </div>
+                    <img src="/public/images/horizontal-line.svg">
+                    <div style="margin-top: 0.5rem;">
+                        <div class="myInfo-info-letter" id="myInfo-myInformation"><a href="/my-page/my-page.html"
+                            style="color:#848484;" >내정보</a></div>
+                    </div>
+                </div>
+            </div>
+
+            <nav class="main-nav">
+                <a href="/main-pages/main-page.html">
+                    <p class="main-nav-letter" id="main-page-link" style="color: var(--1, #00C2FF);">메인</p>
+                </a>
+                <img src="/public/images/horizontal-line.svg">
+                <a href="/calc-page/calc-page.html">
+                    <p class="main-nav-letter" id="calc-page-link">소득분위 모의 계산기</p>
+                </a>
+                <img src="/public/images/horizontal-line.svg">
+                <a href="/benefit-album-page/benefit-album-page.html">
+                    <p class="main-nav-letter" id="benefit-page-link">혜택 찾아보기</p>
+                </a>
+                <img src="/public/images/horizontal-line.svg">
+                <a href="/community-main-page/community-main-page.html">
+                    <p class="main-nav-letter" id="community-page-link">커뮤니티</p>
+                </a>
+            </nav>
+        </header>
+        <!-- 메인 프레임 header끝 -->
+    </div>
+    <div>
+        <!-- 혜택 더보기 -->
+        <section class="benefitPlus-wrap">
+            <div id="benefitPlus"><span>혜택 더하기</span></div>
+            <div class="benefitPlus-contents">
+                <div id="benefitPlus-img"><img src="/public/images/main-page-benefitPlus-sample.png"></div>
+                <div id="benefitPlus-content">
+                    <div id="benefit-content-main">
+                        <p style="margin-bottom: 0;">받은 혜택 인증하고</p>
+                        <p style="font-weight: 600; text-indent: 10rem;">전시회 할인받기!</p>
+                        <p style="font-size: 1.25rem; margin: 1.31rem 0 2.25rem;">통통이 5개 -> <span
+                                style="font-weight: 500;">전시회 50% 할인쿠폰</span> 교환</p>
+                    </div>
+                    <div>
+                        <p id="tongtong-3">받은혜택 인증하면 <span style="font-weight: 500;">통통이 3개 지급</span></p>
+                        <div class="benefit-list">
+                            <p>1. 받은 혜택 내역 스크린샷</p>
+                            <p>2. 상단의 '통통이 버튼을 눌러 페이지 이동</p>
+                            <p>3. 스크린샷 업로드하고 통통이 받기</p>
+                        </div>
+                        <div class="benefit-warn">
+                            <p style="margin: 1rem 0 0;"> * 정상적인 스크린샷으로 인증해주세요</p>
+                            <p style="margin: 0 0 2.81rem;"> * 인증 완료시 통통이 지급</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 오늘 마감 -->
+        <section class="today-deadline">
+            <div></div>
+            <div>
+                <div></div>
+                <div class="image-container">
+                    <a href="/find-benefit-detail/find-benefit-bulletin.html">
+                        <div class="image-wrapper">
+                            <img src="/public/images/Dont-missIt.svg" class="zero-image">
+                            <img src="/public/images/main-page-multiChild.png" class="first-image">
+                            <img src="/public/images/mainpage-multichild-bcircle.svg" class="second-image">
+                            <img src="/public/images/main-page-deadline-Dday.svg" class="third-image">
+                        </div>
+                    </a>
+                </div>
+                <div class="today-deadline-content">
+                    <div id="today-deadline-title">다자녀 국가 장학금</div>
+                </div>
+                <div class="today-deadline-content">
+                    <div id="today-deadline-content">지원대상 : 대한민국 국적을 소지한 국내대학의 학자금 지원 8구간 이하,다자녀 가정의 가구원인 대학생(미혼에 한함)
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 신규 혜택 홍보 -->
+        <section class="new-benefit">
+            <div id="new-benefit-title">&bull; 신규 혜택 홍보 &bull;</div>
+
+            <div class="v-story-wrap con">
+                <div class="v-story-slider" data-aos="fade-up">
+                    <div class="slider-item">
+                        <a href="/find-benefit-detail/find-benefit-bulletin.html" class="block">
+                            <div class="img-box block">
+                                <img src="/public/images/new-benefit-sample.png" alt="">
+                            </div>
+                            <div class="discover">
+                                <span class="discover-btn block"></span>
+                                <!-- 아래 태그에 글씨 삽입 가능 -->
+                                <span class="discover-txt block"></span>
+                            </div>
+                        </a>
+                        <div class="v-story-desc-list">
+                            <p class="v-story-desc">국가근로장학금</p>
+                            <p class="v-story-desc-tt">혜택대상: 학자금지원 8구간 이하, <br>직전학기 C0 수준(70점/100점 만점) 이상</p>
+                        </div>
+                    </div>
+                    <div class="slider-item">
+                        <a href="/find-benefit-detail/find-benefit-bulletin.html" class="block">
+                            <div class="img-box block">
+                                <img src="/public/images/new-benefit-sample.png" alt="">
+                            </div>
+                            <div class="discover">
+                                <span class="discover-btn block"></span>
+                                <span class="discover-txt block"></span>
+                            </div>
+                        </a>
+                        <div class="v-story-desc-list">
+                            <p class="v-story-desc">국가근로장학금</p>
+                            <p class="v-story-desc-tt">혜택대상: 학자금지원 8구간 이하, <br>직전학기 C0 수준(70점/100점 만점) 이상</p>
+                        </div>
+                    </div>
+                    <div class="slider-item">
+                        <a href="/find-benefit-detail/find-benefit-bulletin.html" class="block">
+                            <div class="img-box block">
+                                <img src="/public/images/new-benefit-sample.png" alt="">
+                            </div>
+                            <div class="discover">
+                                <span class="discover-btn block"></span>
+                                <span class="discover-txt block"></span>
+                            </div>
+                        </a>
+                        <div class="v-story-desc-list">
+                            <p class="v-story-desc">국가근로장학금</p>
+                            <p class="v-story-desc-tt">혜택대상: 학자금지원 8구간 이하, <br>직전학기 C0 수준(70점/100점 만점) 이상</p>
+                        </div>
+                    </div>
+                    <div class="slider-item">
+                        <a href="/find-benefit-detail/find-benefit-bulletin.html" class="block">
+                            <div class="img-box block">
+                                <img src="/public/images/new-benefit-sample.png" alt="">
+                            </div>
+                            <div class="discover">
+                                <span class="discover-btn block"></span>
+                                <span class="discover-txt block"></span>
+                            </div>
+                        </a>
+                        <div class="v-story-desc-list">
+                            <p class="v-story-desc">국가근로장학금</p>
+                            <p class="v-story-desc-tt">혜택대상: 학자금지원 8구간 이하, <br>직전학기 C0 수준(70점/100점 만점) 이상</p>
+                        </div>
+                    </div>
+                    <div class="slider-item">
+                        <a href="/find-benefit-detail/find-benefit-bulletin.html" class="block">
+                            <div class="img-box block">
+                                <img src="/public/images/new-benefit-sample.png" alt="">
+                            </div>
+                            <div class="discover">
+                                <span class="discover-btn block"></span>
+                                <span class="discover-txt block">EXPLORE</span>
+                            </div>
+                        </a>
+                        <div class="v-story-desc-list">
+                            <p class="v-story-desc">국가근로장학금</p>
+                            <p class="v-story-desc-tt">혜택대상: 학자금지원 8구간 이하, <br>직전학기 C0 수준(70점/100점 만점) 이상</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 신규혜택 보러가기 -->
+            <div class="view-newBenefits-wrap">
+                <div class="view-newBenefits">
+                    <a href="/benefit-album-page/benefit-album-page.html">
+                        <p>지금바로</p>
+                        <span>신규 혜택 보러가기!</span>
+                        <span style="align-items: flex-end;"><img src="/public/images/view-newBenefit-vector.svg"
+                                class="image-right-center"></span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 소득분위제도란? -->
+            <div class="income-quintile-wrap">
+                <div class="income-quintile">
+                    <div id="income-quintile-title">
+                        <p>소득분위제도란?</p>
+                    </div>
+                    <div id="income-quintile-content">
+                        <p style="font-weight: 600; font-size: 1.25rem;">소득분위<span
+                                style="font-weight: 400; font-size: 1.25rem;">는</span></p>
+                        <span style="font-size: 1.25rem;">통계청이 우리나라 전체 가구를 분기 <span
+                                style="font-weight: 500; font-size: 1.25rem;">소득수준에 따라 일정비율씩 10단계로 나눈 지표</span>를
+                            말합니다.<br>우리 사이트에서는 매년 보건복지부에서 발표하는 기준중위소득과 연계하여<br>학기 단위로 경곗값이 조정되는 학자금 지원구간 경곗값 기준 소득분위를
+                            사용합니다.</span>
+                    </div>
+                    <div>
+                        <div id="boundary-value-title">2023 1학기 학자금 지원구간 경곗값</div>
+                        <div class="center-table">
+                            <div class="table-container">
+                                <table>
+                                    <thead style="border-bottom:0.1875rem solid #00C2FF;
+                                    ">
+                                        <tr>
+                                            <th>구간</th>
+                                            <th>지원구간 경곗값</th>
+                                            <th>기준 중위소득 비율</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1구간</td>
+                                            <td>1,620,289원(이하)</td>
+                                            <td>30%</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2구간</td>
+                                            <td>2,700,482원(이하)</td>
+                                            <td>50%</td>
+                                        </tr>
+                                        <tr>
+                                            <td>3구간</td>
+                                            <td>3,780,675원(이하)</td>
+                                            <td>70%</td>
+                                        </tr>
+                                        <tr>
+                                            <td>4구간</td>
+                                            <td>4,860,868원(이하)</td>
+                                            <td>90%</td>
+                                        </tr>
+                                        <tr>
+                                            <td>5구간</td>
+                                            <td>5,400,964원(이하)</td>
+                                            <td>100%</td>
+                                        </tr>
+                                        <tr>
+                                            <td>6구간</td>
+                                            <td>7,021,253원(이하)</td>
+                                            <td>130%</td>
+                                        </tr>
+                                        <tr>
+                                            <td>7구간</td>
+                                            <td>8,101,446원(이하)</td>
+                                            <td>150%</td>
+                                        </tr>
+                                        <tr>
+                                            <td>8구간</td>
+                                            <td>10,801,928원(이하)</td>
+                                            <td>200%</td>
+                                        </tr>
+                                        <tr>
+                                            <td>9구간</td>
+                                            <td>16,202,892원(이하)</td>
+                                            <td>300%</td>
+                                        </tr>
+                                        <tr>
+                                            <td>10구간</td>
+                                            <td>16,202,892원(초과)</td>
+                                            <td>-</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- table-finish -->
+                        <!-- 소득분위 주의 사항 -->
+                        <div class="boundary-value-precautions-container">
+                            <div class="boundary-value-precautions" style="text-align: left;">
+                                <p>*학자금 지원구간 경곗값 = 기준중위소득 x 구간별 기준중위소득 대비 비율.</p>
+                                <p>*학자금 지원구간 값은 ‘월 소득인정액’으로 소득과 재산을 소득으로 환산한 금액의 합계.</p>
+                                <p>*기초 및 차상위계측은 수급자격으로 확인.</p>
+                            </div>
+                        </div>
+                        <!-- 기준중위소득 -->
+                        <div class="median-income-wrap">
+                            <div class="median-income-title" style="text-align: left;">기준중위소득이란?</div>
+                            <div class="median-income-contents" style="text-align: left;">
+                                <p>&bull;보건복지부 장관이 급여의 기준 등에 활용하기 위하여 중앙생활보장위원회의<br>심의·의결을 거쳐 고시하는 국민 가구소득의 중위값</p>
+                                <p>&bull;최저생계비를 대체하여 급여(생계, 의료, 주거, 교육급여)별 선정기준 및 생계급여 최저보장수준에 활용되는 값</p>
+                                <p>&bull;※ 2023년 기준 중위소득(4인 가구): 5,400,964원</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <!-- 반응형 container 끝 -->
+
+    <!-- 스와이프 JS -->
+    <script>
+        console.clear();
+
+        AOS.init({
+            duration: 800,
+            easing: 'ease',
+        });
+
+
+        // 3차 visual stroy slick 적용
+        $('.v-story-slider').slick({
+            dots: true,
+            draggable: false,
+            arrows: true,
+            adaptiveHeight: true,
+            centerMode: true,
+            centerPadding: '300px',
+            responsive: [
+                {
+                    breakpoint: 1440,
+                    settings: {
+                        centerPadding: '20vw',
+                    }
+                },
+                {
+                    breakpoint: 770,
+                    settings: {
+                        centerPadding: '0',
+                        arrows: false,
+                    }
+                },
+            ],
+        }).on('beforeChange', function (event, slick, currentSlide, nextSlide) {
+            if (currentSlide !== nextSlide) {
+                $('.slick-center + .slick-cloned').each(function (index, node) {
+                    var $node = $(node);
+
+                    setTimeout(function () {
+                        $node.addClass('slick-current');
+                        $node.addClass('slick-center');
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>
