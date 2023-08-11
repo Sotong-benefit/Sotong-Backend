@@ -25,4 +25,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     path('tongtong/', include('tongtong.urls', namespace='tongtong')),
+    path('findbenefit/', include('findbenefit.urls', namespace='findbenefit')),
 ]
