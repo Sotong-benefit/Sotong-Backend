@@ -39,7 +39,7 @@
                 <div id="benefit-content-main">
                     <p style="margin-bottom: 0;">받은 혜택 인증하고</p>
                     <p style="font-weight: 600; text-indent: 10rem;">전시회 할인받기!</p>
-                    <p style="font-size: 1.25rem; margin: 1.31rem 0 2.25rem;">통통이 5개 -> <span
+                    <p style="font-size: 1.25rem; margin: 1.31rem 0 2.25rem;">통통이 5개 -> <span>
                             style="font-weight: 500;">전시회 50% 할인쿠폰</span> 교환</p>
                 </div>
                 <div>
@@ -64,7 +64,8 @@
         <div>
             <div></div>
             <div class="image-container">
-                <a href="/find-benefit-detail/find-benefit-bulletin.html">
+                
+                <a href="{% url 'findbenefit:bulletin' %}">
                     <div class="image-wrapper">
                         <img src="{% static 'images/Dont-missIt.svg'%}" class="zero-image">
                         <img src="{% static 'images/main-page-multiChild.png' %}" class="first-image">

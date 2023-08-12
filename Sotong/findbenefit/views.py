@@ -5,6 +5,8 @@ from django.shortcuts import render, redirect
 def findbenefit(request):
     return render(request, 'findbenefit/benefit-album-page.html')
 
+def bulletin(request):
+    return render(request, 'findbenefit/find-benefit-bulletin.html')
 
 
 # def segment(request):
