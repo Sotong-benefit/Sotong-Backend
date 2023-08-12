@@ -21,20 +21,24 @@
                 <div class="screenShot-wrap">
                     <div class="contents">
                         <div class="upload-box">
-                            <div id="drop-file" class="drag-file">
-                                <img src="{% static 'images/TongTong-screenshot.svg' %}" alt="파일 아이콘" class="image">
-                                <p class="message">받은 혜택의 스크린샷을 넣어주세요</p>
-                                <img src="" alt="미리보기 이미지" class="preview">
-                            </div>
-                            <div class="file-input-container">
-                                <input id="TongTong-tag" type="text" placeholder="#태그를 입력해주세요">
-                                <label class="file-label active-btn" for="chooseFile">사진 선택</label>
+                            <form id="uploadForm" method="post" enctype="multipart/form-data" action="{% url 'tongtong:upload_file' %}">
+                                {% csrf_token %}
+                                <div id="drop-file" class="drag-file">
+                                    <img src="{% static 'images/TongTong-screenshot.svg' %}" alt="파일 아이콘" class="image">
+                                    <p class="message">받은 혜택의 스크린샷을 넣어주세요</p>
+                                    <img src="" alt="미리보기 이미지" class="preview">
+                                </div>
+                                <div class="file-input-container">
+                                    <input id="TongTong-tag" type="text" placeholder="#태그를 입력해주세요">
+                                    <label class="file-label active-btn" for="chooseFile">사진 선택</label>
 
-                                <input class="file" id="chooseFile" type="file"
-                                    onchange="dropFile.handleFiles(this.files)"
-                                    accept="image/png, image/jpeg, image/gif">
-                                <button type="button" id="registrationFile" class="active-btn">등록</button>
-                            </div>
+                                    <input class="file" id="chooseFile" type="file"
+                                        onchange="dropFile.handleFiles(this.files)"
+                                        accept="image/png, image/jpeg, image/gif">
+                                    <button type="button" id="registrationFile" class="active-btn">등록</button>
+                                </div>
+                            </form>
+                            
                             <div class="upload-complete-message" id="uploadCompleteMessage">
                                 <p>등록이 완료됐습니다</p>
                             </div>
@@ -111,5 +115,29 @@
     </div>
     <!-- 반응형 container 끝 -->
     <script src="{% static 'js/Tong-Tong.js' %}"></script>
+    
+    <!--사진 업로드 부분 AJAX-->
+    <script>
+        function uploadFile() {
+            var fileInput = document.getElementById("chooseFile");
+            var tagInput = document.getElementById("TongTong-tag");
+            
+            var formData = new FormData();
+            formData.append("file", fileInput.files[0]);
+            formData.append("tag", tagInput.value);
+    
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "/upload/", true);
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    document.getElementById("uploadCompleteMessage").style.display = "block";
+                } else {
+                    console.error("Error uploading file.");
+                }
+            };
+            xhr.send(formData);
+        }
+    </script>
+
     {% endblock %}
     

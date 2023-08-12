@@ -43,12 +43,12 @@
                     
                     <div style="margin-top: 0.5rem;">
                         <div class="myInfo-info-letter" id="myInfo-myInformation"><a href="/my-page/my-page.html"
-                                style="color:#848484;">내정보</a></div>
-                                <!-- 통통이 갯수 -->
+                            style="color:#848484;">내정보</a></div>
+                            <!-- 통통이 갯수 -->
                             <br>
                             <div class="TongTong-wrap">
                                 <img src="{% static 'images/myInfo-img.svg' %}">
-                                <span class="TongTong">통통이 <span id="TongTong-num">10개</span></span>
+                                <span class="TongTong">통통이 <span id="TongTong-num">{{ counter.count }}개</span>
                             </div>
                     </div>
                     <img src="{% static 'images/horizontal-line.svg' %} ">
