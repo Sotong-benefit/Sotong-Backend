@@ -9,13 +9,13 @@ def tongtong(request):
 def upload(request):
     if request.method == 'POST':
         post=UploadImage()
-
-        post.image = request.POSt['image']
-        post.tag = request.POST['tag']
+        
+        post.image = request.FILES.get('image')
+        post.tag = request.POST.get('tag')
 
         post.save()
         
-    #return render(request, 'TongTong.html')    
+    return render(request, 'TongTong.html')    
 
 def upload_success(request):
     counter = Counter.objects.first()

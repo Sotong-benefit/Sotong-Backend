@@ -29,13 +29,14 @@
                                         <img src="" alt="미리보기 이미지" class="preview">
                                     </div>
                                     <div class="file-input-container">
-                                        <input id="TongTong-tag" type="text" placeholder="#태그를 입력해주세요">
+                                        <input id="TongTong-tag" name="tag" type="text" placeholder="#태그를 입력해주세요">
                                         <label class="file-label active-btn" for="chooseFile">사진 선택</label>
 
-                                        <input class="file" id="chooseFile" type="file"
+                                        <!-- <input class="file" id="chooseFile" name="image" type="file"
                                             onchange="dropFile.handleFiles(this.files)"
-                                            accept="image/png, image/jpeg, image/gif">
-                                        <button type="button" id="registrationFile" class="active-btn">등록</button>
+                                            accept="image/png, image/jpeg, image/gif"> -->
+                                            <input type="file" id="chooseFile" name="image" accept="image/*" id="id_image">
+                                        <button type="submit" id="registrationFile" class="active-btn">등록</button>
                                     </div>
                                 
                                 
