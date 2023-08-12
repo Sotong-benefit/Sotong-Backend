@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block link %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/Bulletin-writing.css'%}">
+<style>
+    a {
+        text-decoration: none;
+    }
+
+    #community-page-link {
+        color: var(--1, #00C2FF);
+    }
+</style>
+{% endblock %}
+
+{% block title %}게시글 내용 - 글쓰기{% endblock %}
+
+{% block content %}
+
+
+
+<!-- 메인 프레임 header끝 -->
+<section>
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <button id="submitBtn" style="margin-top: 0;">등록</button>
+        <div class="bulletin-container">
+            <div class="header">
+                <div class="date"><span id="currentDate"></span></div>
+                <!-- 게시글 제목 입력 -->
+                <!-- <input type="text" id="postTitle" placeholder="제목을 입력해주세요"> -->
+                {{ form.title }}
+                <div class="tags">
+                    <!-- <input type="text" class="tag-input" placeholder="#태그를 입력해주세요"> -->
+                    {{ form.tags }}
+                </div>
+                <!-- 등록 버튼 추가 -->
+            </div>
+            <div class="media-buttons">
+                <button class="media-button" data-type="사진"><img src="{% static 'images/bulletin-img.svg' %}"
+                        alt=""></button>
+                        {{ form.image }}
+                <button class="media-button" data-type="동영상"><img
+                        src="{% static 'images/bulletin-media-icon.svg' %}"></button>
+                <button class="media-button" data-type="파일"><img
+                        src="{% static 'images/bulletin-file-icon.svg' %}"></button>
+                <button class="media-button" data-type="링크"><img
+                        src="{% static 'images/bulletin-link-icon.svg' %}"></button>
+                <button class="media-button" data-type="위치"><img
+                        src="{% static 'images/bulletin-locate-icon.svg' %}"></button>
+            </div>
+            <div class="write-area">
+                <!-- <textarea id="postContent" placeholder="게시글을 작성하세요"></textarea> -->
+                {{ form.description }}
+            </div>
+        </div>
+    </form>
+</section>
+
+<script>
+    const currentDateElem = document.getElementById('currentDate');
+    const postContentElem = document.getElementById('postContent');
+    const postTitleElem = document.getElementById('postTitle');
+    const submitBtn = document.getElementById('submitBtn');
+    const mediaButtons = document.querySelectorAll('.media-button');
+
+    // 오늘 날짜 표시
+    const currentDate = new Date();
+    const options = { year: 'numeric', month: 'numeric', day: 'numeric' };
+    currentDateElem.textContent = currentDate.toLocaleDateString();
+
+    // 등록 버튼 클릭 이벤트 처리
+    submitBtn.addEventListener('click', () => {
+        const title = postTitleElem.value;
+        const tags = document.querySelector('.tag-input').value;
+        const content = postContentElem.value;
+
+        // 이곳에서 게시글 등록 처리를 진행 (서버로 데이터 전송 등)
+        // 예시: console.log(title, tags, content);
+    });
+</script>
+</div>
+
+{% endblock %}

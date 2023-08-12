@@ -32,26 +32,50 @@
             <div class="main-header">
                 <a href="{% url 'index'%}"><img src="{% static 'images/main-logo.svg' %} " class="main-logo"></a>
                 <div class="myInfo-wrap">
+                    {% if request.user.is_authenticated %}
                     <div class="myInfo-sec" style="margin-top: 0.5rem;">
                         <div><img src="{% static 'images/myInfo-img.svg' %} " class="myInfo-logo-img">
                         </div>
                         <div class="myInfo-info-letter" id="myInfo-UserName"><a href="{% url 'tongtong:tongtong'%}"
                                 style="color:#848484;">통통이</a></div>
                     </div>
-                    <img src="{% static 'images/horizontal-line.svg' %} ">
+                    
                     <div style="margin-top: 0.5rem;">
                         <div class="myInfo-info-letter" id="myInfo-myInformation"><a href="/my-page/my-page.html"
                                 style="color:#848484;">내정보</a></div>
                     </div>
+                    <img src="{% static 'images/horizontal-line.svg' %} ">
+                    <div style="margin-top: 0.5rem;">
+                        <div class="myInfo-info-letter" id="myInfo-myInformation"><a href="{% url 'accounts:logout' %}"
+                                style="color:#848484;">로그아웃</a></div>
+                    </div>
+                    {% else %}
+                    <div class="myInfo-sec" style="margin-top: 0.5rem;">
+                        <div><img src="{% static 'images/myInfo-img.svg' %} " class="myInfo-logo-img">
+                        </div>
+                        <div class="myInfo-info-letter" id="myInfo-UserName"><a href="/Tong-Tong-E/TongTong.html"
+                                style="color:#848484;">통통이</a></div>
+                    </div>
+                    <div style="margin-top: 0.5rem;">
+                        <div class="myInfo-info-letter" id="myInfo-myInformation"><a href="{% url 'accounts:login' %}"
+                                style="color:#848484;">로그인</a></div>
+                    </div>
+                    <img src="{% static 'images/horizontal-line.svg' %} ">
+                    <div style="margin-top: 0.5rem;">
+                        <div class="myInfo-info-letter" id="myInfo-myInformation"><a href="{% url 'accounts:signup' %}"
+                                style="color:#848484;">회원가입</a></div>
+                    </div>
+                    {% endif %}
                 </div>
+
             </div>
 
             <nav class="main-nav">
                 <a href="{% url 'index'%}">
-                    <p class="main-nav-letter" id="main-page-link" style="color: var(--1, #00C2FF);">메인</p>
+                    <p class="main-nav-letter" id="main-page-link">메인</p>
                 </a>
                 <img src="{% static 'images/horizontal-line.svg' %} ">
-                <a href="/calc-page/calc-page.html">
+                <a href="{% url 'calculator:calc_view' %}">
                     <p class="main-nav-letter" id="calc-page-link">소득분위 모의 계산기</p>
                 </a>
                 <img src="{% static 'images/horizontal-line.svg' %} ">
@@ -59,16 +83,17 @@
                     <p class="main-nav-letter" id="benefit-page-link">혜택 찾아보기</p>
                 </a>
                 <img src="{% static 'images/horizontal-line.svg' %} ">
-                <a href="/community-main-page/community-main-page.html">
+                <a href="{% url 'community:post-list'%}">
                     <p class="main-nav-letter" id="community-page-link">커뮤니티</p>
                 </a>
             </nav>
         </header>
         <!-- 메인 프레임 header끝 -->
+        {% block content %}
+        {% endblock %}
     </div>
     <!-- 반응형 container 끝 -->
-    {% block content %}
-    {% endblock %}
+    
 </body>
 
 </html>
