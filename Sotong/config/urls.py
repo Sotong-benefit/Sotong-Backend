@@ -21,14 +21,19 @@ from django.urls import path, include
 from django.conf import settings
 
 from communities.views import index
+from tongtong.views import tongtong
 
 urlpatterns = [
     path('', index, name='index'),
     path('admin/', admin.site.urls),
 
+
     path('accounts/', include('accounts.urls', namespace='accounts')),
     path('community/', include('communities.urls', namespace='community')),
     path('calc/', include('calculators.urls', namespace='calculator')),
+    path('tongtong/', include('tongtong.urls', namespace='tongtong')),
+    path('findbenefit/', include('findbenefit.urls', namespace='findbenefit')),
+
 ]
 
 urlpatterns +=static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

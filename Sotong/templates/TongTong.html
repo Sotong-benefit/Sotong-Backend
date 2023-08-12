@@ -1,20 +1,7 @@
-<!-- main-frame -->
-<!-- 프레임 형성 후 프레임 내 세부 내용 채워 넣는 듯이 개발 -->
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
+{% load static %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
-    <title>TongTongE-page</title>
-
-    <link rel="stylesheet" type="text/css" href="/main-frame/main-frame.css">
-    <link rel="stylesheet" type="text/css" href="/Tong-Tong-E/TongTong.css">
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-</head>
+{% block content %}
 
 <style>
     a{
@@ -22,54 +9,7 @@
     }
 </style>
 
-<body>
-    <!-- 반응형 container -->
-    <div class="container-fluid" style="padding: 0;">
-        <!-- Content here -->
-        <!-- 메인 프레임 header -->
-        <header>
-            <div class="main-header">
-                <a href="/main-pages/main-page.html"><img src="/public/images/main-logo.svg" class="main-logo"></a>
-                <div class="myInfo-wrap">
-                    <div class="myInfo-sec" style="margin-top: 0.5rem;">
-                        <div><img src="/public/images/myInfo-img.svg" class="myInfo-logo-img">
-                        </div>
-                        <div class="myInfo-info-letter" id="myInfo-UserName" style="color: var(--1, #00C2FF);"><a href="/Tong-Tong-E/TongTong.html" style="color: var(--1, #00C2FF);">통통이</a></div>
-                    </div>
-                    <img src="/public/images/horizontal-line.svg">
-                    <div style="margin-top: 0.5rem;">
-                        <div class="myInfo-info-letter" id="myInfo-myInformation"><a href="#" style="color: #848484;">내정보</a></div>
-
-                        <br>
-                        <!-- 통통이 갯수 -->
-                        <div class="TongTong-wrap">
-                            <img src="/public/images/myInfo-img.svg">
-                            <span class="TongTong">통통이 <span id="TongTong-num">10개</span></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <nav class="main-nav">
-                <a href="/main-pages/main-page.html">
-                    <p class="main-nav-letter" id="main-page-link">메인</p>
-                </a>
-                <img src="/public/images/horizontal-line.svg">
-                <a href="#">
-                    <p class="main-nav-letter" id="calc-page-link">소득분위 모의 계산기</p>
-                </a>
-                <img src="/public/images/horizontal-line.svg">
-                <a href="#">
-                    <p class="main-nav-letter" id="benefit-page-link">혜택 찾아보기</p>
-                </a>
-                <img src="/public/images/horizontal-line.svg">
-                <a href="#">
-                    <p class="main-nav-letter" id="community-page-link">커뮤니티</p>
-                </a>
-            </nav>
-        </header>
-        <!-- 메인 프레임 header끝 -->
-
+<link rel="stylesheet" type="text/css" href="{% static 'css/TongTong.css' %}">
         <!-- 혜택 인증하고 통통이 받기 -->
         <div>
             <div class="TongTong-title">
@@ -82,7 +22,7 @@
                     <div class="contents">
                         <div class="upload-box">
                             <div id="drop-file" class="drag-file">
-                                <img src="/public/images/TongTong-screenshot.svg" alt="파일 아이콘" class="image">
+                                <img src="{% static 'images/TongTong-screenshot.svg' %}" alt="파일 아이콘" class="image">
                                 <p class="message">받은 혜택의 스크린샷을 넣어주세요</p>
                                 <img src="" alt="미리보기 이미지" class="preview">
                             </div>
@@ -170,7 +110,6 @@
         </div>
     </div>
     <!-- 반응형 container 끝 -->
-    <script src="/Tong-Tong-E/Tong-Tong.js"></script>
-</body>
-
-</html>
+    <script src="{% static 'js/Tong-Tong.js' %}"></script>
+{% endblock %}
+    

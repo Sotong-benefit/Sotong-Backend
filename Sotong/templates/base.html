@@ -15,6 +15,12 @@
 
     {% block link %}{% endblock %}
     <title>{% block title %}{% endblock %}</title>
+
+    <style>
+        a{
+            text-decoration: none;
+        }
+    </style>
 </head>
 
 <body>
@@ -24,13 +30,13 @@
         <!-- 메인 프레임 header -->
         <header>
             <div class="main-header">
-                <a href="/main-pages/main-page.html"><img src="{% static 'images/main-logo.svg' %} " class="main-logo"></a>
+                <a href="{% url 'index'%}"><img src="{% static 'images/main-logo.svg' %} " class="main-logo"></a>
                 <div class="myInfo-wrap">
                     {% if request.user.is_authenticated %}
                     <div class="myInfo-sec" style="margin-top: 0.5rem;">
                         <div><img src="{% static 'images/myInfo-img.svg' %} " class="myInfo-logo-img">
                         </div>
-                        <div class="myInfo-info-letter" id="myInfo-UserName"><a href="/Tong-Tong-E/TongTong.html"
+                        <div class="myInfo-info-letter" id="myInfo-UserName"><a href="{% url 'tongtong:tongtong'%}"
                                 style="color:#848484;">통통이</a></div>
                     </div>
                     
@@ -73,7 +79,7 @@
                     <p class="main-nav-letter" id="calc-page-link">소득분위 모의 계산기</p>
                 </a>
                 <img src="{% static 'images/horizontal-line.svg' %} ">
-                <a href="/benefit-album-page/benefit-album-page.html">
+                <a href="{% url 'findbenefit:findbenefit'%}">
                     <p class="main-nav-letter" id="benefit-page-link">혜택 찾아보기</p>
                 </a>
                 <img src="{% static 'images/horizontal-line.svg' %} ">
