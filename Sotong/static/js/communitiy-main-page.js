@@ -47,7 +47,7 @@ function highlightButton(btnId) {
     }
 
     // 스타일 변경
-    const buttons = document.querySelectorAll('.choice-buttons > button');
+    const buttons = document.querySelectorAll('.choice-buttons > input');
     buttons.forEach(button => {
         if (button !== selectedButton) {
             button.style.boxShadow = "";
@@ -84,7 +84,7 @@ function toggleTag(button) {
 }
 
 function writePost() { //글쓰기 버튼
-    window.location.href = "new"; 
+    window.location.href = '/Bulletin-pages/writing/Bulletin-writing.html'; 
 }
 
 function postDetail(){ //게시글상세

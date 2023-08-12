@@ -1,144 +1,144 @@
 /*구간버튼*/
 
-.choice-buttons{
+.choice-buttons {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap:1.5rem;
+    gap: 1.5rem;
     color: var(--2, #434343);
     font-family: Pretendard;
     font-size: 1.5rem;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    margin-top:4.5rem;
-    
+    margin-top: 4.5rem;
+
 }
 
-.btn1{
-    display:flex;
-    justify-content:center;
-    align-items:center;
+.btn1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 4.9375rem;
     height: 2.6875rem;
     flex-shrink: 0;
     border-radius: 0.3125rem;
     background: rgba(255, 178, 178, 1);
-    border:none;
+    border: none;
 }
 
 
-.btn2{
-    display:flex;
-    justify-content:center;
-    align-items:center;
+.btn2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 4.9375rem;
     height: 2.6875rem;
     flex-shrink: 0;
     border-radius: 0.3125rem;
     background: #FFD2B2;
-    border:none;
+    border: none;
 }
 
-.btn3{
-    display:flex;
-    justify-content:center;
-    align-items:center;
+.btn3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 4.9375rem;
     height: 2.6875rem;
     flex-shrink: 0;
     border-radius: 0.3125rem;
     background: #FFF3B2;
-    border:none;
+    border: none;
 }
 
-.btn4{
-    display:flex;
-    justify-content:center;
-    align-items:center;
+.btn4 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 4.9375rem;
     height: 2.6875rem;
     flex-shrink: 0;
     border-radius: 0.3125rem;
     background: #CCF2B4;
-    border:none;
+    border: none;
 }
 
-.btn5{
-    display:flex;
-    justify-content:center;
-    align-items:center;
+.btn5 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 4.9375rem;
     height: 2.6875rem;
     flex-shrink: 0;
     border-radius: 0.3125rem;
     background: #B8F1D6;
-    border:none;
+    border: none;
 }
 
-.btn6{
-    display:flex;
-    justify-content:center;
-    align-items:center;
+.btn6 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 4.9375rem;
     height: 2.6875rem;
     flex-shrink: 0;
     border-radius: 0.3125rem;
     background: #B2ECFF;
-    border:none;
+    border: none;
 }
 
-.btn7{
-    display:flex;
-    justify-content:center;
-    align-items:center;
+.btn7 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 4.9375rem;
     height: 2.6875rem;
     flex-shrink: 0;
     border-radius: 0.3125rem;
     background: #B2CCFF;
-    border:none;
+    border: none;
 }
 
-.btn8{
-    display:flex;
-    justify-content:center;
-    align-items:center;
+.btn8 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 4.9375rem;
     height: 2.6875rem;
     flex-shrink: 0;
     border-radius: 0.3125rem;
     background: #D9CBFF;
-    border:none;
+    border: none;
 }
 
-.btn9{
-    display:flex;
-    justify-content:center;
-    align-items:center;
+.btn9 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 4.9375rem;
     height: 2.6875rem;
     flex-shrink: 0;
     border-radius: 0.3125rem;
     background: #F0C7FF;
-    border:none;
+    border: none;
 }
 
-.btn10{
-    display:flex;
-    justify-content:center;
-    align-items:center;
+.btn10 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 4.9375rem;
     height: 2.6875rem;
     flex-shrink: 0;
     border-radius: 0.3125rem;
     background: #FFC8EC;
-    border:none;
+    border: none;
 }
 
 /*태그버튼*/
-.hashtag{
-    gap:1rem;
+.hashtag {
+    gap: 1rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -148,12 +148,13 @@
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    margin-top:2.5rem;
+    margin-top: 2.5rem;
 }
-.tag-title{
+
+.tag-title {
     display: flex;
-    justify-content:center;
-    align-items:center;
+    justify-content: center;
+    align-items: center;
     width: 11.125rem;
     height: 3.1875rem;
     flex-shrink: 0;
@@ -165,13 +166,14 @@
     font-weight: 600;
     line-height: normal;
 }
-.tag{
-    border:none;
+
+.tag {
+    border: none;
     display: flex;
-    justify-content:center;
-    align-items:center;
-    padding-left:1.5rem;
-    padding-right:1.5rem;
+    justify-content: center;
+    align-items: center;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
     width: auto;
     height: 3rem;
     flex-shrink: 0;
@@ -187,36 +189,58 @@
 }
 
 .tag.selected {
-    background: #FFB2B2; /* 선택된 버튼의 배경색 변경 */
+    background: #FFB2B2;
+    /* 선택된 버튼의 배경색 변경 */
     box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.25) inset;
-    color: #fff; /* 선택된 버튼의 글자색 변경 */
+    color: #fff;
+    /* 선택된 버튼의 글자색 변경 */
 }
 
 /*체크박스, 글쓰기버튼*/
-.opt{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    flex-direction:row;
-    gap:29.56rem;
-    margin-top:5rem;
+.opt {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 14rem;
+    margin-top: 5rem;
 }
 
-.radio-btn{
+.post-num {
+    margin-left: 7rem;
+    color: var(--2, #434343);
+    font-family: Pretendard;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    display: flex;
+}
+
+.post-num span{
+    color: var(--2, #434343);
+    font-family: Pretendard;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: norm
+}
+
+/* .radio-btn{
     display:flex;
     justify-content:center;
     align-items:center;
     flex-direction:row;
     gap:4.63rem;
-}
+} */
 
-.post{
+.post {
     width: 6.8125rem;
     height: 3.1875rem;
     flex-shrink: 0;
     border-radius: 0.3125rem;
     background: var(--1, #00C2FF);
-    border:none;
+    border: none;
     color: var(--unnamed, rgba(255, 255, 255, 0.95));
     font-family: Pretendard;
     font-size: 1.25rem;
@@ -225,13 +249,13 @@
     line-height: normal;
 }
 
-.post>img{
+.post>img {
     width: 1.25rem;
     height: 1.25rem;
     flex-shrink: 0;
 }
 
-.radio1{
+/* .radio1{
     color: var(--2, #434343);
     font-family: Pretendard;
     font-size: 1.25rem;
@@ -275,22 +299,22 @@ font-size: 1.25rem;
 font-style: normal;
 font-weight: 400;
 line-height: normal;
-}
+} */
 
 /*앨범형보기*/
-.idx{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    
+.idx {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
 }
 
-.idx-content{
+.idx-content {
     display: flex;
     flex-direction: row;
     gap: 1.82rem;
     margin-top: 3.5rem;
-    margin-left:55rem;
+    margin-left: 55rem;
     margin-bottom: 6rem;
     color: var(--2, #434343);
     text-align: center;
@@ -301,18 +325,11 @@ line-height: normal;
     line-height: normal;
 }
 
-.album-icon{
+.album-icon {
     margin-bottom: 0.3rem;
 }
 
-.index1{
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    align-items: center;
-    flex-direction: column;
-}
-.index2{
+.index1 {
     display: flex;
     justify-content: center;
     text-align: center;
@@ -320,25 +337,34 @@ line-height: normal;
     flex-direction: column;
 }
 
-.index1, .index2:hover{
+.index2 {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.index1,
+.index2:hover {
     cursor: pointer;
 }
 
 /*게시글목록*/
 
-.my-post{
-    display:flex;
+.my-post {
+    display: flex;
     align-items: center;
-    justify-content:center;
-    flex-direction:column;
+    justify-content: center;
+    flex-direction: column;
 }
 
-.post-content{
-    display:flex;
+.post-content {
+    display: flex;
     flex-direction: row;
-    position:relative;
+    position: relative;
 
-    margin-bottom:3.5rem;
+    margin-bottom: 3.5rem;
 
     width: 56.25rem;
     height: 8.9375rem;
@@ -348,30 +374,30 @@ line-height: normal;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.10);
 }
 
-.post-content:hover{
+.post-content:hover {
     cursor: pointer;
 }
 
-.star>img{
-    width:1.8rem;
+.star>img {
+    width: 1.8rem;
     height: 1.8rem;
 }
 
-.star{
+.star {
     position: absolute;
     top: 1rem;
     right: 1rem;
 }
 
-.star:hover{
-    cursor:pointer;
+.star:hover {
+    cursor: pointer;
 }
 
-.post-title{
+.post-title {
     position: absolute;
     top: 3.37rem;
     left: 1.5rem;
-    display:flex;
+    display: flex;
     justify-content: center;
     align-items: center;
     color: var(--1, #333);
@@ -382,14 +408,14 @@ line-height: normal;
     line-height: normal;
 }
 
-.post-info-container{
+.post-info-container {
     position: absolute;
     right: 4.19rem;
     top: 3rem;
     display: flex;
     justify-content: center;
     flex-direction: column;
-    text-align:right;
+    text-align: right;
     gap: 0.5rem;
 
     color: var(--1, #333);
@@ -401,10 +427,10 @@ line-height: normal;
     line-height: normal;
 }
 
-.deadline{
+.deadline {
     display: flex;
     justify-content: center;
-    align-items:  center;
+    align-items: center;
     width: 3.375rem;
     height: 1.75rem;
     flex-shrink: 0;
@@ -423,10 +449,10 @@ line-height: normal;
     top: 0.5rem;
 }
 
-.con{
+.con {
     display: flex;
     justify-content: center;
-    align-items:  center;
+    align-items: center;
     width: 3.375rem;
     height: 1.75rem;
     flex-shrink: 0;
@@ -445,10 +471,10 @@ line-height: normal;
     top: 0.5rem;
 }
 
-.post-tag{
+.post-tag {
     position: absolute;
-    top:6.12rem;
-    left:1.5rem;
+    top: 6.12rem;
+    left: 1.5rem;
     color: #333;
     font-family: Pretendard;
     font-size: 1.25rem;
@@ -457,10 +483,63 @@ line-height: normal;
     line-height: normal;
 }
 
-.post-info1{
+.post-info1 {
     text-align: left;
 }
 
-.post-info2{
+.post-info2 {
     text-align: left;
+}
+
+/* 라디오버튼 */
+[type="radio"],
+span {
+    vertical-align: middle;
+    margin-left: 0.3rem;
+    color: var(--2, #434343);
+    font-family: Pretendard;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+label {
+    margin-right: 4.65rem;
+}
+
+[type="radio"] {
+    appearance: none;
+    border: max(2px, 0.1em) solid var(--4, #CECECE);
+    background-color: var(--4, #CECECE);
+    border-radius: 50%;
+    width: 1.125rem;
+    height: 1.125rem;
+    flex-shrink: 0;
+    transition: border 0.5s ease-in-out;
+}
+
+[type="radio"]:checked {
+    border: 0.45em solid var(--2, #74DEFF);
+}
+
+[type="radio"]:focus-visible {
+    outline-offset: max(2px, 0.1em);
+    outline: max(2px, 0.1em) dotted var(--2, #74DEFF);
+}
+
+[type="radio"]:hover {
+    box-shadow: 0 0 0 max(4px, 0.2em) var(--2, #74DEFF);
+    cursor: pointer;
+}
+
+[type="radio"]:hover+span {
+    cursor: pointer;
+}
+
+fieldset {
+    display: flex;
+    justify-content: center;
+    border: none;
+    margin: 0;
 }

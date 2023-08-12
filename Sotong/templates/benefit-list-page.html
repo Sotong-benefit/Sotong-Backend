@@ -64,33 +64,41 @@
         <!-- 메인 프레임 header끝 -->
 
         <div class="choice-buttons">
-            <button class="btn1" onclick="highlightButton('btn1')">1구간</button>
-            <button class="btn2" onclick="highlightButton('btn2')">2구간</button>
-            <button class="btn3" onclick="highlightButton('btn3')">3구간</button>
-            <button class="btn4" onclick="highlightButton('btn4')">4구간</button>
-            <button class="btn5" onclick="highlightButton('btn5')">5구간</button>
-            <button class="btn6" onclick="highlightButton('btn6')">6구간</button>
-            <button class="btn7" onclick="highlightButton('btn7')">7구간</button>
-            <button class="btn8" onclick="highlightButton('btn8')">8구간</button>
-            <button class="btn9" onclick="highlightButton('btn9')">9구간</button>
-            <button class="btn10" onclick="highlightButton('btn10')">10구간</button>
+            <input type="button" class="btn1" onclick="highlightButton('btn1')" value="1구간">
+            <input type="button" class="btn2" onclick="highlightButton('btn2')" value="2구간">
+            <input type="button" class="btn3" onclick="highlightButton('btn3')" value="3구간">
+            <input type="button" class="btn4" onclick="highlightButton('btn4')" value="4구간">
+            <input type="button" class="btn5" onclick="highlightButton('btn5')" value="5구간">
+            <input type="button" class="btn6" onclick="highlightButton('btn6')" value="6구간">
+            <input type="button" class="btn7" onclick="highlightButton('btn7')" value="7구간">
+            <input type="button" class="btn8" onclick="highlightButton('btn8')" value="8구간">
+            <input type="button" class="btn9" onclick="highlightButton('btn9')" value="9구간">
+            <input type="button" class="btn10" onclick="highlightButton('btn10')" value="10구간">
         </div>
 
         <div class="hashtag">
             <div class="tag-title">추천 태그</div>
-            <button class="tag" onclick="toggleTag(this)">#국가장학금</button>
-            <button class="tag" onclick="toggleTag(this)">#소득공제</button>
-            <button class="tag" onclick="toggleTag(this)">#국민기초생활복지제도</button>
+            <input type="button" class="tag" onclick="toggleTag(this)" value="#국가장학금">
+            <input type="button" class="tag" onclick="toggleTag(this)" value="#소득공제">
+            <input type="button" class="tag" onclick="toggleTag(this)" value="#국민기초생활복지제도">
         </div>
-
 
         <div class="opt">
             <div class="post-num">총, <span>1000</span>개</div>
-            <div class="radio-btn">
-                <div class="radio1" onclick="changeImage('radio1')" ><img src="/public/images/Ellipse 10.png" alt="">&nbsp;&nbsp;종료 임박순</div>
-                <div class="radio2" onclick="changeImage('radio2')"><img src="/public/images/Ellipse 10.png" alt="">&nbsp;&nbsp;인기순</div>
-                <div class="radio3" onclick="changeImage('radio3')" ><img src="/public/images/Ellipse 10.png" alt="">&nbsp;&nbsp;최신순</div>
-            </div>
+            <fieldset>
+                <label style="margin-left: 3rem;">
+                    <input type="radio" name="contact" value="termination"><span>종료 임박순</span>
+                </label>
+                <label>
+                    <input type="radio" name="contact" value="popularity"><span>인기순</span>
+                </label>
+                <label>
+                    <input type="radio" name="contact" value="latest"><span>최신순</span>
+                </label>
+                <label>
+                    <input type="radio" name="contact" value="my-interest"><span>내 관심글</span>
+                </label>
+            </fieldset>
         </div>
 
         <div class="idx">

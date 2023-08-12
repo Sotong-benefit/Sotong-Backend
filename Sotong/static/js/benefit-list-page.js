@@ -57,7 +57,7 @@ function highlightButton(btnId) {
     }
 
     // 스타일 변경
-    const buttons = document.querySelectorAll('.choice-buttons > button');
+    const buttons = document.querySelectorAll('.choice-buttons > input');
     buttons.forEach(button => {
         if (button !== selectedButton) {
             button.style.boxShadow = "";
@@ -68,6 +68,8 @@ function highlightButton(btnId) {
     // 선택된 버튼의 스타일 변경
     if (selectedButton) {
         selectedButton.style.boxShadow = "2px 2px 4px 0px rgba(0, 0, 0, 0.25) inset";
+        selectedButton.style.color = "#666666";
+        
     }
 }
 
