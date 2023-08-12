@@ -154,8 +154,9 @@
             </div>
 
             <div class="comments-container" style="margin-bottom: 7.5rem;">
+                {% for comment in post.comment_set.all %}
                 <div class="comments" id="my-comments">
-                    <span class="comment-id" id="my-comment-id">내계정명</span>
+                    <span class="comment-id" id="my-comment-id">{{ comment.writer }}</span>
                     <span>:</span>
                     <span class="comment" id="my-comment">내 계정에서 쓴 글</span>
                     <div id="MD-btn">
@@ -163,7 +164,7 @@
                         <input type="button" value="삭제">
                     </div>
                 </div>
-
+                {% endfor %}
                 <div class="comments" id="other-comments">
                     <span class="comment-id" id="other-comment-id">남의계정명</span>
                     <span>:</span>
@@ -181,10 +182,7 @@
             const submitBtn = document.getElementById('submitBtn');
             const mediaButtons = document.querySelectorAll('.media-button');
 
-            // 오늘 날짜 표시
-            const currentDate = new Date();
-            const options = { year: 'numeric', month: 'numeric', day: 'numeric' };
-            currentDateElem.textContent = currentDate.toLocaleDateString();
+            
 
             // 등록 버튼 클릭 이벤트 처리
             submitBtn.addEventListener('click', () => {

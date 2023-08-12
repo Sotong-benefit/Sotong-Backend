@@ -11,7 +11,7 @@ class Community(models.Model):
     description = models.TextField(verbose_name='내용',null=False)
     created_at = models.DateTimeField(verbose_name='작성일', auto_now_add=True)
     title = models.CharField(max_length=100, verbose_name='제목', null=False, blank=False)
-    tags = models.CharField(max_length=20, blank=False)
+    tags = models.CharField(max_length=20)
 
     user= models.ForeignKey(to=User, on_delete=models.CASCADE,null=True, blank=False)
     
@@ -28,7 +28,7 @@ class Favorite(models.Model):
         unique_together = ('user', 'community')
 
 class Comment(models.Model):
-    content = models.TextField(verbose_name='내용')
+    content = models.CharField(max_length=100, verbose_name='내용')
     created_at = models.DateTimeField(verbose_name='작성일', auto_now_add=True)
 
     community = models.ForeignKey(to='Community', on_delete=models.CASCADE)
