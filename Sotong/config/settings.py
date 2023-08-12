@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -128,7 +129,8 @@ STATICFILES_DIRS = [
 ] #static 디렉터리 지정
 
 MEDIA_URL = 'media/' #미디어 파일에 대한 경로 지정, 사진 업로드에 사용
-MEDIA_ROOT = BASE_DIR / 'media/'
+#MEDIA_ROOT = BASE_DIR / 'media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

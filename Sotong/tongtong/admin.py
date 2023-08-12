@@ -1,8 +1,7 @@
 from django.contrib import admin
 
-from .models import UploadedBenefit
+from .models import UploadImage
 
-@admin.register(UploadedBenefit)
+@admin.register(UploadImage)
 class TongTongModelAdmin(admin.ModelAdmin):
-    list_display = ('file','tag')
-    # list_display = ('todolist',)
+    list_display = ('image','tag')

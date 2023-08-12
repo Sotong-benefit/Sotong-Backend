@@ -17,35 +17,36 @@
                 <p id="TongTong-subTitle">&bull; 혜택인증 완료시 통통이 3개가 지급됩니다.</p>
             </div>
             <!-- 사진 등록 부 -->
-            <div class="screenShot-container">
-                <div class="screenShot-wrap">
-                    <div class="contents">
-                        <div class="upload-box">
-                            <form id="uploadForm" method="post" enctype="multipart/form-data" action="{% url 'tongtong:upload_file' %}">
-                                {% csrf_token %}
-                                <div id="drop-file" class="drag-file">
-                                    <img src="{% static 'images/TongTong-screenshot.svg' %}" alt="파일 아이콘" class="image">
-                                    <p class="message">받은 혜택의 스크린샷을 넣어주세요</p>
-                                    <img src="" alt="미리보기 이미지" class="preview">
-                                </div>
-                                <div class="file-input-container">
-                                    <input id="TongTong-tag" type="text" placeholder="#태그를 입력해주세요">
-                                    <label class="file-label active-btn" for="chooseFile">사진 선택</label>
+            <form action="{% url 'tongtong:upload' %}" method="post" enctype="multipart/form-data" >
+                {% csrf_token %}
+                <div class="screenShot-container">
+                    <div class="screenShot-wrap">
+                        <div class="contents">
+                            <div class="upload-box">
+                                    <div id="drop-file" class="drag-file">
+                                        <img src="{% static 'images/TongTong-screenshot.svg' %}" alt="파일 아이콘" class="image">
+                                        <p class="message">받은 혜택의 스크린샷을 넣어주세요</p>
+                                        <img src="" alt="미리보기 이미지" class="preview">
+                                    </div>
+                                    <div class="file-input-container">
+                                        <input id="TongTong-tag" type="text" placeholder="#태그를 입력해주세요">
+                                        <label class="file-label active-btn" for="chooseFile">사진 선택</label>
 
-                                    <input class="file" id="chooseFile" type="file"
-                                        onchange="dropFile.handleFiles(this.files)"
-                                        accept="image/png, image/jpeg, image/gif">
-                                    <button type="button" id="registrationFile" class="active-btn">등록</button>
+                                        <input class="file" id="chooseFile" type="file"
+                                            onchange="dropFile.handleFiles(this.files)"
+                                            accept="image/png, image/jpeg, image/gif">
+                                        <button type="button" id="registrationFile" class="active-btn">등록</button>
+                                    </div>
+                                
+                                
+                                <div class="upload-complete-message" id="uploadCompleteMessage">
+                                    <p>등록이 완료됐습니다</p>
                                 </div>
-                            </form>
-                            
-                            <div class="upload-complete-message" id="uploadCompleteMessage">
-                                <p>등록이 완료됐습니다</p>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </form>
 
             <!-- 통통이 혜택 -->
             <div class="TongTong-benefit-container">

@@ -1,7 +1,7 @@
 from django.db import models
 
-class UploadedBenefit(models.Model):
-    file = models.ImageField(upload_to='uploaded_images/')
+class UploadImage(models.Model):
+    image = models.ImageField(verbose_name='이미지', null=True, blank=True)
     tag = models.TextField(verbose_name='태그')
 
 class Counter(models.Model):
