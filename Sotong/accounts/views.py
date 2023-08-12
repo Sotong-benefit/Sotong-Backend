@@ -41,7 +41,7 @@ def login_view(request):
         try:
             user = User.objects.get(email=email)
         except:
-             return redirect('accounts:login')
+            return redirect('accounts:login')
         user = authenticate(request, username=user, password=password)
 
         if user is not None:

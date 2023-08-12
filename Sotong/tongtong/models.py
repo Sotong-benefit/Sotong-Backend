@@ -1,8 +1,8 @@
 from django.db import models
 
-class UploadedImage(models.Model):
+class UploadedBenefit(models.Model):
     image = models.ImageField(upload_to='uploaded_images/')
-    #upload_date = models.DateTimeField(auto_now_add=True)
+    tag = models.TextField(verbose_name='태그')
 
 class Counter(models.Model):
     count = models.IntegerField(default=0)

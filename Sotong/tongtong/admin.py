@@ -1,3 +1,8 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import UploadedBenefit
+
+@admin.register(UploadedBenefit)
+class TongTongModelAdmin(admin.ModelAdmin):
+    list_display = ('image','tag')
+    # list_display = ('todolist',)

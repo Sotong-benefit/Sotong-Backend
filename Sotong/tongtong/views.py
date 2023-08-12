@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import UploadedImage, Counter
+from .models import UploadedBenefit, Counter
 from .forms import UploadImageForm
 
 def tongtong(request):
