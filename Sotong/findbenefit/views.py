@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.shortcuts import render, redirect
 
 def findbenefit(request):
-    return render(request, 'find-benefit-bulletin.html')
+    return render(request, 'findbenefit/benefit-album-page.html')
 
 
 
