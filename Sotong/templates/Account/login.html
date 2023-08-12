@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,12 +8,13 @@
     <meta name="viewport"
         content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
     <title>로그인 페이지</title>
-    <link rel="stylesheet" type="text/css" href="login.css">
-    <link rel="stylesheet" type="text/css" href="/main-frame/main-frame.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %} ">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main-frame.css' %}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 </head>
 
+    
 <style>
     #login_submitbtn:disabled {
         background: var(--5, #CECECE);
@@ -26,27 +29,32 @@
     <div class="container-fluid" style="padding: 0;">
         <div class="container-wrap">
             <section class="main-logo-container">
-                    <img src="/public/images/main-logo.svg">
+                    <!-- <a href="{% url 'index'%}"> -->
+                        <img src="{% static 'images/main-logo.svg' %}">
+                    <!-- </a> -->
                 
             </section>
             <section>
-                <form class="form_wrap_line">
+                <form class="form_wrap_line" action="" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
                     <div style="margin-bottom: 1.5rem;">
-                        <input type="text" class="input-form" id="id" placeholder="이메일을 입력해주세요" name="user-name"
-                            style="border: 2px solid var(--unnamed, #FF7474);">
+                        <!-- <input type="text" class="input-form" id="id" placeholder="이메일을 입력해주세요" name="user-name"
+                            style="border: 2px solid var(--unnamed, #FF7474);"> -->
+                            {{ form.email }}
                         <div class="login_alert" id="alert-danger">아이디를 확인해주세요</div>
                     </div>
                     <div style="margin-bottom: 2rem;">
                         <label for="passwordField" class="password-label">
-                            <input type="password" id="passwordField" class="input-form" placeholder="비밀번호를 입력해주세요"
-                                name="user-pw" style="border: 2px solid var(--unnamed, #FF7474);">
-                            <img src="/public/images/pwd-toggle-show.svg" class="toggle-image1"
+                            <!-- <input type="password" id="passwordField" class="input-form" placeholder="비밀번호를 입력해주세요"
+                                name="user-pw" style="border: 2px solid var(--unnamed, #FF7474);"> -->
+                                {{ form.password }}
+                            <img src="{% static 'images/pwd-toggle-show.svg' %}" class="toggle-image1"
                                 onclick="togglePasswordVisibility()">
                             <div class="login_alert" id="alert-danger">비밀번호를 확인해주세요</div>
                         </label>
                     </div>
                     <div>
-                        <button type="submit" id=login_submitbtn onclick="handleLogin()" disabled>로그인</button>
+                        <button type="submit" id=login_submitbtn >로그인</button>
                     </div>
                 </form>
         </div>
@@ -81,6 +89,6 @@
     }
 </script>
 
-<script src="/Account/account.js"></script>
+<script src="{% static 'js/account.js' %} "></script>
 
 </html>

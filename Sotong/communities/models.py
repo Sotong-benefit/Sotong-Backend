@@ -8,12 +8,13 @@ User = get_user_model()
 
 class Community(models.Model):
     image = models.ImageField(verbose_name='이미지',null=True, blank=True)
-    description = models.TextField(verbose_name='내용',null=True)
+    description = models.TextField(verbose_name='내용',null=False)
     created_at = models.DateTimeField(verbose_name='작성일', auto_now_add=True)
-    title = models.CharField(max_length=100, verbose_name='제목')
+    title = models.CharField(max_length=100, verbose_name='제목', null=False, blank=False)
+    tags = models.CharField(max_length=20, blank=False)
 
     user= models.ForeignKey(to=User, on_delete=models.CASCADE,null=True, blank=False)
-    tag = models.ManyToManyField('tag.Tag', verbose_name = "태그")
+    
 
     class Meta:
         db_table = 'community'

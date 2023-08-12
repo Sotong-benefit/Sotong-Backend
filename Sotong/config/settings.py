@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'tongtong',
     'communities',
     'tag',
+    'accounts',
+    'calculators'
 ]
 
 MIDDLEWARE = [
@@ -133,3 +135,6 @@ MEDIA_ROOT = BASE_DIR / 'media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+ACCOUNT_AUTHENTICATION_METHOD = "email"
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = False

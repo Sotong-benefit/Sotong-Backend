@@ -7,6 +7,15 @@ button{
     border: none;
 }
 
+.media-button:hover {
+    color: var(--2, #434343);
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.media-button{
+    border: none;
+}
+
 html{
     height: 127.75rem;
 }

@@ -84,7 +84,7 @@ function toggleTag(button) {
 }
 
 function writePost() { //글쓰기 버튼
-    window.location.href = '/Bulletin-pages/writing/Bulletin-writing.html'; 
+    window.location.href = "new"; 
 }
 
 function postDetail(){ //게시글상세

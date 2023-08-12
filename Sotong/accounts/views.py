@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from .forms import SignUpForm, CustomAuthForm
 from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth import login, logout
+from django.contrib.auth import login, logout, authenticate
 from django.http import JsonResponse
 from django.contrib.auth import get_user_model
 
@@ -15,7 +15,7 @@ def signup_view(request):
     if request.method == 'GET':
         form = SignUpForm
         context = {'form' : form }
-        return render(request, 'accounts/signup.html', context)
+        return render(request, 'Account/join.html', context)
     else:
         
         form = SignUpForm(request.POST)
@@ -32,19 +32,27 @@ def login_view(request):
     
     if request.method == 'GET':
         # 로그인 HTML 응답
-        return render(request, 'accounts/login.html', { 'form' : CustomAuthForm() })
+        return render(request, 'Account/login.html', { 'form' : CustomAuthForm() })
     else:
         # 데이터 유효성 검사
-        form = CustomAuthForm(request, request.POST)
-        if form.is_valid():
-            # 비즈니스 로직 처리 - 로그인 처리
-            login(request, form.user_cache)
-            # 응답
+        email = request.POST['email']
+        password = request.POST['password']
+
+        try:
+            user = User.objects.get(email=email)
+        except:
+             return redirect('accounts:login')
+        user = authenticate(request, username=user, password=password)
+
+        if user is not None:
+            login(request, user)
+                    # 응답
             return redirect('index')
+            
         else:
             # 비즈니스 로직 처리 - 로그인 실패
             # 응답
-            return render(request, 'accounts/login.html', {'form':form})
+            return render(request, 'Account/login.html', {'form':CustomAuthForm()})
         
             # username = request.POST.get('username')
             # if username == '' or username == None:
