@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .models import Community
 from .forms import CommunityCreateForm
@@ -12,7 +12,7 @@ def index(request):
 
 
 def post_list_view(request):
-    post_list = Community.objects.all()
+    post_list = Community.objects.all().order_by('-created_at')
     context ={
         'post_list': post_list
     }
@@ -49,8 +49,51 @@ def post_create_form_view(request):
                 error_message = error_list[0].message  # 실패 메시지
                 print(f"필드 '{field_name}': {error_message}")
             return redirect('community:post-create')
-        return redirect('index')
+        return redirect('community:post-list')
     
+def post_detail_view(request, id):
+    
+        try:
+            post = Community.objects.get(id=id)
+        except Community.DoesNotExist:
+            return redirect('index')
+        context = {
+            'post':post,
+        }
+        return render(request, 'community/Bulletin-MyPost.html', context)
 
-def test(request):
-    return render(request, 'community/Bulletin-MyPost.html')
+@login_required
+def post_update_view(request, id):
+    post = get_object_or_404(Community, id=id, user=request.user)
+    # post = Post.objects.get(id=id)
+    if request.method == 'GET':
+        context = {
+            'post' : post
+        }
+        return render(request, 'community/Bulletin-edit.html', context)
+    elif request.method == 'POST':
+        new_image = request.FILES.get('image')
+        title = request.POST.get('title')
+        tags = request.POST.get('tags')
+        description = request.POST.get('description')
+        
+        if new_image:
+            post.image.delete()
+            post.image = new_image
+
+        post.title = title
+        post.tags = tags
+        post.description = description
+        post.save()
+
+        
+        return redirect('community:post-detail', post.id)
+
+@login_required
+def post_delete_view(request, id):
+    if request.method == 'GET':
+        post = get_object_or_404(Community, id=id)
+        if post.user == request.user:
+            post.delete()
+    return redirect('community:post-list')
+    
