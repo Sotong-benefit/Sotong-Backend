@@ -31,6 +31,7 @@
         <!-- 메인 프레임 header -->
         <header>
             <div class="main-header">
+                
                 <a href="{% url 'index'%}"><img src="{% static 'images/main-logo.svg' %} " class="main-logo"></a>
                 <div class="myInfo-wrap">
                     {% if request.user.is_authenticated %} <!--로그인 했을 때-->
@@ -40,30 +41,27 @@
                         <div class="myInfo-info-letter" id="myInfo-UserName"><a href="{% url 'tongtong:tongtong'%}"
                                 style="color:#848484;">통통이&nbsp;</a></div>
                     </div>
-                    
-                    <div style="margin-top: 0.5rem;">
-                        <div class="myInfo-info-letter" id="myInfo-myInformation"><a href="/my-page/my-page.html"
-                            style="color:#848484;">내정보</a></div>
-                            <!-- 통통이 갯수 -->
-                            <br>
-                            <div class="TongTong-wrap">
-                                <img src="{% static 'images/myInfo-img.svg' %}">
-                                <span class="TongTong">통통이 <span id="TongTong-num">{{ counter.count }}개</span>
-                            </div>
+                    <div style="margin-top: 0.8rem;">
+                        <a href="{% url 'accounts:myPage' %}" class="myInfo-info-letter" id="myInfo-login">내정보</a>
+                        <img src="{% static 'images/horizontal-line.svg' %}">
+                        <a href="{% url 'accounts:logout' %}" class="myInfo-info-letter" id="myInfo-new">로그아웃</a>
                     </div>
-                    <img src="{% static 'images/horizontal-line.svg' %} ">
-                    <div style="margin-top: 0.5rem;">
-                        <div class="myInfo-info-letter" id="myInfo-myInformation"><a href="{% url 'accounts:logout' %}"
-                                style="color:#848484;">로그아웃</a></div>
-                    </div>
+
                     {% else %}
+                    
                     <div class="myInfo-sec" style="margin-top: 0.5rem;">
                         <div><img src="{% static 'images/myInfo-img.svg' %} " class="myInfo-logo-img">
                         </div>
-                        <div class="myInfo-info-letter" id="myInfo-UserName"><a href="/Tong-Tong-E/TongTong.html"
+                        <div class="myInfo-info-letter" id="myInfo-UserName"><a href="{% url 'accounts:logout' %}"
                                 style="color:#848484;">통통이</a></div>
                     </div>
-                    <div style="margin-top: 0.5rem;">
+                    <div style="margin-top: 0.8rem;">
+                        <a href="{% url 'accounts:login' %}" class="myInfo-info-letter" id="myInfo-login">로그인</a>
+                        <img src="{% static 'images/horizontal-line.svg' %}">
+                        <a href="{% url 'accounts:signup' %}" class="myInfo-info-letter" id="myInfo-new">회원가입</a>
+                    </div>
+
+                    <!-- <div style="margin-top: 0.5rem;">
                         <div class="myInfo-info-letter" id="myInfo-myInformation"><a href="{% url 'accounts:login' %}"
                                 style="color:#848484;">로그인</a></div>
                     </div>
@@ -71,7 +69,7 @@
                     <div style="margin-top: 0.5rem;">
                         <div class="myInfo-info-letter" id="myInfo-myInformation"><a href="{% url 'accounts:signup' %}"
                                 style="color:#848484;">회원가입</a></div>
-                    </div>
+                    </div> -->
                     {% endif %}
                 </div>
 

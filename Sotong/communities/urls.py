@@ -1,6 +1,6 @@
 from django.urls import path
 
-from .views import post_list_view, post_create_form_view, post_detail_view, post_delete_view, post_update_view, post_like_view
+from .views import post_list_view, post_create_form_view, post_detail_view, post_delete_view, post_update_view, post_like_view, post_section_view
 
 app_name = 'community'
 
@@ -14,4 +14,5 @@ urlpatterns = [
     # path('<int:id>/likes/', post_like_view, name='post-like'),
 
     path('likes/', post_like_view, name='post-like'),
+    path('sections/', post_section_view, name='post-section'),
 ]

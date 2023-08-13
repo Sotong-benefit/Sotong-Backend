@@ -1,0 +1,156 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block link %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/my-page.css' %}">
+<style>
+    a {
+        text-decoration: none;
+    }
+
+    #myInfo-login {
+        color: var(--1, #00C2FF);
+    }
+</style>
+{% endblock %}
+
+{% block title %}나의 정보{% endblock %}
+
+{% block content %}
+
+<div class="my-res">
+    <div class="my-res-title">내 최근 구간 예측기 결과</div>
+    <div class="res-section">
+        <div class="res-title">소득인정액 모의계산 예상결과</div>
+        <div class="line1">소득인정액은
+            <div class="income">{{ section_res.income }}</div>
+            원 입니다.
+        </div>
+        <div class="line2">매년 보건복지부에서 발표하는 기준중위소득과 연계하여 </div>
+        <div class="line3">학기 단위로 경곗값이 조정되는 지원구간 경곗값에 따르면,
+            <div class="result">{{ section_res.section }}</div>
+            구간에 해당합니다.
+        </div>
+    </div>
+</div>
+
+<div class="my-ben">
+    <div class="my-ben-title">내가 받은 혜택 + 혜택</div>
+    <div class="my-benefit1">
+        <div class="coupon-img"><img src="{% static 'images/image 15.png' %}" alt=""></div>
+        <div class="coupon-name">알폰스 무하 이모션 인 서울 50%할인쿠폰 보유</div>
+        <div class="coupon-use">사용 완료</div>
+    </div>
+    <div class="my-benefit2">
+        <div class="coupon-img"><img src="{% static 'images/image 15.png' %}" alt=""></div>
+        <div class="coupon-name">알폰스 무하 이모션 인 서울 50%할인쿠폰 보유</div>
+        <div class="coupon-use">사용 전</div>
+    </div>
+</div>
+
+<div class="my-reco-title">내 최근 관심 혜택 목록</div>
+<section class="recommend">
+    <div class="reco">
+        <div class="activity">
+            <div class="activity1">
+                <div class="act-idx">
+                    <div class="deadline">D-11</div>
+                    <div class="act-sec">모두</div>
+                </div>
+
+                <div class="act-content" onclick="actDetail()">
+                    <div class="star"><img src="{% static 'images/Star7.png' %}" class="starImage"></div>
+                    <img src="{% static 'images/image12.png' %}">
+                    <div class="act-name">소득연계형 국가장학금</div>
+                    <div class="act-tag">#국가장학금</div>
+                    <div class="act-info1">신청 : 2023.08.01~2023.08.02</div>
+                    <div class="act-info2">진행 : 2023.08.03~2023.08.04</div>
+                </div>
+            </div>
+
+            <div class="activity2">
+                <div class="act-idx">
+                    <div class="deadline">D-2</div>
+                    <div class="act-sec">1구간</div>
+                </div>
+
+                <div class="act-content" onclick="actDetail()">
+                    <div class="star"><img src="{% static 'images/Star7.png' %}" class="starImage"></div>
+                    <img src="{% static 'images/image12.png' %}">
+                    <div class="act-name">복지멤버십(맞춤형 급여 안내)</div>
+                    <div class="act-tag">#사회보장 서비스</div>
+                    <div class="act-info1">신청 : 2023.08.01~2023.08.02</div>
+                    <div class="act-info2">진행 : 2023.08.03~2023.08.04</div>
+                </div>
+            </div>
+
+            <div class="activity3">
+                <div class="act-idx">
+                    <div class="deadline">D-11</div>
+                    <div class="act-sec">2구간</div>
+                </div>
+
+                <div class="act-content" onclick="actDetail()">
+                    <div class="star"><img src="{% static 'images/Star7.png' %}" class="starImage"></div>
+                    <img src="{% static 'images/image12.png' %}">
+                    <div class="act-name">소득연계형 국가장학금</div>
+                    <div class="act-tag">#국가장학금</div>
+                    <div class="act-info1">신청 : 2023.08.01~2023.08.02</div>
+                    <div class="act-info2">진행 : 2023.08.03~2023.08.04</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<div class="morebtn" onclick="showMore()"><button class="more">더보기</button></div>
+<div class="my-post-title">내가 쓴 글 모음</div>
+<div class="my-post">
+    <div class="my-post-idx">
+        <div>제목</div>
+        <div>작성 정보</div>
+    </div>
+
+    {% for post in my_post %}
+    <a href="{% url 'community:post-detail' post.id %}" class="post-content" onclick="myPostDetail()">
+        <div class="post-title">{{ post.title }}</div>
+        <div class="post-info-container">
+            <div class="post-info1">-{{ post.tags }}/{{ post.created_at|date:'Y.m.d' }}</div>
+            <div class="post-info2">-{{ post.user }}</div>
+        </div>
+    </a>
+    {% endfor %}
+
+
+</div>
+<div class="morebtn2"><button class="more2">더보기</button></div>
+
+
+<div class="my-post-title2">내 최근 관심 글목록</div>
+<div class="my-post">
+    <div class="my-post-idx">
+        <div>제목</div>
+        <div>작성 정보</div>
+    </div>
+
+    {% for post in my_favorite %}
+    <a href="{% url 'community:post-detail' post.id %}" class="post-content" onclick="postDetail()">
+        <div class="post-title">{{ post.title }}</div>
+        <div class="post-info-container">
+            <div class="post-info1">-{{ post.tags }}/{{ post.created_at|date:'Y.m.d' }}</div>
+            <div class="post-info2">-{{ post.user }}</div>
+        </div>
+    </a>
+    {% endfor %}
+    
+
+</div>
+<div class="morebtn3"><button class="more3">더보기</button></div>
+
+</section>
+</div>
+<!-- 반응형 container 끝 -->
+<script src="{% static 'js/my-page.js' %}"></script>
+
+{% endblock %}
