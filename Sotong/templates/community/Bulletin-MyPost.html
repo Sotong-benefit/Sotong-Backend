@@ -115,6 +115,24 @@
         box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
     }
 
+    input[type="button"] {
+        color: var(--1, #333);
+        border: none;
+        cursor: pointer;
+        color: var(--1, #333);
+        text-align: center;
+        font-family: Pretendard;
+        font-size: 1.5625rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+    }
+
+    input:hover {
+        color: var(--2, #434343);
+        box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+
     /* 블러 스타일 추가 */
     .blurred {
         filter: blur(5px);
@@ -165,7 +183,8 @@
 <div class="btnContainer">
     <!-- <button id="ModifyBtn">수정</button> -->
     <a id="ModifyBtn" href="{% url 'community:post-update' post.id %}">수정</a>
-    <a id="DeleteBtn" href="{% url 'community:post-delete' post.id %}">삭제</a>
+    <!-- <a id="DeleteBtn" href="{% url 'community:post-delete' post.id %}">삭제</a> -->
+    <input type="button" id="DeleteBtn" value="삭제">
 </div>
 {% endif %}
 <section style="margin-top: 1.2rem;" id="contentSection">
@@ -190,6 +209,12 @@
     </div>
 
 </section>
+<div id="confirmationPopup" class="confirmation-popup">
+    <p id="deleteStatus">삭제하시겠습니까?</p>
+
+    <button id="confirmDelete">예</button>
+    <button id="cancelDelete">아니오</button>
+</div>
 
 <!-- 반응형 container 끝 -->
 <script>
@@ -226,12 +251,15 @@
         // 문구 변경
         deleteStatusElem.textContent = '삭제되었습니다.';
 
-        // 팝업 닫기
-        confirmationPopup.style.display = 'none';
+        confirmDeleteBtn.style.display = 'none';
+        cancelDelete.style.display = 'none';
+
+
+        
 
         // 2초 후에 원하는 링크로 이동
         setTimeout(() => {
-            window.location.replace = '/../../community-main-page/community-main-page.html'; // 원하는 링크로 변경
+            window.location = "{% url 'community:post-delete' post.id %}"; // 원하는 링크로 변경
         }, 1000);
     });
 

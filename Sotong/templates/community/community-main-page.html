@@ -19,26 +19,26 @@
 
 {% block content %}
 
-        <div class="choice-buttons">
-            <input type="button" class="btn1" onclick="highlightButton('btn1')" value="1구간">
-            <input type="button" class="btn2" onclick="highlightButton('btn2')" value="2구간">
-            <input type="button" class="btn3" onclick="highlightButton('btn3')" value="3구간">
-            <input type="button" class="btn4" onclick="highlightButton('btn4')" value="4구간">
-            <input type="button" class="btn5" onclick="highlightButton('btn5')" value="5구간">
-            <input type="button" class="btn6" onclick="highlightButton('btn6')" value="6구간">
-            <input type="button" class="btn7" onclick="highlightButton('btn7')" value="7구간">
-            <input type="button" class="btn8" onclick="highlightButton('btn8')" value="8구간">
-            <input type="button" class="btn9" onclick="highlightButton('btn9')" value="9구간">
-            <input type="button" class="btn10" onclick="highlightButton('btn10')" value="10구간">
+<div class="choice-buttons">
+    <input type="button" class="btn1" onclick="highlightButton('btn1')" value="1구간">
+    <input type="button" class="btn2" onclick="highlightButton('btn2')" value="2구간">
+    <input type="button" class="btn3" onclick="highlightButton('btn3')" value="3구간">
+    <input type="button" class="btn4" onclick="highlightButton('btn4')" value="4구간">
+    <input type="button" class="btn5" onclick="highlightButton('btn5')" value="5구간">
+    <input type="button" class="btn6" onclick="highlightButton('btn6')" value="6구간">
+    <input type="button" class="btn7" onclick="highlightButton('btn7')" value="7구간">
+    <input type="button" class="btn8" onclick="highlightButton('btn8')" value="8구간">
+    <input type="button" class="btn9" onclick="highlightButton('btn9')" value="9구간">
+    <input type="button" class="btn10" onclick="highlightButton('btn10')" value="10구간">
 
-        </div>
+</div>
 
-        <div class="hashtag">
-            <div class="tag-title">추천 태그</div>
-            <input type="button" class="tag" onclick="toggleTag(this)" value="#국가장학금">
-            <input type="button" class="tag" onclick="toggleTag(this)" value="#소득공제">
-            <input type="button" class="tag" onclick="toggleTag(this)" value="#국민기초생활복지제도">
-        </div>
+<div class="hashtag">
+    <div class="tag-title">추천 태그</div>
+    <input type="button" class="tag" onclick="toggleTag(this)" value="#국가장학금">
+    <input type="button" class="tag" onclick="toggleTag(this)" value="#소득공제">
+    <input type="button" class="tag" onclick="toggleTag(this)" value="#국민기초생활복지제도">
+</div>
 
 
 <div class="opt">
@@ -61,24 +61,74 @@
 <div class="my-post">
 
     {% for post in post_list %}
-    <a class="post-content" href="{% url 'community:post-detail' post.id %}"> <!--post-content부분 반복-->
-        <div class="star"><img src="{% static 'images/Star7.png' %}" class="starImage"></div>
-        <div class="post-title">{{ post.title }}</div>
-        <div class="post-info-container">
-            <div class="post-info1">태그 / {{ post.created_at|date:'Y.m.d' }}</div>
-            <div class="post-info2">{{ post.user }}</div>
-        </div>
-    </a>
+    <div class="post-content"> <!--post-content부분 반복-->
+        <!-- <div class="star"><img src="{% static 'images/Star7.png' %}" class="starImage"></div> -->
+        {% if user.is_authenticated %}
+            {% if post.is_liked %}
+            <div class="star" id="{{ post.id }}"><img class="starImage" src="{% static 'images/Star8.png' %}" alt=""></div>
+            {% else %}
+            <div class="star" id="{{ post.id }}"><img class="starImage" src="{% static 'images/Star7.png' %}" alt=""></div>
+            {% endif %}
+        {% else %}
+            <div class="star" href="{% url 'accounts:login' %}"><img class="starImage" src="{% static 'images/Star7.png' %}" alt=""></div>
+        {% endif %}
+        <a href="{% url 'community:post-detail' post.id %}">
+            <div class="post-title">{{ post.title }}</div>
+            <div class="post-info-container">
+                <div class="post-info1">{{ post.tags }} / {{ post.created_at|date:'Y.m.d' }}</div>
+                <div class="post-info2">{{ post.user }}</div>
+            </div>
+        </a>
+    </div>
     {% endfor %}
 
 </div>
 
-
-
-</section>
-</div>
 <!-- 반응형 container 끝 -->
-<script src="{% static 'js/communitiy-main-page.js' %}"></script>
+<!-- <script src="{% static 'js/communitiy-main-page.js' %}"></script> -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $('.star').click(function () {
+        const postId = $(this).attr('id');
+        console.log(postId);
+        $.ajax({
+            url: "{% url 'community:post-like' %}",  // 해당 시즌 게시물을 가져오는 URL
+            method: 'GET',
+            dataType: 'html',
+            data: { 'post_id': postId },
+            success: function (response) {
+                $('.my-post').html(response);
+                // if (response.is_favorite) {
+                //     // 즐겨찾기 추가된 경우: 별 아이콘으로 변경
+                //     $(this).remove();
+                //     child = `<div id='${postId}' class="star"><img class="starImage" src="{% static 'images/Star8.png' %}" alt=""></div>`
+                //     $('post-content').append(child);
+                // } else {
+                //     // 즐겨찾기 제거된 경우: 기본 버튼으로 변경
+                //     $(this).remove();
+                //     child = `<div id="${postId}" class="star"><img class="starImage" src="{% static 'images/Star7.png' %}" alt=""></div>`
+                //     $('post-content').append(child);
+                // }
+            },
+            error: function (xhr, status, error) {
+                console.error(error);
+            }
+        });
+
+    });
+    function changeImage(selectedRadio) {
+        const radio1Img = document.getElementsByClassName("radio1")[0].getElementsByTagName("img")[0];
+        const radio2Img = document.getElementsByClassName("radio2")[0].getElementsByTagName("img")[0];
+
+        if (selectedRadio === "radio1") {
+            radio1Img.src = "{% static 'images/Ellipse 11.png' %}";
+            radio2Img.src = "{% static 'images/Ellipse 10.png' %}";
+        } else if (selectedRadio === "radio2") {
+            radio1Img.src = "{% static 'images/Ellipse 10.png' %}";
+            radio2Img.src = "{% static 'images/Ellipse 11.png' %}";
+        }
+    }
+</script>
 </body>
 
 {% endblock %}

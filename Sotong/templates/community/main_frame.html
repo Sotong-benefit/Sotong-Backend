@@ -1,0 +1,53 @@
+{% load static %}
+{% for post in post_list %}
+<div class="post-content"> <!--post-content부분 반복-->
+    <!-- <div class="star"><img src="{% static 'images/Star7.png' %}" class="starImage"></div> -->
+    {% if user.is_authenticated %}
+    {% if post.is_liked %}
+    <div class="star" id="{{ post.id }}"><img class="starImage" src="{% static 'images/Star8.png' %}" alt=""></div>
+    {% else %}
+    <div class="star" id="{{ post.id }}"><img class="starImage" src="{% static 'images/Star7.png' %}" alt=""></div>
+    {% endif %}
+    {% else %}
+    <div class="star" href="{% url 'accounts:login' %}"><img class="starImage" src="{% static 'images/Star7.png' %}"
+            alt=""></div>
+    {% endif %}
+    <a href="{% url 'community:post-detail' post.id %}">
+        <div class="post-title">{{ post.title }}</div>
+        <div class="post-info-container">
+            <div class="post-info1">{{ post.tags }} / {{ post.created_at|date:'Y.m.d' }}</div>
+            <div class="post-info2">{{ post.user }}</div>
+        </div>
+    </a>
+</div>
+{% endfor %}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $('.star').click(function () {
+        const postId = $(this).attr('id');
+        console.log(postId);
+        $.ajax({
+            url: "{% url 'community:post-like' %}",  // 해당 시즌 게시물을 가져오는 URL
+            method: 'GET',
+            dataType: 'html',
+            data: { 'post_id': postId },
+            success: function (response) {
+                $('.my-post').html(response);
+                // if (response.is_favorite) {
+                //     // 즐겨찾기 추가된 경우: 별 아이콘으로 변경
+                //     $(this).remove();
+                //     child = `<div id='${postId}' class="star"><img class="starImage" src="{% static 'images/Star8.png' %}" alt=""></div>`
+                //     $('post-content').append(child);
+                // } else {
+                //     // 즐겨찾기 제거된 경우: 기본 버튼으로 변경
+                //     $(this).remove();
+                //     child = `<div id="${postId}" class="star"><img class="starImage" src="{% static 'images/Star7.png' %}" alt=""></div>`
+                //     $('post-content').append(child);
+                // }
+            },
+            error: function (xhr, status, error) {
+                console.error(error);
+            }
+        });
+
+    });
