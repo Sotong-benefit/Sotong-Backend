@@ -1,29 +1,18 @@
-const starContainers = document.getElementsByClassName('star');
-const starImages = document.getElementsByClassName('starImage');
+// const starContainers = document.getElementsByClassName('star');
+// const starImages = document.getElementsByClassName('starImage');
 
-for (let i = 0; i < starContainers.length; i++) {
-    starContainers[i].addEventListener('click', () => {
-        const currentImageSrc = starImages[i].getAttribute('src');
-        if (currentImageSrc.includes('Star7.png')) {
-            starImages[i].src = '/public/images/Star8.png';
-        } else if (currentImageSrc.includes('Star8.png')) {
-            starImages[i].src = '/public/images/Star7.png';
-        }
-    });
-}
+// for (let i = 0; i < starContainers.length; i++) {
+//     starContainers[i].addEventListener('click', () => {
+//         const currentImageSrc = starImages[i].getAttribute('src');
+//         if (currentImageSrc.includes('Star7.png')) {
+//             starImages[i].src = '/public/images/Star8.png';
+//         } else if (currentImageSrc.includes('Star8.png')) {
+//             starImages[i].src = '/public/images/Star7.png';
+//         }
+//     });
+// }
 
-function changeImage(selectedRadio) {
-    const radio1Img = document.getElementsByClassName("radio1")[0].getElementsByTagName("img")[0];
-    const radio2Img = document.getElementsByClassName("radio2")[0].getElementsByTagName("img")[0];
 
-    if (selectedRadio === "radio1") {
-        radio1Img.src = "/public/images/Ellipse 11.png";
-        radio2Img.src = "/public/images/Ellipse 10.png";
-    } else if (selectedRadio === "radio2") {
-        radio1Img.src = "/public/images/Ellipse 10.png";
-        radio2Img.src = "/public/images/Ellipse 11.png";
-    }
-}
 
 
 
@@ -87,6 +76,6 @@ function writePost() { //글쓰기 버튼
     window.location.href = 'new'; 
 }
 
-function postDetail(){ //게시글상세
-    window.location.href = '/Bulletin-pages/Post-content/Bulletin-post-content.html'; 
-}
+// function postDetail(){ //게시글상세
+//     window.location.href = '/Bulletin-pages/Post-content/Bulletin-post-content.html'; 
+// }

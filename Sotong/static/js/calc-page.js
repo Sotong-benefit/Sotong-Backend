@@ -7,6 +7,15 @@ buttons.forEach(button => {
     });
 });
 
+const buttons2 = document.querySelectorAll('.option-btn2');
+
+buttons2.forEach(button => {
+    button.addEventListener('click', () => {
+        buttons2.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+    });
+});
+
 function goToCalcResultPage() {
     window.location.href = '/calc-res-page/calc-res-page.html';
 }

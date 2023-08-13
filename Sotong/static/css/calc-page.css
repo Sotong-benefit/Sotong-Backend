@@ -67,7 +67,7 @@
     line-height: normal;
 }
 
-.option-buttons{
+.option-buttons, .option-buttons2{
     display:flex;
     align-items:center;
     flex-direction: row;
@@ -81,7 +81,7 @@
     line-height: normal;
 }
 
-.option-btn{
+.option-btn, .option-btn2{
     display:flex;
     align-items:center;
     justify-content:center;
@@ -94,7 +94,8 @@
     background: var(--unnamed, rgba(255, 255, 255, 0.95));
 }
 
-.option-btn.active {
+
+.option-btn.active, .option-btn2.active {
     background: var(--4, #CECECE);
 }
 

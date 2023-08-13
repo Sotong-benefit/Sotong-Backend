@@ -22,15 +22,15 @@
     <div class="calc-background">
 
         <div class="calc-title">소득분위 모의 계산기</div>
-
+        
         <!--결혼여부-->
         <div class="option1">
             <div class="option-title"><img src="{% static 'images/Ellipse 31.svg' %}">&nbsp;&nbsp;본인 결혼 여부</div>
             <div class="option-buttons">
-                <button class="option-btn">미혼</button>
-                <button class="option-btn">기혼</button>
-                <button class="option-btn">이별</button>
-                <button class="option-btn">사별</button>
+                <input type="button" class="option-btn" value="미혼"></input>
+                <input type="button" class="option-btn" value="기혼"></input>
+                <input type="button" class="option-btn" value="이별"></input>
+                <input type="button" class="option-btn" value="사별"></input>
             </div>
         </div>
         <div class="option1-info">
@@ -41,10 +41,13 @@
         <!--복지 자격 여부-->
         <div class="option2">
             <div class="option-title"><img src="{% static 'images/Ellipse 31.svg' %}" alt="">&nbsp;&nbsp;복지 자격 여부</div>
-            <div class="option-buttons">
-                <button class="option-btn">기초</button>
-                <button class="option-btn">차상위</button>
-                <button class="option-btn">해당없음</button>
+            <div class="option-buttons2">
+                <!-- <button class="option-btn2">기초</button>
+                <button class="option-btn2">차상위</button>
+                <button class="option-btn2">해당없음</button> -->
+                <input type="button" class="option-btn2" value="기초"></input>
+                <input type="button" class="option-btn2" value="차상위"></input>
+                <input type="button" class="option-btn2" value="해당없음"></input>
             </div>
         </div>
         <div class="option2-info">
