@@ -11,7 +11,8 @@ class Community(models.Model):
     description = models.TextField(verbose_name='내용',null=False)
     created_at = models.DateTimeField(verbose_name='작성일', auto_now_add=True)
     title = models.CharField(max_length=100, verbose_name='제목', null=False, blank=False)
-    tags = models.CharField(max_length=20)
+    tags = models.CharField(verbose_name='태그', max_length=20)
+    section = models.CharField(verbose_name='구간', max_length=10, null=True, blank=True)
 
     user= models.ForeignKey(to=User, on_delete=models.CASCADE,null=True, blank=False)
     

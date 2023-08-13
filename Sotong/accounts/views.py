@@ -1,11 +1,11 @@
 from django.shortcuts import render, redirect
-# from .forms import UserCreateForm
-from django.contrib.auth.forms import UserCreationForm
 from .forms import SignUpForm, CustomAuthForm
-from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, logout, authenticate
-from django.http import JsonResponse
 from django.contrib.auth import get_user_model
+
+from communities.models import Community, Favorite
+from calculators.models import Calculator
 
 User = get_user_model()
 # Create your views here.
@@ -69,3 +69,24 @@ def logout_view(request):
         logout(request)
     # 응답
     return redirect('index')
+
+@login_required
+def myPage_view(request):
+    my_post = Community.objects.all().order_by('-created_at').filter(user=request.user)
+
+    favorite_communities = Favorite.objects.filter(user=request.user).values('community')
+
+    # community_ids 리스트에 즐겨찾기한 community의 id들을 저장
+    community_ids = [entry['community'] for entry in favorite_communities]
+
+    # Community 모델에서 즐겨찾기한 community들을 가져옴
+    my_favorite = Community.objects.filter(id__in=community_ids)
+
+    section_res = Calculator.objects.all().filter(user=request.user)[0]
+
+    context ={
+        'my_post': my_post,
+        'my_favorite' : my_favorite,
+        'section_res' : section_res,
+    }
+    return render(request, 'Account/my-page.html', context)

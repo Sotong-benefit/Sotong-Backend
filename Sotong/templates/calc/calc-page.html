@@ -157,8 +157,8 @@
     </div>
 
     <div class="result-buttons">
-        <div class="result-btn" onclick="goToPrev()">지난 결과 다시보기</div>
-        <div class="result-btn" onclick="goToCalcResultPage()">예상 소득분위 확인</div>
+        <a href="{% url 'accounts:myPage'%}" class="result-btn">지난 결과 다시보기</a>
+        <a href="{% url 'calculator:result'%}" class="result-btn">예상 소득분위 확인</a>
     </div>
 
     <div class="warning">

@@ -102,51 +102,6 @@ def post_delete_view(request, id):
     return redirect('community:post-list')
     
 
-# @login_required
-# def post_like_view(request, id):
-#     if request.user.is_authenticated:
-#         community = get_object_or_404(Community, id=id)
-#         user = request.user
-
-#     # 이미 좋아요를 눌렀는지 확인
-#         if Favorite.objects.filter(user=user, community=community).exists():
-#             # 이미 좋아요를 눌렀을 경우 처리
-#             favorite = Favorite.objects.get(user=user, community=community)
-#             favorite.delete()
-
-#         else:
-#             # 중개 모델을 생성하고 저장
-#             like = Favorite(user=user, community=community)
-#             like.save()
-
-#         return redirect('community:post-list')
-        
-#     return redirect('accouts:login')
-
-# @login_required
-# def post_like_view(request, id):
-#     if request.method == 'GET' and request.user.is_authenticated:
-#         community = get_object_or_404(Community, id=id)
-#         user = request.user
-
-#     # 이미 좋아요를 눌렀는지 확인
-#         if Favorite.objects.filter(user=user, community=community).exists():
-#             # 이미 좋아요를 눌렀을 경우 처리
-#             favorite = Favorite.objects.get(user=user, community=community)
-#             favorite.delete()
-#             is_favorite = False
-
-#         else:
-#             # 중개 모델을 생성하고 저장
-#             like = Favorite(user=user, community=community)
-#             like.save()
-#             is_favorite = True
-
-#         return render(request, 'community/main_frame.html')
-#     else:
-#         render(request, 'community/main_frame.html')
-
-
 def post_like_view(request):
     if request.method == 'GET': #ajax 방식일 때 아래 코드 실행
         post_id = request.GET.get('post_id') #좋아요를 누른 게시물id (blog_id)가지고 오기'
@@ -166,13 +121,11 @@ def post_like_view(request):
             # 이미 좋아요를 눌렀을 경우 처리
             favorite = Favorite.objects.get(user=user, community=post)
             favorite.delete()
-            is_favorite = False
 
         else:
             # 중개 모델을 생성하고 저장
             like = Favorite(user=user, community=post)
             like.save()
-            is_favorite = True
 
         post_list = Community.objects.all().order_by('-created_at')
         if request.user.is_authenticated:
@@ -181,4 +134,20 @@ def post_like_view(request):
         context ={
             'post_list': post_list
         }
+        return render(request, 'community/main_frame.html', context)
+    
+def post_section_view(request):
+    if request.method == 'GET':
+        section = request.GET.get('section')
+
+        post_list = Community.objects.all().order_by('-created_at').filter(section=section)
+
+        if request.user.is_authenticated:
+            for post in post_list:
+                post.is_liked = post.favorite_set.filter(user=request.user).exists()
+
+        context ={
+            'post_list': post_list
+        }
+
         return render(request, 'community/main_frame.html', context)

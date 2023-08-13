@@ -33,17 +33,6 @@
             data: { 'post_id': postId },
             success: function (response) {
                 $('.my-post').html(response);
-                // if (response.is_favorite) {
-                //     // 즐겨찾기 추가된 경우: 별 아이콘으로 변경
-                //     $(this).remove();
-                //     child = `<div id='${postId}' class="star"><img class="starImage" src="{% static 'images/Star8.png' %}" alt=""></div>`
-                //     $('post-content').append(child);
-                // } else {
-                //     // 즐겨찾기 제거된 경우: 기본 버튼으로 변경
-                //     $(this).remove();
-                //     child = `<div id="${postId}" class="star"><img class="starImage" src="{% static 'images/Star7.png' %}" alt=""></div>`
-                //     $('post-content').append(child);
-                // }
             },
             error: function (xhr, status, error) {
                 console.error(error);
@@ -51,3 +40,4 @@
         });
 
     });
+</script>

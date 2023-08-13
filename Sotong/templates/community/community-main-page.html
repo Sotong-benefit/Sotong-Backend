@@ -64,13 +64,14 @@
     <div class="post-content"> <!--post-content부분 반복-->
         <!-- <div class="star"><img src="{% static 'images/Star7.png' %}" class="starImage"></div> -->
         {% if user.is_authenticated %}
-            {% if post.is_liked %}
-            <div class="star" id="{{ post.id }}"><img class="starImage" src="{% static 'images/Star8.png' %}" alt=""></div>
-            {% else %}
-            <div class="star" id="{{ post.id }}"><img class="starImage" src="{% static 'images/Star7.png' %}" alt=""></div>
-            {% endif %}
+        {% if post.is_liked %}
+        <div class="star" id="{{ post.id }}"><img class="starImage" src="{% static 'images/Star8.png' %}" alt=""></div>
         {% else %}
-            <div class="star" href="{% url 'accounts:login' %}"><img class="starImage" src="{% static 'images/Star7.png' %}" alt=""></div>
+        <div class="star" id="{{ post.id }}"><img class="starImage" src="{% static 'images/Star7.png' %}" alt=""></div>
+        {% endif %}
+        {% else %}
+        <div class="star" href="{% url 'accounts:login' %}"><img class="starImage" src="{% static 'images/Star7.png' %}"
+                alt=""></div>
         {% endif %}
         <a href="{% url 'community:post-detail' post.id %}">
             <div class="post-title">{{ post.title }}</div>
@@ -85,8 +86,9 @@
 </div>
 
 <!-- 반응형 container 끝 -->
-<!-- <script src="{% static 'js/communitiy-main-page.js' %}"></script> -->
+<script src="{% static 'js/communitiy-main-page.js' %}"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 <script>
     $('.star').click(function () {
         const postId = $(this).attr('id');
@@ -98,17 +100,6 @@
             data: { 'post_id': postId },
             success: function (response) {
                 $('.my-post').html(response);
-                // if (response.is_favorite) {
-                //     // 즐겨찾기 추가된 경우: 별 아이콘으로 변경
-                //     $(this).remove();
-                //     child = `<div id='${postId}' class="star"><img class="starImage" src="{% static 'images/Star8.png' %}" alt=""></div>`
-                //     $('post-content').append(child);
-                // } else {
-                //     // 즐겨찾기 제거된 경우: 기본 버튼으로 변경
-                //     $(this).remove();
-                //     child = `<div id="${postId}" class="star"><img class="starImage" src="{% static 'images/Star7.png' %}" alt=""></div>`
-                //     $('post-content').append(child);
-                // }
             },
             error: function (xhr, status, error) {
                 console.error(error);
@@ -127,6 +118,54 @@
             radio1Img.src = "{% static 'images/Ellipse 10.png' %}";
             radio2Img.src = "{% static 'images/Ellipse 11.png' %}";
         }
+    }
+
+    let selectedButton = null;
+
+    function highlightButton(btnId) {
+        const clickedButton = document.querySelector(`.${btnId}`);
+
+        if (clickedButton === selectedButton) {
+            // 이미 선택된 버튼을 다시 클릭한 경우
+            clickedButton.classList.remove('highlighted');
+            selectedButton = null;
+        } else {
+            // 다른 버튼을 클릭한 경우
+            if (selectedButton) {
+                selectedButton.classList.remove('highlighted');
+            }
+            selectedButton = clickedButton;
+            selectedButton.classList.add('highlighted');
+        }
+
+        // 스타일 변경
+        const buttons = document.querySelectorAll('.choice-buttons > input');
+        buttons.forEach(button => {
+            if (button !== selectedButton) {
+                button.style.boxShadow = "";
+                button.style.color = "";
+            }
+        });
+
+        // 선택된 버튼의 스타일 변경
+        if (selectedButton) {
+            selectedButton.style.boxShadow = "2px 2px 4px 0px rgba(0, 0, 0, 0.25) inset";
+            selectedButton.style.color = "#666666";
+
+        }
+        
+        $.ajax({
+            url: "{% url 'community:post-section' %}",  // 해당 시즌 게시물을 가져오는 URL
+            method: 'GET',
+            dataType: 'html',
+            data: { 'section': clickedButton.value.slice(0, -2) },
+            success: function (response) {
+                $('.my-post').html(response);
+            },
+            error: function (xhr, status, error) {
+                console.error(error);
+            }
+        });
     }
 </script>
 </body>

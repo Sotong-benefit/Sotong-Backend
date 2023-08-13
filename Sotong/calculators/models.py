@@ -17,4 +17,7 @@ class Calculator(models.Model):
     finance = models.IntegerField(verbose_name='금융 재산', blank=False, null=False)
     dept = models.IntegerField(verbose_name='부채', blank=False, null=False)
 
+    income = models.IntegerField(verbose_name='소득 인정액')
+    section = models.CharField(verbose_name='구간', max_length=10, null=True, blank=True)
+
     user= models.ForeignKey(to=User, on_delete=models.CASCADE,null=True, blank=True)
