@@ -89,7 +89,7 @@
 </div>
 
 <!-- 반응형 container 끝 -->
-<!-- <script src="{% static 'js/communitiy-main-page.js' %}"></script> -->
+<script src="{% static 'js/communitiy-main-page.js' %}"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>
@@ -98,21 +98,45 @@
     let writeType = ''
     let post_id = ''
 
+    let radioBtn = '';
     function changeImage(selectedRadio) {
         const radio1Img = document.getElementsByClassName("radio1")[0].getElementsByTagName("img")[0];
         const radio2Img = document.getElementsByClassName("radio2")[0].getElementsByTagName("img")[0];
+        
 
         if (selectedRadio === "radio1") {
-            radio1Img.src = "{% static 'images/Ellipse 11.png' %}";
-            radio2Img.src = "{% static 'images/Ellipse 10.png' %}";
-            writeType = "내가쓴글"
-            loadData()
-        } else if (selectedRadio === "radio2") {
-            radio1Img.src = "{% static 'images/Ellipse 10.png' %}";
-            radio2Img.src = "{% static 'images/Ellipse 11.png' %}";
-            writeType = "내관심글"
-            loadData()
+            
+            if (radioBtn == selectedRadio) {
+                radio1Img.src = "{% static 'images/Ellipse 10.png' %}";
+                writeType = ""
+                radioBtn = '';
+            }
+            else {
+                radio1Img.src = "{% static 'images/Ellipse 11.png' %}";
+                radio2Img.src = "{% static 'images/Ellipse 10.png' %}";
+                writeType = "내가쓴글"
+                radioBtn = selectedRadio;
+            }
+            
+        } 
+        else if (selectedRadio === "radio2") {
+            if (radioBtn == selectedRadio) {
+                radio2Img.src = "{% static 'images/Ellipse 10.png' %}";
+                writeType = ""
+                radioBtn = '';
+            }
+            else {
+                radio1Img.src = "{% static 'images/Ellipse 10.png' %}";
+                radio2Img.src = "{% static 'images/Ellipse 11.png' %}";
+                writeType = "내관심글"
+                radioBtn = selectedRadio;
+            }
+            
         }
+
+
+        loadData()
+        
     }
 
     let selectedButton = null;
@@ -124,6 +148,7 @@
             // 이미 선택된 버튼을 다시 클릭한 경우
             clickedButton.classList.remove('highlighted');
             selectedButton = null;
+            section = ''
         } else {
             // 다른 버튼을 클릭한 경우
             if (selectedButton) {
@@ -131,6 +156,7 @@
             }
             selectedButton = clickedButton;
             selectedButton.classList.add('highlighted');
+            section = clickedButton.value.slice(0, -2);
         }
 
         // 스타일 변경
@@ -149,7 +175,7 @@
 
         }
 
-        section = clickedButton.value.slice(0, -2);
+        
         // 데이터 불러오기
         loadData();
 
