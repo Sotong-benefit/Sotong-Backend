@@ -8,6 +8,10 @@ def findbenefit(request):
 def bulletin(request):
     return render(request, 'findbenefit/find-benefit-bulletin.html')
 
+def album(request):
+    return render(request, 'findbenefit/benefit-album-page.html')
+
+
 
 # def segment(request):
 #     if request.is_ajax():
