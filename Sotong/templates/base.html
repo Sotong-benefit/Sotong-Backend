@@ -47,19 +47,19 @@
                         <a href="{% url 'accounts:logout' %}" class="myInfo-info-letter" id="myInfo-new">로그아웃</a>
                         
                         <!-- 통통이 갯수 -->
-                        {% comment %} <br>
+                        <!-- {% comment %} <br>
                         <div class="TongTong-wrap">
                             <img src="{% static 'images/myInfo-img.svg' %}">
                             <span class="TongTong">통통이 <span id="TongTong-num">0{{ count }}개</span></span>
-                        </div> {% endcomment %}
+                        </div> {% endcomment %} -->
 
                         <!-- 통통이 갯수 -->
                         <br><br><br>
                         <div class="TongTong-wrap">
                             <img src="{% static 'images/myInfo-img.svg' %}">
                             <span class="TongTong">통통이
-                                {% if count %}
-                                    <span id="TongTong-num">{{ count }}개</span>
+                                {% if counts %}
+                                    <span id="TongTong-num">{{ user.counter_set }}개</span>
                                 {% else %}
                                     <span id="TongTong-num">0개</span>
                                 {% endif %}

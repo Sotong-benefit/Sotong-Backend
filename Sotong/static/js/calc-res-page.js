@@ -40,7 +40,7 @@ else {
 
 
 const communitySections = document.getElementsByClassName('reco-num');
-console.log(communitySections)
+
 Array.from(communitySections).forEach(communitySection => {
 
     if (resultValue === 1) {

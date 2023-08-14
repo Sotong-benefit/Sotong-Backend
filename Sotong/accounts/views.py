@@ -82,11 +82,17 @@ def myPage_view(request):
     # Community 모델에서 즐겨찾기한 community들을 가져옴
     my_favorite = Community.objects.filter(id__in=community_ids)
 
-    section_res = Calculator.objects.all().filter(user=request.user)[0]
-
+    if Calculator.objects.all().filter(user=request.user):
+        section_res = Calculator.objects.all().filter(user=request.user)[0]
+        income = section_res.income
+        section = section_res.section
+    else:
+        income = 0
+        section = 1
     context ={
         'my_post': my_post,
         'my_favorite' : my_favorite,
-        'section_res' : section_res,
+        'income' : income,
+        'section' : section,
     }
     return render(request, 'Account/my-page.html', context)

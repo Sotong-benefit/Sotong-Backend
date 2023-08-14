@@ -4,12 +4,17 @@ from .models import Community, Favorite
 from .forms import CommunityCreateForm
 from django.http import HttpResponse,JsonResponse
 import json
+from tongtong.models import Counter
 
 # Create your views here.
 
 def index(request):
 
-    return render(request, 'index.html')
+    count = Counter.objects.all()[0]
+    context = {
+        'count' : count,
+    }
+    return render(request, 'index.html', context)
 
 
 def post_list_view(request):
