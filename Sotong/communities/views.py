@@ -149,7 +149,7 @@ def post_section_view(request):
         print("tags : " + tags)
         print("writeType : " + writeType)
 
-        if post_id is not '':
+        if post_id != '':
 
             like_post = Community.objects.get(id=post_id) 
             # like_post = get_object_or_404(Community, id=post_id)
@@ -166,7 +166,7 @@ def post_section_view(request):
                 like.save()
 
 
-        if section is not '':
+        if section != '':
             post_list = Community.objects.all().order_by('-created_at').filter(section=section)
         else:
             post_list = Community.objects.all().order_by('-created_at')
@@ -182,7 +182,7 @@ def post_section_view(request):
             # Community 모델에서 즐겨찾기한 community들을 가져옴
             post_list = post_list.filter(id__in=community_ids)
         
-        if tags is not '':
+        if tags != '':
             post_list = post_list.filter(tags=tags)
 
 
