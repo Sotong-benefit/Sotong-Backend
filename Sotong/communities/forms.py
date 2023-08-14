@@ -16,7 +16,7 @@ class CommunityCreateForm(CommunityBaseForm):
 
         # 각 필드에 placeholder를 추가합니다.
         self.fields['title'].widget.attrs['placeholder'] = '제목을 입력해주세요.'
-        self.fields['tags'].widget.attrs['placeholder'] = '#태그를 입력해주세요'
+        self.fields['tags'].widget.attrs['placeholder'] = '태그를 입력해주세요'
         self.fields['description'].widget.attrs['placeholder'] = '게시글을 작성하세요'
 
         self.fields['title'].widget.attrs['id'] = 'postTitle'
@@ -26,4 +26,7 @@ class CommunityCreateForm(CommunityBaseForm):
         self.fields['tags'].widget.attrs['class'] = 'tag-input'
 
         self.fields['image'].widget.attrs['style'] = 'display:none'
+
+
+
         

@@ -457,7 +457,7 @@ height: 1.625rem;
     width: 2.625rem;
     height: 3.5625rem;
     flex-shrink: 0;
-    background:#00c2ff;
+    /* background:#00c2ff; */
     margin-left: 4rem;
 
     border-radius: 0 0 0.625rem 0.625rem;
