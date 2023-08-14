@@ -53,7 +53,7 @@
                 <div class="TongTong-benefit-wrap">
                     <div class="benefit-item" id="benefitItem1">
                         <div class="img-box block">
-                            <img src="/public/images/main-page-benefitPlus-sample.png" alt="">
+                            <img src="{% static 'images/main-page-benefitPlus-sample.png' %}" alt="">
                         </div>
                         <div class="desc-list">
                             <p class="desc">알폰스 무하 이모션 인 서울 50% 할인 쿠폰</p>
@@ -62,7 +62,7 @@
                     </div>
                     <div class="benefit-item" id="benefitItem2">
                         <div class="img-box block">
-                            <img src="/public/images/main-page-benefitPlus-sample.png" alt="">
+                            <img src="{% static 'images/main-page-benefitPlus-sample.png' %}" alt="">
                         </div>
                         <div class="desc-list">
                             <p class="desc">알폰스 무하 이모션 인 서울 50% 할인 쿠폰</p>
@@ -79,7 +79,7 @@
                 <!-- 3개 -->
                 <div class="TongTong-buy-wrap custom-buy-wrap" id="buyItem1">
                     <div class="buy-num">
-                        <img src="/public/images/myInfo-img.svg">
+                        <img src="{% static 'images/myInfo-img.svg' %}">
                         <span>통통이 3개</span>
                     </div>
                     <div class="buy-money" id="money-2th">2000원</div>
@@ -87,7 +87,7 @@
                 <!-- 5개 -->
                 <div class="TongTong-buy-wrap custom-buy-wrap" id="buyItem2">
                     <div class="buy-num">
-                        <img src="/public/images/myInfo-img.svg">
+                        <img src="{% static 'images/myInfo-img.svg' %}">
                         <span>통통이 5개</span>
                     </div>
                     <div class="buy-money" id="money-3th">3000원</div>
@@ -97,19 +97,35 @@
             <!-- 내가 인증한 혜택 -->
             <div class="TongTong-certified-container">
                 <p>내가 인증한 혜택</p>
+
                 <div class="TongTong-certified-wrap">
                     <div class="certified-name">
                         <span>국가장학금지급 인증</span>
                     </div>
                     <div class="certified-num">통통이 3개 +</div>
                 </div>
+
+                {% if count %}
+                    {% for todo in todo_list %}
+                        <div class="TongTong-certified-wrap">
+                            <div class="certified-name">
+                                <span>혜택 인증</span>
+                            </div>
+                            <div class="certified-num">통통이 {{ count }}개 +</div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <span id="TongTong-num">0개</span>
+                {% endif %}
+                
+
                 <!-- 5개 -->
-                <div class="TongTong-certified-wrap">
+                {% comment %} <div class="TongTong-certified-wrap">
                     <div class="certified-name">
                         <span>국가장학금지급 인증</span>
                     </div>
                     <div class="certified-num">통통이 3개 +</div>
-                </div>
+                </div> {% endcomment %}
             </div>
         </div>
     </div>
