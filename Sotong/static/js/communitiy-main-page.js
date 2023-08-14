@@ -52,25 +52,9 @@
 //     }
 // }
 
-let selectedTag = null;
 
-function toggleTag(button) {
-    if (button.style.backgroundColor === 'rgb(255, 178, 178)') {
-        button.style.backgroundColor = '';
-        button.style.boxShadow = '';
-        button.style.color = '';
-        selectedTag = null;
-    } else {
-        if (selectedTag) {
-            selectedTag.style.backgroundColor = '';
-            selectedTag.style.boxShadow = '';
-            selectedTag.style.color = '';
-        }
-        button.style.backgroundColor = '#CECECE';
-        button.style.boxShadow = '2px 2px 4px 0px rgba(0, 0, 0, 0.25) inset';
-        selectedTag = button;
-    }
-}
+
+
 
 function writePost() { //글쓰기 버튼
     window.location.href = 'new'; 

@@ -39,8 +39,11 @@
                 <!-- 등록 버튼 추가 -->
             </div>
             <div class="media-buttons">
-                <button class="media-button" data-type="사진"><img src="{% static 'images/bulletin-img.svg' %}"
-                        alt=""></button>
+                <!-- <button class="media-button" data-type="사진"><img src="{% static 'images/bulletin-img.svg' %}"
+                        alt=""></button> -->
+                        <label class="media-button" data-type="사진" for="id_image">
+                            <img src="{% static 'images/bulletin-img.svg' %}" alt="">
+                        </label>
                         {{ form.image }}
                 <button class="media-button" data-type="동영상"><img
                         src="{% static 'images/bulletin-media-icon.svg' %}"></button>

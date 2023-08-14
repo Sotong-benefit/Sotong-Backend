@@ -102,45 +102,96 @@ def post_delete_view(request, id):
     return redirect('community:post-list')
     
 
-def post_like_view(request):
-    if request.method == 'GET': #ajax 방식일 때 아래 코드 실행
-        post_id = request.GET.get('post_id') #좋아요를 누른 게시물id (blog_id)가지고 오기'
-        print(post_id)
+# def post_like_view(request):
+#     if request.method == 'GET': #ajax 방식일 때 아래 코드 실행
+#         post_id = request.GET.get('post_id') #좋아요를 누른 게시물id (blog_id)가지고 오기'
+#         print(post_id)
 
-        # post = Community.objects.get(id=post_id) 
-        post = get_object_or_404(Community, id=post_id)
-        # if not request.user.is_authenticated: #버튼을 누른 유저가 비로그인 유저일 때
-        #     message = "로그인을 해주세요" #화면에 띄울 메세지 
-        #     context = {"message":message}
-        #     return HttpResponse(json.dumps(context), content_type='application/json')
+#         # post = Community.objects.get(id=post_id) 
+#         like_post = get_object_or_404(Community, id=post_id)
+#         # if not request.user.is_authenticated: #버튼을 누른 유저가 비로그인 유저일 때
+#         #     message = "로그인을 해주세요" #화면에 띄울 메세지 
+#         #     context = {"message":message}
+#         #     return HttpResponse(json.dumps(context), content_type='application/json')
 
-        user = request.user #request.user : 현재 로그인한 유저
-        #     # 이미 좋아요를 눌렀는지 확인
+#         user = request.user #request.user : 현재 로그인한 유저
+#         #     # 이미 좋아요를 눌렀는지 확인
 
-        if Favorite.objects.filter(user=user, community=post).exists():
-            # 이미 좋아요를 눌렀을 경우 처리
-            favorite = Favorite.objects.get(user=user, community=post)
-            favorite.delete()
+#         if Favorite.objects.filter(user=user, community=like_post).exists():
+#             # 이미 좋아요를 눌렀을 경우 처리
+#             favorite = Favorite.objects.get(user=user, community=like_post)
+#             favorite.delete()
 
-        else:
-            # 중개 모델을 생성하고 저장
-            like = Favorite(user=user, community=post)
-            like.save()
+#         else:
+#             # 중개 모델을 생성하고 저장
+#             like = Favorite(user=user, community=like_post)
+#             like.save()
 
-        post_list = Community.objects.all().order_by('-created_at')
-        if request.user.is_authenticated:
-            for post in post_list:
-                post.is_liked = post.favorite_set.filter(user=request.user).exists()
-        context ={
-            'post_list': post_list
-        }
-        return render(request, 'community/main_frame.html', context)
+#         post_list = Community.objects.all().order_by('-created_at')
+#         if request.user.is_authenticated:
+#             for post in post_list:
+#                 post.is_liked = post.favorite_set.filter(user=request.user).exists()
+#         context ={
+#             'post_list': post_list
+#         }
+#         return render(request, 'community/main_frame.html', context)
     
 def post_section_view(request):
     if request.method == 'GET':
+        post_id = request.GET.get('post_id') #좋아요를 누른 게시물id (blog_id)가지고 오기'
         section = request.GET.get('section')
+        tags = request.GET.get('tags')
+        writeType = request.GET.get('writeType')
 
-        post_list = Community.objects.all().order_by('-created_at').filter(section=section)
+        print("post_id : " + post_id)
+        print("section : " + section)
+        print("tags : " + tags)
+        print("writeType : " + writeType)
+
+        if post_id is not '':
+
+            like_post = Community.objects.get(id=post_id) 
+            # like_post = get_object_or_404(Community, id=post_id)
+
+            if Favorite.objects.filter(user=request.user, community=like_post).exists():
+                # 이미 좋아요를 눌렀을 경우 처리
+                favorite = Favorite.objects.get(user=request.user, community=like_post)
+                favorite.delete()
+                print("성공")
+
+            else:
+                # 중개 모델을 생성하고 저장
+                like = Favorite(user=request.user, community=like_post)
+                like.save()
+
+
+        if section is not '':
+            post_list = Community.objects.all().order_by('-created_at').filter(section=section)
+        else:
+            post_list = Community.objects.all().order_by('-created_at')
+
+
+        if writeType == '내가쓴글':
+            post_list = post_list.filter(user=request.user)
+        elif writeType == '내관심글':
+            favorite_communities = Favorite.objects.filter(user=request.user).values('community')
+            # community_ids 리스트에 즐겨찾기한 community의 id들을 저장
+            community_ids = [entry['community'] for entry in favorite_communities]
+
+            # Community 모델에서 즐겨찾기한 community들을 가져옴
+            post_list = post_list.filter(id__in=community_ids)
+        
+        if tags is not '':
+            post_list = post_list.filter(tags=tags)
+
+
+        
+
+        
+            
+            # if request.user.is_authenticated:
+            #     for post in like_post:
+            #         post.is_liked = post.favorite_set.filter(user=request.user).exists()
 
         if request.user.is_authenticated:
             for post in post_list:

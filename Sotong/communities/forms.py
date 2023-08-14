@@ -24,4 +24,6 @@ class CommunityCreateForm(CommunityBaseForm):
 
         self.fields['image'].widget.attrs['class'] = 'media-button'
         self.fields['tags'].widget.attrs['class'] = 'tag-input'
+
+        self.fields['image'].widget.attrs['style'] = 'display:none'
         
