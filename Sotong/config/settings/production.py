@@ -31,7 +31,7 @@ DATABASES = {
 
 STATIC_ROOT = BASE_DIR / 'static'
 
-LOG_FILE = '/home/ubuntu/AWS-Liongram/log/django.log'
+LOG_FILE = '/home/ubuntu/Sotong-Backend/Sotong/log/django.log'
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': True,
