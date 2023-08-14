@@ -3,7 +3,7 @@ from .base import *
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['43.201.34.110']
 
 
 DJANGO_APPS += [
@@ -31,7 +31,7 @@ DATABASES = {
 
 STATIC_ROOT = BASE_DIR / 'static'
 
-LOG_FILE = '/home/ubuntu/AWS-Liongram/log/django.log'
+LOG_FILE = '/home/ubuntu/Sotong-Backend/Sotong/log/django.log'
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': True,
