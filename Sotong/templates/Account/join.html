@@ -30,7 +30,7 @@
 {% endblock %}
 
 {% block title %}
-회원 가입
+<!--회원 가입-->
 {% endblock %}
 
 {% block content %}
@@ -81,7 +81,8 @@
         <span><a href="#" style="color: var(--5, #CECECE);">비밀번호 찾기</a></span>
         <span class="line" style="width: 0.0625rem;
             height: 1.5rem; color: #CECECE;">|</span>
-        <span><a href="/Account/login/login.html" style="color: var(--5, #CECECE);">로그인</a></span>
+        <span><a href="{% url 'accounts:login' %}" style="color: var(--5, #CECECE);">로그인</a></span>
+        
     </div>
     </section>
 </div>
