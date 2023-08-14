@@ -13,6 +13,7 @@
         color: var(--1, #00C2FF);
     }
 </style>
+
 {% endblock %}
 
 {% block title %}커뮤니티{% endblock %}
@@ -64,11 +65,13 @@
     <div class="post-content"> <!--post-content부분 반복-->
         <!-- <div class="star"><img src="{% static 'images/Star7.png' %}" class="starImage"></div> -->
         {% if user.is_authenticated %}
-        {% if post.is_liked %}
-        <div class="star" id="{{ post.id }}"><img class="starImage" src="{% static 'images/Star8.png' %}" alt=""></div>
-        {% else %}
-        <div class="star" id="{{ post.id }}"><img class="starImage" src="{% static 'images/Star7.png' %}" alt=""></div>
-        {% endif %}
+            {% if post.is_liked %}
+            <div class="star" onclick="starClick('{{ post.id }}')"><img class="starImage"
+                    src="{% static 'images/Star8.png' %}" alt=""></div>
+            {% else %}
+            <div class="star" onclick="starClick('{{ post.id }}')"><img class="starImage"
+                    src="{% static 'images/Star7.png' %}" alt=""></div>
+            {% endif %}
         {% else %}
         <div class="star" href="{% url 'accounts:login' %}"><img class="starImage" src="{% static 'images/Star7.png' %}"
                 alt=""></div>
@@ -86,27 +89,15 @@
 </div>
 
 <!-- 반응형 container 끝 -->
-<script src="{% static 'js/communitiy-main-page.js' %}"></script>
+<!-- <script src="{% static 'js/communitiy-main-page.js' %}"></script> -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>
-    $('.star').click(function () {
-        const postId = $(this).attr('id');
-        console.log(postId);
-        $.ajax({
-            url: "{% url 'community:post-like' %}",  // 해당 시즌 게시물을 가져오는 URL
-            method: 'GET',
-            dataType: 'html',
-            data: { 'post_id': postId },
-            success: function (response) {
-                $('.my-post').html(response);
-            },
-            error: function (xhr, status, error) {
-                console.error(error);
-            }
-        });
+    let section = ''
+    let tags = ''
+    let writeType = ''
+    let post_id = ''
 
-    });
     function changeImage(selectedRadio) {
         const radio1Img = document.getElementsByClassName("radio1")[0].getElementsByTagName("img")[0];
         const radio2Img = document.getElementsByClassName("radio2")[0].getElementsByTagName("img")[0];
@@ -114,9 +105,13 @@
         if (selectedRadio === "radio1") {
             radio1Img.src = "{% static 'images/Ellipse 11.png' %}";
             radio2Img.src = "{% static 'images/Ellipse 10.png' %}";
+            writeType = "내가쓴글"
+            loadData()
         } else if (selectedRadio === "radio2") {
             radio1Img.src = "{% static 'images/Ellipse 10.png' %}";
             radio2Img.src = "{% static 'images/Ellipse 11.png' %}";
+            writeType = "내관심글"
+            loadData()
         }
     }
 
@@ -153,12 +148,50 @@
             selectedButton.style.color = "#666666";
 
         }
-        
+
+        section = clickedButton.value.slice(0, -2);
+        // 데이터 불러오기
+        loadData();
+
+    }
+
+    let selectedTag = null;
+    function toggleTag(button) {
+        if (button.style.backgroundColor === 'rgb(255, 178, 178)') {
+            button.style.backgroundColor = '';
+            button.style.boxShadow = '';
+            button.style.color = '';
+            selectedTag = null;
+        } else {
+            if (selectedTag) {
+                selectedTag.style.backgroundColor = '';
+                selectedTag.style.boxShadow = '';
+                selectedTag.style.color = '';
+            }
+            button.style.backgroundColor = '#CECECE';
+            button.style.boxShadow = '2px 2px 4px 0px rgba(0, 0, 0, 0.25) inset';
+            selectedTag = button;
+        }
+
+        tags = button.value;
+        loadData()
+    }
+
+
+    const starClick = (postId) => {
+
+        post_id = postId
+        loadData()
+    }
+
+    // 데이터 불러오기
+    const loadData = () => {
+
         $.ajax({
             url: "{% url 'community:post-section' %}",  // 해당 시즌 게시물을 가져오는 URL
             method: 'GET',
             dataType: 'html',
-            data: { 'section': clickedButton.value.slice(0, -2) },
+            data: { post_id, section, tags, writeType },
             success: function (response) {
                 $('.my-post').html(response);
             },
@@ -166,7 +199,9 @@
                 console.error(error);
             }
         });
+        post_id =''
     }
+
 </script>
 </body>
 

@@ -4,9 +4,9 @@
     <!-- <div class="star"><img src="{% static 'images/Star7.png' %}" class="starImage"></div> -->
     {% if user.is_authenticated %}
     {% if post.is_liked %}
-    <div class="star" id="{{ post.id }}"><img class="starImage" src="{% static 'images/Star8.png' %}" alt=""></div>
+    <div class="star" onclick="starClick('{{ post.id }}')" id="{{ post.id }}"><img class="starImage" src="{% static 'images/Star8.png' %}" alt=""></div>
     {% else %}
-    <div class="star" id="{{ post.id }}"><img class="starImage" src="{% static 'images/Star7.png' %}" alt=""></div>
+    <div class="star" onclick="starClick('{{ post.id }}')" id="{{ post.id }}"><img class="starImage" src="{% static 'images/Star7.png' %}" alt=""></div>
     {% endif %}
     {% else %}
     <div class="star" href="{% url 'accounts:login' %}"><img class="starImage" src="{% static 'images/Star7.png' %}"
@@ -21,23 +21,3 @@
     </a>
 </div>
 {% endfor %}
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-    $('.star').click(function () {
-        const postId = $(this).attr('id');
-        console.log(postId);
-        $.ajax({
-            url: "{% url 'community:post-like' %}",  // 해당 시즌 게시물을 가져오는 URL
-            method: 'GET',
-            dataType: 'html',
-            data: { 'post_id': postId },
-            success: function (response) {
-                $('.my-post').html(response);
-            },
-            error: function (xhr, status, error) {
-                console.error(error);
-            }
-        });
-
-    });
-</script>
