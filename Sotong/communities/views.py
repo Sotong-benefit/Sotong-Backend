@@ -10,11 +10,7 @@ from tongtong.models import Counter
 
 def index(request):
 
-    count = Counter.objects.all()[0]
-    context = {
-        'count' : count,
-    }
-    return render(request, 'index.html', context)
+    return render(request, 'index.html')
 
 
 def post_list_view(request):
