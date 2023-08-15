@@ -3,7 +3,7 @@ from .base import *
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['43.201.34.110']
+ALLOWED_HOSTS = ['43.201.34.110', 'sotong.site', 'www.sotong.site']
 
 
 DJANGO_APPS += [
