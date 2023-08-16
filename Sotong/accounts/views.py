@@ -102,7 +102,7 @@ def logout_view(request):
 
 @login_required
 def myPage_view(request):
-    my_post = Community.objects.all().order_by('-created_at').filter(user=request.user)
+    my_post = Community.objects.all().order_by('-created_at').filter(user=request.user)[:5]
 
     favorite_communities = Favorite.objects.filter(user=request.user).values('community')
 
@@ -110,7 +110,7 @@ def myPage_view(request):
     community_ids = [entry['community'] for entry in favorite_communities]
 
     # Community 모델에서 즐겨찾기한 community들을 가져옴
-    my_favorite = Community.objects.filter(id__in=community_ids)
+    my_favorite = Community.objects.filter(id__in=community_ids)[:5]
 
     if Calculator.objects.all().filter(user=request.user).exists():
         section_res = Calculator.objects.all().filter(user=request.user)[0]
