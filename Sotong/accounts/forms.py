@@ -1,9 +1,11 @@
 from django import forms
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
-from django.core.exceptions import ValidationError
+from django.core.validators import EmailValidator
 
 class SignUpForm(UserCreationForm):
+    username = forms.EmailField(validators=[EmailValidator(message='이메일 형식이 아닙니다.')])
+    first_name = forms.CharField(max_length=10, required=True)
     #email = forms.EmailField(label='', required=True, widget=forms.EmailInput(attrs={'class': 'input-form', 'placeholder': '이메일을 입력해주세요'}))
     class Meta(UserCreationForm.Meta):
         model = get_user_model()
@@ -33,12 +35,12 @@ class SignUpForm(UserCreationForm):
         self.fields['password2'].help_text = None
 
 class CustomAuthForm(AuthenticationForm):
-    email = forms.CharField(required=True, widget=forms.TextInput(attrs={'placeholder': '이메일을 입력해주세요'}))
+    username = forms.CharField(required=True, widget=forms.TextInput(attrs={'placeholder': '이메일을 입력해주세요'}))
     password = forms.CharField(required=True, widget=forms.PasswordInput(attrs={'placeholder':'비밀번호를 입력해주세요'}))
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
         # 각 필드에 class 추가
-        self.fields['email'].widget.attrs['class'] = 'input-form'
+        self.fields['username'].widget.attrs['class'] = 'input-form'
         self.fields['password'].widget.attrs['class'] = 'input-form'

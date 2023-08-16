@@ -1,7 +1,18 @@
 {% load static %}
 
-{% block link %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/join.css' %} ">
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>join-page</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/join.css' %} ">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main-frame.css'%}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+</head>
 <style>
     #join_submitbtn:disabled {
         background: var(--5, #CECECE);
@@ -26,114 +37,151 @@
     }
 </style>
 
-{% endblock %}
+<body>
 
-{% block title %}
-<!--회원 가입-->
-{% endblock %}
+    <div class="container-fluid" style="padding: 0;">
+        <div class="container-wrap">
+            <section class="main-logo-container">
+                <img src="{% static 'images/main-logo.svg' %} ">
 
-{% block content %}
-
-<div class="container-fluid" style="padding: 0;">
-    <div class="container-wrap">
-        <section class="main-logo-container">
-            <img src="{% static 'images/main-logo.svg' %} ">
-
-        </section>
-        <section>
-            <form action="" class="form_wrap_line" method="POST" enctype="multipart/form-data">
-                {% csrf_token %}
-                <div style="margin-bottom: 1.5rem;">
-                    <!-- <input type="text" class="input-form" id="id" placeholder="이메일을 입력해주세요" name="user-email"> -->
-                    {{ form.username }}
-                    {% if email_msg != "" %}
-                    <div class="pwd_alert">
-                        {{ email_msg }}
+            </section>
+            <section>
+                <form action="" class="form_wrap_line" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div style="margin-bottom: 1.5rem;">
+                        <!-- <input type="text" class="input-form" id="id" placeholder="이메일을 입력해주세요" name="user-email"> -->
+                        {{ form.username }}
+                        {% if email_msg != "" %}
+                        <div class="pwd_alert">
+                            {{ email_msg }}
+                        </div>
+                        {% endif %}
                     </div>
-                    {% endif %}
-                </div>
-                <div style="margin-bottom: 1.5rem;">
-                    <!-- <input type="text" class="input-form" id="name" placeholder="이름을 입력해주세요" name="user-name"> -->
-                    {{ form.first_name }}
-                </div>
-                <div style="margin-bottom: 1.5rem;">
-                    <label for="passwordField" class="password-label">
-                        <!-- <input type="password" id="passwordField" class="input-form" placeholder="비밀번호를 입력해주세요"
+                    <div style="margin-bottom: 1.5rem;">
+                        <!-- <input type="text" class="input-form" id="name" placeholder="이름을 입력해주세요" name="user-name"> -->
+                        {{ form.first_name }}
+                    </div>
+                    <div style="margin-bottom: 1.5rem;" id="password1_input">
+                        <label for="id_password1" id="password_label1" class="password-label">
+                            <!-- <input type="password" id="passwordField" class="input-form" placeholder="비밀번호를 입력해주세요"
                             name="user-pw" required> -->
-                        {{ form.password1 }}
-                        <img src="{% static 'images/pwd-toggle-show.svg' %} " class="toggle-image1"
-                            onclick="togglePasswordVisibility()">
-                    </label>
-                </div>
-                <div style="margin-bottom: 2rem;">
-                    <label for="passwordCkField" class="password-label">
-                        <!-- <input type="password" id="passwordCkField" class="input-form" placeholder="  비밀번호를 다시 입력해주세요"
-                            name="user-checkpw" required> -->
-                        {{ form.password2 }}
-                        <img src="{% static 'images/pwd-toggle-show.svg' %} " class="toggle-image2"
-                            onclick="togglePasswordCheckVisibility()">
-                    </label>
-                    <div class="pwd_alert" id="alert-success"></div>
-
-                    {% if pwd_msg != "" %}
-                    <div class="pwd_alert">
-                        {{ pwd_msg }}
+                            {{ form.password1 }}
+                            <img src="{% static 'images/pwd-toggle-show.svg' %} " class="toggle-image1"
+                                id="toggle-image1" draggable="false">
+                        </label>
                     </div>
-                    {% endif %}
+                    <div style="margin-bottom: 2rem;">
+                        <label for="passwordCkField" id="password_label2" class="password-label">
+                            <!-- <input type="password" id="passwordCkField" class="input-form" placeholder="  비밀번호를 다시 입력해주세요"
+                            name="user-checkpw" required> -->
+                            {{ form.password2 }}
+                            <img src="{% static 'images/pwd-toggle-show.svg' %} " class="toggle-image2"
+                                id="toggle-image2" draggable="false">
+                        </label>
+                        <div class="pwd_alert" id="alert-success"></div>
 
-                </div>
-                <div>
-                    <button type="submit" id=join_submitbtn>회원가입 하기</button>
-                </div>
-            </form>
-    </div>
-    <div id="move-href" style="text-align: center; margin-top: 2rem; margin-bottom: 20rem;">
-        <span><a href="#" style="color: var(--5, #CECECE);">비밀번호 찾기</a></span>
-        <span class="line" style="width: 0.0625rem;
+                        {% if pwd_msg != "" %}
+                        <div class="pwd_alert">
+                            {{ pwd_msg }}
+                        </div>
+                        {% endif %}
+
+                    </div>
+                    <div>
+                        <button type="submit" id=join_submitbtn>회원가입 하기</button>
+                    </div>
+                </form>
+        </div>
+        <div id="move-href" style="text-align: center; margin-top: 2rem; margin-bottom: 20rem;">
+            <span><a href="{% url 'accounts:find' %}" style="color: var(--5, #CECECE);">비밀번호 찾기</a></span>
+            <span class="line" style="width: 0.0625rem;
             height: 1.5rem; color: #CECECE;">|</span>
-        <span><a href="{% url 'accounts:login' %}" style="color: var(--5, #CECECE);">로그인</a></span>
+            <span><a href="{% url 'accounts:login' %}" style="color: var(--5, #CECECE);">로그인</a></span>
 
+        </div>
+        </section>
     </div>
-    </section>
-</div>
-<script>
-    const nameForm = document.querySelector("#name");
-    const idForm = document.querySelector("#id");
-    const pwForm = document.querySelector("#passwordField");
-    const check_pwdForm = document.querySelector("#passwordCkField");
-    const joinButton = document.querySelector("#join_submitbtn");
-
-    nameForm.addEventListener("keyup", JoinactiveEvent);
-    idForm.addEventListener('keyup', JoinactiveEvent);
-    pwForm.addEventListener('keyup', JoinactiveEvent);
-    check_pwdForm.addEventListener('keyup', JoinactiveEvent);
-    joinButton.addEventListener('click', JoinactiveEvent);
-
-    function JoinactiveEvent() {
-        switch (!(nameForm.value && idForm.value && pwForm.value && check_pwdForm.value)) {
-            case true: joinButton.disabled = true;
-                break;
-            case false: joinButton.disabled = false;
-                break;
-        }
-    }
-
-    // 비밀번호 보기 옵션
-    function togglePasswordVisibility() {
-        var passwordField = document.getElementById("id_password1");
+    <script>
         var toggleImage1 = document.querySelector(".toggle-image1");
+        var toggleImage2 = document.querySelector(".toggle-image2");
 
-        if (passwordField.type === "password") {
-            passwordField.type = "text";
+        document.getElementById("toggle-image1").addEventListener('mousedown', () => {
+            var passwordField = document.getElementById("id_password1");
+            var password_label = document.getElementById("password_label1");
+
             toggleImage1.src = "{% static 'images/pwd-toggle-hide.svg' %}";
-        } else {
-            passwordField.type = "password";
-            toggleImage1.src = "{% static 'images/pwd-toggle-show.svg'%}";
-        }
-    }
-</script>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<script src="{% static 'js/check.js' %}"></script>
-<script src="{% static 'js/account.js' %} "></script>
 
-{% endblock %}
+
+            pwd_val = passwordField.value;
+
+            var div = document.createElement('div');
+            div.innerHTML = `<input id="temp1" class="input-form" type="text" value="${pwd_val}">`
+            console.log(pwd_val);
+            passwordField.style.display = 'none'
+
+
+            password_label.appendChild(div)
+        })
+
+        document.getElementById("toggle-image2").addEventListener('mousedown', () => {
+            var passwordField = document.getElementById("id_password2");
+            var password_label = document.getElementById("password_label2");
+
+            toggleImage2.src = "{% static 'images/pwd-toggle-hide.svg' %}";
+
+
+            pwd_val = passwordField.value;
+
+            var div = document.createElement('div');
+            div.innerHTML = `<input id="temp2" class="input-form" type="text" value="${pwd_val}">`
+            console.log(pwd_val);
+            passwordField.style.display = 'none'
+
+
+            password_label.appendChild(div)
+        })
+
+        document.addEventListener('mouseup', () => {
+            var passwordField1 = document.getElementById("id_password1");
+            var password_label1 = document.getElementById("password_label1");
+
+            var passwordField2 = document.getElementById("id_password2");
+            var password_label2 = document.getElementById("password_label2");
+
+            var remove = document.getElementById('temp1')
+            var remove2 = document.getElementById('temp2')
+            if (remove) {
+                passwordField1.style.display = 'block'
+                toggleImage1.src = "{% static 'images/pwd-toggle-show.svg'%}";
+                remove.parentNode.removeChild(remove);
+            }
+
+            else if (remove2) {
+                passwordField2.style.display = 'block'
+                toggleImage2.src = "{% static 'images/pwd-toggle-show.svg'%}";
+                remove2.parentNode.removeChild(remove2);
+            }
+
+        })
+        // 비밀번호 보기 옵션
+        function togglePasswordVisibility() {
+
+
+            // var toggleImage1 = document.querySelector(".toggle-image1");
+
+            // if (passwordField.type === "password") {
+            //     passwordField.type = "text";
+            //     toggleImage1.src = "{% static 'images/pwd-toggle-hide.svg' %}";
+            // } else {
+            //     passwordField.type = "password";
+            //     toggleImage1.src = "{% static 'images/pwd-toggle-show.svg'%}";
+            // }
+        }
+    </script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="{% static 'js/check.js' %}"></script>
+    <script src="{% static 'js/account.js' %} "></script>
+
+</body>
+
+</html>

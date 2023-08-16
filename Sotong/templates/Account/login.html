@@ -14,7 +14,7 @@
         integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 </head>
 
-    
+
 <style>
     #login_submitbtn:disabled {
         background: var(--5, #CECECE);
@@ -22,17 +22,19 @@
         cursor: default;
     }
 
-    a{text-decoration: none;}
+    a {
+        text-decoration: none;
+    }
 </style>
 
 <body>
     <div class="container-fluid" style="padding: 0;">
         <div class="container-wrap">
             <section class="main-logo-container">
-                    <!-- <a href="{% url 'index'%}"> -->
-                        <img src="{% static 'images/main-logo.svg' %}">
-                    <!-- </a> -->
-                
+                <!-- <a href="{% url 'index'%}"> -->
+                <img src="{% static 'images/main-logo.svg' %}">
+                <!-- </a> -->
+
             </section>
             <section>
                 <form class="form_wrap_line" action="" method="POST" enctype="multipart/form-data">
@@ -40,28 +42,27 @@
                     <div style="margin-bottom: 1.5rem;">
                         <!-- <input type="text" class="input-form" id="id" placeholder="이메일을 입력해주세요" name="user-name"
                             style="border: 2px solid var(--unnamed, #FF7474);"> -->
-                            {{ form.email }}
-                        {% if id_msg %}
-                        <div class="login_alert" id="alert-danger">아이디를 확인해주세요</div>
-                        {% endif %}
+                        {{ form.username }}
                     </div>
                     <div style="margin-bottom: 2rem;">
-                        <label for="passwordField" class="password-label">
+                        <label for="passwordField" id="password_label" class="password-label">
                             <!-- <input type="password" id="passwordField" class="input-form" placeholder="비밀번호를 입력해주세요"
                                 name="user-pw" style="border: 2px solid var(--unnamed, #FF7474);"> -->
-                                {{ form.password }}
-                            <img src="{% static 'images/pwd-toggle-show.svg' %}" class="toggle-image1"
-                                onclick="togglePasswordVisibility()">
-                            <div class="login_alert" id="alert-danger">비밀번호를 확인해주세요</div>
+                            {{ form.password }}
+                            <img src="{% static 'images/pwd-toggle-show.svg' %}" id="toggle-image1" class="toggle-image1" draggable="false">
+                            
                         </label>
+                        {% if msg %}
+                            <div class="login_alert" id="alert-danger">{{ msg }}</div>
+                        {% endif %}
                     </div>
                     <div>
-                        <button type="submit" id=login_submitbtn >로그인</button>
+                        <button type="submit" id=login_submitbtn>로그인</button>
                     </div>
                 </form>
         </div>
         <div id="move-href" style="text-align: center; margin-top: 2rem; margin-bottom: 20rem;">
-            <span><a href="/Account/find/find.html" style="color: var(--5, #CECECE);">비밀번호 찾기</a></span>
+            <span><a href="{% url 'accounts:find' %}" style="color: var(--5, #CECECE);">비밀번호 찾기</a></span>
             <span class="line" style="width: 0.0625rem;
             height: 1.5rem; color: #CECECE;">|</span>
             <span><a href="{% url 'accounts:signup' %}" style="color: var(--5, #CECECE);">회원가입</a></span>
@@ -70,25 +71,58 @@
     </div>
 </body>
 <script>
-    const idForm = document.querySelector("#id");
-    const pwForm = document.querySelector("#passwordField");
-    const loginButton = document.querySelector("#login_submitbtn");
+    // const idForm = document.querySelector("#id");
+    // const pwForm = document.querySelector("#passwordField");
+    // const loginButton = document.querySelector("#login_submitbtn");
 
-    idForm.addEventListener("keyup", LoginactiveEvent);
-    pwForm.addEventListener("keyup", LoginactiveEvent);
-    loginButton.addEventListener("click", LoginactiveEvent);
+    // idForm.addEventListener("keyup", LoginactiveEvent);
+    // pwForm.addEventListener("keyup", LoginactiveEvent);
+    // loginButton.addEventListener("click", LoginactiveEvent);
 
 
-    function LoginactiveEvent() {
-        switch (!(idForm.value && pwForm.value)) {
-            case true:
-                loginButton.disabled = true;
-                break;
-            case false:
-                loginButton.disabled = false;
-                break;
-        }
-    }
+    // function LoginactiveEvent() {
+    //     switch (!(idForm.value && pwForm.value)) {
+    //         case true:
+    //             loginButton.disabled = true;
+    //             break;
+    //         case false:
+    //             loginButton.disabled = false;
+    //             break;
+    //     }
+    // }
+
+    var toggleImage = document.querySelector(".toggle-image1");
+
+    document.getElementById("toggle-image1").addEventListener('mousedown', () => {
+        var passwordField = document.getElementById("id_password");
+        var password_label = document.getElementById("password_label");
+
+        toggleImage.src = "{% static 'images/pwd-toggle-hide.svg' %}";
+
+
+        pwd_val = passwordField.value;
+
+        var div = document.createElement('div');
+        div.innerHTML = `<input id="temp1" class="input-form" type="text" value="${pwd_val}">`
+        console.log(pwd_val);
+        passwordField.style.display = 'none'
+
+
+        password_label.appendChild(div)
+    })
+
+    document.addEventListener('mouseup', () => {
+        var passwordField = document.getElementById("id_password");
+        var password_label = document.getElementById("password_label");
+
+            var remove = document.getElementById('temp1')
+            if (remove) {
+                passwordField.style.display = 'block'
+                toggleImage.src = "{% static 'images/pwd-toggle-show.svg'%}";
+                remove.parentNode.removeChild(remove);
+            }
+
+        })
 </script>
 
 <script src="{% static 'js/account.js' %} "></script>
