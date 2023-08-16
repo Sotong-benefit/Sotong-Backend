@@ -1,0 +1,16 @@
+{% load static %}
+
+<div class="my-post-idx">
+    <div>제목</div>
+    <div>작성 정보</div>
+</div>
+
+{% for post in my_post %}
+<a href="{% url 'community:post-detail' post.id %}" class="post-content">
+    <div class="post-title">{{ post.title }}</div>
+    <div class="post-info-container">
+        <div class="post-info1">-{{ post.tags }}/{{ post.created_at|date:'Y.m.d' }}</div>
+        <div class="post-info2">-{{ post.user }}</div>
+    </div>
+</a>
+{% endfor %}

@@ -106,14 +106,14 @@
 
 <div class="morebtn" onclick="showMore()"><button class="more">더보기</button></div>
 <div class="my-post-title">내가 쓴 글 모음</div>
-<div class="my-post">
+<div class="my-post myself">
     <div class="my-post-idx">
         <div>제목</div>
         <div>작성 정보</div>
     </div>
 
     {% for post in my_post %}
-    <a href="{% url 'community:post-detail' post.id %}" class="post-content" onclick="myPostDetail()">
+    <a href="{% url 'community:post-detail' post.id %}" class="post-content">
         <div class="post-title">{{ post.title }}</div>
         <div class="post-info-container">
             <div class="post-info1">-{{ post.tags }}/{{ post.created_at|date:'Y.m.d' }}</div>
@@ -124,18 +124,19 @@
 
 
 </div>
-<div class="morebtn2"><button class="more2">더보기</button></div>
+<div class="morebtn2"><button class="more2" onclick="loadData('내가쓴글')">더보기</button></div>
 
 
 <div class="my-post-title2">내 최근 관심 글목록</div>
-<div class="my-post">
+<div class="my-post favorite">
     <div class="my-post-idx">
         <div>제목</div>
         <div>작성 정보</div>
     </div>
 
+
     {% for post in my_favorite %}
-    <a href="{% url 'community:post-detail' post.id %}" class="post-content" onclick="postDetail()">
+    <a href="{% url 'community:post-detail' post.id %}" class="post-content">
         <div class="post-title">{{ post.title }}</div>
         <div class="post-info-container">
             <div class="post-info1">-{{ post.tags }}/{{ post.created_at|date:'Y.m.d' }}</div>
@@ -143,14 +144,39 @@
         </div>
     </a>
     {% endfor %}
-    
+
 
 </div>
-<div class="morebtn3"><button class="more3">더보기</button></div>
+<div class="morebtn3"><button class="more3" onclick="loadData('관심글')">더보기</button></div>
 
 </section>
 </div>
 <!-- 반응형 container 끝 -->
 <script src="{% static 'js/my-page.js' %}"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
 
+    // 데이터 불러오기
+    const loadData = (data) => {
+
+        $.ajax({
+            url: "{% url 'accounts:myPage_plus' %}",  // 해당 시즌 게시물을 가져오는 URL
+            method: 'GET',
+            dataType: 'html',
+            data: { data },
+            success: function (response) {
+
+                if (data == '내가쓴글') {
+                    console.log('내가 쓴글')
+                    $('.myself').html(response);
+                }
+                else if (data == '관심글')
+                    $('.favorite').html(response);
+            },
+            error: function (xhr, status, error) {
+                console.error(error);
+            }
+        });
+    }
+</script>
 {% endblock %}
