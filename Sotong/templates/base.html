@@ -58,11 +58,7 @@
                         <div class="TongTong-wrap">
                             <img src="{% static 'images/myInfo-img.svg' %}">
                             <span class="TongTong">통통이
-                                {% if counts %}
-                                    <span id="TongTong-num">{{ user.counter_set }}개</span>
-                                {% else %}
-                                    <span id="TongTong-num">0개</span>
-                                {% endif %}
+                                    <span id="TongTong-num">{{ counter.counts }}개</span>
                             </span>
                         </div>
                     </div>
@@ -81,11 +77,11 @@
                         <a href="{% url 'accounts:signup' %}" class="myInfo-info-letter" id="myInfo-new">회원가입</a>
 
                         <!-- 통통이 갯수 -->
-                        <br>
+                        <!-- <br>
                         <div class="TongTong-wrap">
                             <img src="{% static 'images/myInfo-img.svg' %}">
                             <span class="TongTong">통통이 <span id="TongTong-num">10개</span></span>
-                        </div>
+                        </div> -->
                         
                     </div>
 

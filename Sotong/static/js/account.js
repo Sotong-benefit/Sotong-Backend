@@ -18,15 +18,15 @@ function togglePasswordVisibility() {
     }
   }
   
-function togglePasswordCheckVisibility() {
-  var passwordCkField = document.getElementById("passwordCkField");
-  var toggleImage2 = document.querySelector(".toggle-image2");
+// function togglePasswordCheckVisibility() {
+//   var passwordCkField = document.getElementById("passwordCkField");
+//   var toggleImage2 = document.querySelector(".toggle-image2");
   
-  if (passwordCkField.type === "password") {
-    passwordCkField.type = "text";
-    toggleImage2.src = "/public/images/pwd-toggle-hide.svg";
-  } else {
-    passwordCkField.type = "password";
-    toggleImage2.src = "/public/images/pwd-toggle-show.svg";
-  }
-}
+//   if (passwordCkField.type === "password") {
+//     passwordCkField.type = "text";
+//     toggleImage2.src = "/public/images/pwd-toggle-hide.svg";
+//   } else {
+//     passwordCkField.type = "password";
+//     toggleImage2.src = "/public/images/pwd-toggle-show.svg";
+//   }
+// }

@@ -5,6 +5,7 @@ from .forms import CommunityCreateForm
 from django.http import HttpResponse,JsonResponse
 import json
 from tongtong.models import Counter
+from django.db.models import Q
 
 # Create your views here.
 
@@ -183,7 +184,8 @@ def post_section_view(request):
             post_list = post_list.filter(id__in=community_ids)
         
         if tags != '':
-            post_list = post_list.filter(tags=tags)
+            noHashTag = tags.replace('#', '')
+            post_list = post_list.filter(Q(tags__icontains=tags)| Q(tags__icontains=noHashTag))
 
 
         

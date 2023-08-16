@@ -357,6 +357,7 @@
     font-style: normal;
     font-weight: 500;
     line-height: normal;
+    border-style: none;
 }
 
 .result-btn:hover{

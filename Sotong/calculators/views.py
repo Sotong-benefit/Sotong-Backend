@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import Calculator
-import math
+from communities.models import Community
 
 # https://hintabout.com/finance/2022-%ED%95%9C%EA%B5%AD%EC%9E%A5%ED%95%99%EC%9E%AC%EB%8B%A8-%EC%86%8C%EB%93%9D%EB%B6%84%EC%9C%84-%EA%B5%AD%EA%B0%80%EC%9E%A5%ED%95%99%EA%B8%88-%EC%86%8C%EB%93%9D%EC%9D%B8%EC%A0%95%EC%95%A1/
 # Create your views here.
@@ -53,8 +53,11 @@ def result_view(request):
 
         result = format(result, ',')
 
+
+    post_list = Community.objects.all().filter(section=section)
     context = {
         'result' : result,
         'section' : section,
+        'post_list' : post_list,
     }
     return render(request, 'calc/calc-res-page.html', context)

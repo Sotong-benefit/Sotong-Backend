@@ -56,7 +56,7 @@ PROJECT_APPS = [
     'communities',
     'tag',
     'accounts',
-    'calculators'
+    'calculators',
 ]
 
 THIRD_PARTY_APPS = [
@@ -74,6 +74,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'config.urls'
+
 
 TEMPLATES = [
     {
@@ -150,7 +151,3 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-ACCOUNT_AUTHENTICATION_METHOD = "email"
-ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_USERNAME_REQUIRED = False

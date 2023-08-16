@@ -121,7 +121,7 @@
     <section class="recommend">
         <div class="reco">
             <div class="reco-title">
-                <div class="reco-num">1</div>
+                <div class="reco-num">{{ section }}</div>
                 <div class="reco-name">구간에 해당하는 복지혜택 추천</div>
             </div>
 
@@ -193,37 +193,15 @@
                 <div>작성 정보 </div>
             </div>
 
-            <div class="post-content" onclick="postDetail()">
-                <div class="post-title">가나다라마바사아자차 </div>
+            {% for post in post_list %}
+            <a class="post-content" href="{% url 'community:post-detail' post.id %}">
+                <div class="post-title">{{ post.title }} </div>
                 <div class="post-info-container">
-                    <div class="post-info1">-작성내용 관련 태그/작성일</div>
-                    <div class="post-info2">-작성자 닉네임</div>
+                    <div class="post-info1">-{{ post.tags }}/{{ post.created_at|date:'Y.m.d' }}</div>
+                    <div class="post-info2">-{{ post.user }}</div>
                 </div>
-            </div>
-
-            <div class="post-content" onclick="postDetail()">
-                <div class="post-title">게시글 제목 </div>
-                <div class="post-info-container">
-                    <div class="post-info1">-작성내용 관련 태그/작성일</div>
-                    <div class="post-info2">-작성자 닉네임</div>
-                </div>
-            </div>
-
-            <div class="post-content" onclick="postDetail()">
-                <div class="post-title">게시글 제목 </div>
-                <div class="post-info-container">
-                    <div class="post-info1">-작성내용 관련 태그/작성일</div>
-                    <div class="post-info2">-작성자 닉네임</div>
-                </div>
-            </div>
-
-            <div class="post-content" onclick="postDetail()">
-                <div class="post-title">게시글 제목 </div>
-                <div class="post-info-container">
-                    <div class="post-info1">-작성내용 관련 태그/작성일</div>
-                    <div class="post-info2">-작성자 닉네임</div>
-                </div>
-            </div>
+            </a>
+            {% endfor %}
         </div>
     </section>
 

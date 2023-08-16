@@ -41,7 +41,9 @@
                         <!-- <input type="text" class="input-form" id="id" placeholder="이메일을 입력해주세요" name="user-name"
                             style="border: 2px solid var(--unnamed, #FF7474);"> -->
                             {{ form.email }}
+                        {% if id_msg %}
                         <div class="login_alert" id="alert-danger">아이디를 확인해주세요</div>
+                        {% endif %}
                     </div>
                     <div style="margin-bottom: 2rem;">
                         <label for="passwordField" class="password-label">

@@ -11,22 +11,58 @@ User = get_user_model()
 # Create your views here.
 
 def signup_view(request):
+    email_msg = ''
+    pwd_msg = ''
     # Get 요청 시 HTML 응답
     if request.method == 'GET':
         form = SignUpForm
-        context = {'form' : form }
+        context = {
+            'form' : form,
+            'pwd_msg' : pwd_msg,
+            'email_msg' : email_msg,
+            }
         return render(request, 'Account/join.html', context)
     else:
         
+
         form = SignUpForm(request.POST)
 
         if form.is_valid():
-            #회원가입 처리
-            instance = form.save()
-            return redirect('accounts:login')
-        else:
             #리다이렉트
-            return redirect('accounts:signup')
+            email = request.POST.get('email')
+            if User.objects.all().filter(email=email).exists():
+                print("이메일 존재")
+                msg = '이미 존재하는 이메일입니다.'
+                context = {
+                    'form' : form,
+                    'pwd_msg' : pwd_msg,
+                    'email_msg' : email_msg,
+                }
+                print(form.errors)
+                return render(request, 'Account/join.html', context)
+            else:
+            #회원가입 처리
+                instance = form.save()
+                return redirect('accounts:login')
+        else:
+            # print(form.errors.as_data().get('password2'))
+            
+
+            if 'username' in form.errors:
+                email_msg = form.errors.as_data().get('username')[0].messages[0]
+                print(email_msg)
+
+            if 'password2' in form.errors:
+                pwd_msg = form.errors.as_data().get('password2')[0].messages[0]
+                print(pwd_msg)
+
+            
+            context = {
+                'form' : form,
+                'pwd_msg' : pwd_msg,
+                'email_msg' : email_msg,
+            }
+            return render(request, 'Account/join.html', context)
 
 def login_view(request):
     
@@ -54,12 +90,6 @@ def login_view(request):
             # 응답
             return render(request, 'Account/login.html', {'form':CustomAuthForm()})
         
-            # username = request.POST.get('username')
-            # if username == '' or username == None:
-            #     pass
-            # user = User.objects.get(username=username)
-            # if user == None:
-            #     pass
 
         
 def logout_view(request):
@@ -82,13 +112,14 @@ def myPage_view(request):
     # Community 모델에서 즐겨찾기한 community들을 가져옴
     my_favorite = Community.objects.filter(id__in=community_ids)
 
-    if Calculator.objects.all().filter(user=request.user):
+    if Calculator.objects.all().filter(user=request.user).exists():
         section_res = Calculator.objects.all().filter(user=request.user)[0]
         income = section_res.income
         section = section_res.section
+        income = format(income, ',')
     else:
-        income = 0
-        section = 1
+        income = '-'
+        section = '-'
     context ={
         'my_post': my_post,
         'my_favorite' : my_favorite,
