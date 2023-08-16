@@ -184,8 +184,10 @@ def post_section_view(request):
             post_list = post_list.filter(id__in=community_ids)
         
         if tags != '':
+            # 만약 해시태그를 적지 않은 경우
             noHashTag = tags.replace('#', '')
-            post_list = post_list.filter(Q(tags__icontains=tags)| Q(tags__icontains=noHashTag))
+            noBlank = tags.replace(' ', '')
+            post_list = post_list.filter(Q(tags__icontains=tags)| Q(tags__icontains=noHashTag) | Q(tags__icontains=noBlank))
 
 
         
