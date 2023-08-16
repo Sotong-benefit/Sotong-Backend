@@ -71,24 +71,22 @@ def login_view(request):
         return render(request, 'Account/login.html', { 'form' : CustomAuthForm() })
     else:
         # 데이터 유효성 검사
-        email = request.POST['email']
-        password = request.POST['password']
-
-        try:
-            user = User.objects.get(email=email)
-        except:
-            return redirect('accounts:login')
-        user = authenticate(request, username=user, password=password)
-
-        if user is not None:
-            login(request, user)
-                    # 응답
+        form = CustomAuthForm(request, request.POST)
+        if form.is_valid():
+            # 비즈니스 로직 처리 - 로그인 처리
+            login(request, form.user_cache)
+            # 응답
             return redirect('index')
             
         else:
             # 비즈니스 로직 처리 - 로그인 실패
             # 응답
-            return render(request, 'Account/login.html', {'form':CustomAuthForm()})
+            context = {
+                'form':CustomAuthForm(),
+                'msg' : '아이디와 비밀번호가 일치하지 않습니다.'
+            }
+            
+            return render(request, 'Account/login.html', context)
         
 
         
@@ -99,6 +97,12 @@ def logout_view(request):
         logout(request)
     # 응답
     return redirect('index')
+
+def find_view(request):
+    return render(request, 'Account/find.html')
+
+def find_out_view(request):
+    return render(request, 'Account/find-out.html')
 
 @login_required
 def myPage_view(request):
@@ -148,3 +152,4 @@ def myPage_plus_view(request):
             'my_favorite' : my_favorite,
         }
         return render(request, 'Account/my_page_favorite.html', context)
+    
