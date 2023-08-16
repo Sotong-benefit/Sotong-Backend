@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Calculator
 from communities.models import Community
 
@@ -50,6 +50,13 @@ def result_view(request):
         elif result > 16202892:
             section = 10
         
+        if request.user.is_authenticated:
+            calc_res = get_object_or_404(Calculator, user=request.user)
+            calc_res.delete()
+            calc_res.income = result
+            calc_res.section = section
+            calc_res.save()
+
 
         result = format(result, ',')
 

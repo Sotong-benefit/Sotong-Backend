@@ -127,3 +127,24 @@ def myPage_view(request):
         'section' : section,
     }
     return render(request, 'Account/my-page.html', context)
+
+def myPage_plus_view(request):
+    if request.GET.get('data') == '내가쓴글':
+        my_post = Community.objects.all().order_by('-created_at').filter(user=request.user)[:8]
+        context ={
+            'my_post': my_post,
+        }
+        return render(request, 'Account/my_page_myself.html', context)
+    
+    elif request.GET.get('data') == '관심글':
+        favorite_communities = Favorite.objects.filter(user=request.user).values('community')
+
+        # community_ids 리스트에 즐겨찾기한 community의 id들을 저장
+        community_ids = [entry['community'] for entry in favorite_communities]
+
+        # Community 모델에서 즐겨찾기한 community들을 가져옴
+        my_favorite = Community.objects.filter(id__in=community_ids)[:8]
+        context ={
+            'my_favorite' : my_favorite,
+        }
+        return render(request, 'Account/my_page_favorite.html', context)
