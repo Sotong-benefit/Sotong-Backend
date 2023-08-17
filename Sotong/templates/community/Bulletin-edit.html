@@ -25,7 +25,7 @@
 <section>
     <form action="" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
-        <button id="submitBtn" style="margin-top: 0;">수정</button>
+        <button id="submitBtn" style="margin-top: 0;">등록</button>
         <div class="bulletin-container">
             <div class="header">
                 <div class="date"><span id="currentDate"></span></div>
@@ -37,16 +37,23 @@
                 <!-- 등록 버튼 추가 -->
             </div>
             <div class="media-buttons">
-                        <label class="media-button" data-type="사진" for="id_image">
-                            <img class="media-button" src="{% static 'images/bulletin-img.svg' %}" alt="">
-                        </label>
-                        <input type="file" name="image" accept="image/*" id="id_image" style="display:none">
-                <button class="media-button" data-type="파일"><img
-                        src="{% static 'images/bulletin-file-icon.svg' %}"></button>
+                <label class="media-button" data-type="사진" for="id_image">
+                    <img class="media-button" src="{% static 'images/bulletin-img.svg' %}" alt="">
+                </label>
+                <input type="file" name="image" accept="image/*" id="id_image" style="display:none">
+
+                <label class="media-button" data-type="파일" for="id_file">
+                    <img src="{% static 'images/bulletin-file-icon.svg' %}" alt="">
+                </label>
+                <input onchange="viewFile(this)" type="file" name="file" id="id_file" style="display:none">
             </div>
             <div class="write-area">
-                <textarea name="description" id="postContent" >{{ post.description }}</textarea>
+                <textarea name="description" id="postContent">{{ post.description }}</textarea>
+                {% if post.file %}
+                첨부파일 : <a id="id_uploaded_file" href="{{ post.file.url }}" download>{{ post.file.name }}</a>
+                {% endif %}
             </div>
+            
         </div>
     </form>
 </section>
@@ -72,6 +79,18 @@
         // 이곳에서 게시글 등록 처리를 진행 (서버로 데이터 전송 등)
         // 예시: console.log(title, tags, content);
     });
+
+    function viewFile(data) {
+        if (data.files && data.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                file_div = document.getElementById('id_uploaded_file')
+                file_div.href = e.target.result;
+                file_div.innerHTML = data.files[0].name
+            };
+            reader.readAsDataURL(data.files[0]);
+        }
+    }
 </script>
 </div>
 
