@@ -179,11 +179,11 @@
             </div>
         </section>
 
-        {% for benefit in benefits %}
+        {% comment %} {% for benefit in benefits %} {% endcomment %}
         <section class="recommend"> <!--여기 section 부분 반복-->
             <div class="reco">
                 <div class="activity">
-
+                    {% for benefit in benefits %}
                     <!--혜택 77777777777-->
                     <div class="activity1">        
                         <div class="act-idx">
@@ -199,7 +199,7 @@
                             <div class="act-info2">진행 : 2023.08.03~2023.08.04</div>
                         </div>
                     </div>
-
+                    {% endfor %}
                     <!--혜택 88888888888-->
                     <div class="activity1">        
                         <div class="act-idx">
@@ -237,7 +237,7 @@
                 </div>    
             </div>
         </section>
-        {% endfor %}
+        {% comment %} {% endfor %} {% endcomment %}
 
         </section>
     </div>
