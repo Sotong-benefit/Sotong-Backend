@@ -38,13 +38,36 @@ def post_create_form_view(request):
         
         
         if form.is_valid(): #유효성 검사 true
-            tag = form.cleaned_data['tags']
+            tags=form.cleaned_data['tags']
+            section = 0
+            if '1구간' in tags:
+                section = 1
+            elif '2구간' in tags:
+                section = 2
+            elif '3구간' in tags:
+                section = 3
+            elif '4구간' in tags:
+                section = 4
+            elif '5구간' in tags:
+                section = 5
+            elif '6구간' in tags:
+                section = 6
+            elif '7구간' in tags:
+                section = 7
+            elif '8구간' in tags:
+                section = 8
+            elif '9구간' in tags:
+                section = 9
+            elif '10구간' in tags:
+                section = 10
 
             Community.objects.create(
                 title=form.cleaned_data['title'],
-                tags=tag,
+                tags=tags,
                 image=form.cleaned_data['image'],
+                file=form.cleaned_data['file'],
                 description=form.cleaned_data['description'],
+                section = section,
                 user=request.user
             )
         else: #유효성 검사 false
@@ -82,14 +105,20 @@ def post_update_view(request, id):
         title = request.POST.get('title')
         tags = request.POST.get('tags')
         description = request.POST.get('description')
+        new_file = request.FILES.get('file')
         
         if new_image:
             post.image.delete()
             post.image = new_image
 
+        if new_file:
+            post.file.delete()
+            post.file = new_file
+
         post.title = title
         post.tags = tags
         post.description = description
+
         post.save()
 
         
@@ -103,40 +132,6 @@ def post_delete_view(request, id):
             post.delete()
     return redirect('community:post-list')
     
-
-# def post_like_view(request):
-#     if request.method == 'GET': #ajax 방식일 때 아래 코드 실행
-#         post_id = request.GET.get('post_id') #좋아요를 누른 게시물id (blog_id)가지고 오기'
-#         print(post_id)
-
-#         # post = Community.objects.get(id=post_id) 
-#         like_post = get_object_or_404(Community, id=post_id)
-#         # if not request.user.is_authenticated: #버튼을 누른 유저가 비로그인 유저일 때
-#         #     message = "로그인을 해주세요" #화면에 띄울 메세지 
-#         #     context = {"message":message}
-#         #     return HttpResponse(json.dumps(context), content_type='application/json')
-
-#         user = request.user #request.user : 현재 로그인한 유저
-#         #     # 이미 좋아요를 눌렀는지 확인
-
-#         if Favorite.objects.filter(user=user, community=like_post).exists():
-#             # 이미 좋아요를 눌렀을 경우 처리
-#             favorite = Favorite.objects.get(user=user, community=like_post)
-#             favorite.delete()
-
-#         else:
-#             # 중개 모델을 생성하고 저장
-#             like = Favorite(user=user, community=like_post)
-#             like.save()
-
-#         post_list = Community.objects.all().order_by('-created_at')
-#         if request.user.is_authenticated:
-#             for post in post_list:
-#                 post.is_liked = post.favorite_set.filter(user=request.user).exists()
-#         context ={
-#             'post_list': post_list
-#         }
-#         return render(request, 'community/main_frame.html', context)
     
 def post_section_view(request):
     if request.method == 'GET':

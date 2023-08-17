@@ -13,6 +13,7 @@ class Community(models.Model):
     title = models.CharField(max_length=100, verbose_name='제목', null=False, blank=False)
     tags = models.CharField(verbose_name='태그', max_length=20)
     section = models.CharField(verbose_name='구간', max_length=10, null=True, blank=True)
+    file = models.FileField(verbose_name='파일', null=True, blank=True)
 
     user= models.ForeignKey(to=User, on_delete=models.CASCADE,null=True, blank=False)
     

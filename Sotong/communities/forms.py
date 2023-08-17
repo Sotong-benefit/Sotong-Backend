@@ -9,7 +9,7 @@ class CommunityBaseForm(forms.ModelForm):
 class CommunityCreateForm(CommunityBaseForm):
     # description = forms.CharField(widget=forms.Textarea)
     class Meta(CommunityBaseForm.Meta):
-        fields = ['image', 'description' , 'title', 'tags',]
+        fields = ['image', 'description' , 'title', 'tags', 'file']
     
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -23,9 +23,11 @@ class CommunityCreateForm(CommunityBaseForm):
 
 
         self.fields['image'].widget.attrs['class'] = 'media-button'
+        self.fields['file'].widget.attrs['class'] = 'media-button'
         self.fields['tags'].widget.attrs['class'] = 'tag-input'
 
         self.fields['image'].widget.attrs['style'] = 'display:none'
+        self.fields['file'].widget.attrs['style'] = 'display:none'
 
 
 

@@ -45,8 +45,11 @@
                             <img src="{% static 'images/bulletin-img.svg' %}" alt="">
                         </label>
                         {{ form.image }}
-                <button class="media-button" data-type="파일"><img
-                        src="{% static 'images/bulletin-file-icon.svg' %}"></button>
+
+                        <label class="media-button" data-type="파일" for="id_file">
+                            <img src="{% static 'images/bulletin-file-icon.svg' %}" alt="">
+                        </label>
+                        {{ form.file }}
             </div>
             <div class="write-area">
                 <!-- <textarea id="postContent" placeholder="게시글을 작성하세요"></textarea> -->
