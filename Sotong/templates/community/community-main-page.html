@@ -43,14 +43,17 @@
 
 
 <div class="opt">
-    <button class="post" onclick="writePost()">글쓰기&nbsp;<img src="{% static 'images/Group186.png' %}" alt=""></button>
-    <div class="radio-btn">
-        <div class="radio1" onclick="changeImage('radio1')"><img src="{% static 'images/Ellipse 10.png' %}"
-                alt="">&nbsp;&nbsp;내가 쓴 글</div>
-        <div class="radio2" onclick="changeImage('radio2')"><img src="{% static 'images/Ellipse 10.png' %}"
-                alt="">&nbsp;&nbsp;내 관심글</div>
-    </div>
+    <button class="post" onclick="writePost()">글쓰기&nbsp;<img src="/public/images/Group186.png" alt=""></button>
+    <fieldset>
+        <label>
+            <input type="radio" name="contact" value="my-writing"><span>내가 쓴 글</span>
+        </label>
+        <label>
+            <input type="radio" name="contact" value="my-interest"><span>내 관심글</span>
+        </label>
+    </fieldset>
 </div>
+
 
 <div class="idx">
     <div class="idx-content">
