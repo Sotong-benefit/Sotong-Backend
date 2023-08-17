@@ -405,7 +405,7 @@
 }
 
 /* 라디오 버튼 */
-[type="radio"]>span {
+[type="radio"], .radioContent {
     vertical-align: middle;
     margin-left: 0.3rem;
     color: var(--2, #434343);

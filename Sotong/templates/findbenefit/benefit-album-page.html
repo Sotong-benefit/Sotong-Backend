@@ -33,15 +33,23 @@
 </div>
 
 
-        <div class="opt">
-            <div class="post-num">총, <span>1000</span>개</div>
-            <div class="radio-btn">
-                <div class="radio1" onclick="changeImage('radio1')" ><img src="{% static 'images/Ellipse 10.png' %}" alt="">&nbsp;&nbsp;종료 임박순</div>
-                <div class="radio2" onclick="changeImage('radio2')" ><img src="{% static 'images/Ellipse 10.png' %}" alt="">&nbsp;&nbsp;인기순</div>
-                <div class="radio3" onclick="changeImage('radio3')" ><img src="{% static 'images/Ellipse 10.png' %}" alt="">&nbsp;&nbsp;최신순</div>
-                <div class="radio4" onclick="changeImage('radio4')" ><img src="{% static 'images/Ellipse 10.png' %}" alt="">&nbsp;&nbsp;내 관심글</div>
-            </div>
-        </div>
+<div class="opt">
+    <div class="post-num">총, <span>1000</span>개</div>
+    <fieldset>
+        <label style="margin-left: 3rem;">
+            <input type="radio" name="contact" value="termination"><span class="radioContent">종료 임박순</span>
+        </label>
+        <label>
+            <input type="radio" name="contact" value="popularity"><span class="radioContent">인기순</span>
+        </label>
+        <label>
+            <input type="radio" name="contact" value="latest"><span class="radioContent">최신순</span>
+        </label>
+        <label>
+            <input type="radio" name="contact" value="my-interest"><span class="radioContent">내 관심글</span>
+        </label>
+    </fieldset>
+</div>
 
         <div class="idx">
             <div class="idx-content">
