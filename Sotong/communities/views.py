@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from .models import Community, Favorite
+from .models import Community, Favorite, Comment
 from .forms import CommunityCreateForm
 from django.http import HttpResponse,JsonResponse
 import json
@@ -83,11 +83,13 @@ def post_create_form_view(request):
 def post_detail_view(request, id):
     
         try:
-            post = Community.objects.get(id=id)
+            community = Community.objects.get(id=id)
+            comments = Comment.objects.filter(community=community)
         except Community.DoesNotExist:
             return redirect('index')
         context = {
-            'post':post,
+            'post':community,
+            'comment_list' : comments,
         }
         return render(request, 'community/Bulletin-MyPost.html', context)
 
@@ -132,6 +134,55 @@ def post_delete_view(request, id):
             post.delete()
     return redirect('community:post-list')
     
+@login_required
+def comment_create_view(request):
+    try:
+        id = request.GET.get('post_id')
+        content = request.GET.get('content')
+
+        if request.user.is_authenticated:
+            comment = Comment(
+                writer = request.user,
+                content = content,
+                community = Community.objects.get(id=id)
+            )
+            comment.save()
+
+        community = Community.objects.get(id=id)
+        comments = Comment.objects.filter(community=community)
+
+    except Community.DoesNotExist:
+        return redirect('index')
+    
+
+    context = {
+        'comment_list' : comments,
+    }
+    return render(request, 'community/comment_frame.html', context)
+
+@login_required
+def comment_delete_view(request):
+    try:
+        id = request.GET.get('comment_id')
+        community_id = request.GET.get('post_id')
+
+        comment = get_object_or_404(Comment, id=id)
+        if comment.writer == request.user:
+            comment.delete()
+
+        community = Community.objects.get(id=community_id)
+        comments = Comment.objects.filter(community=community)
+
+    except Community.DoesNotExist:
+        return redirect('index')
+    
+
+    context = {
+        'comment_list' : comments,
+        'post' : community
+    }
+    return render(request, 'community/comment_frame.html', context)
+
     
 def post_section_view(request):
     if request.method == 'GET':

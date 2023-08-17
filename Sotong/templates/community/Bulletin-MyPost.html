@@ -110,7 +110,8 @@
     }
 
 
-    #DeleteBtn:hover, #ModifyBtn:hover {
+    #DeleteBtn:hover,
+    #ModifyBtn:hover {
         color: var(--2, #434343);
         box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
     }
@@ -128,7 +129,7 @@
         line-height: normal;
     }
 
-    input:hover {
+    input[type='button']:hover {
         color: var(--2, #434343);
         box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
     }
@@ -172,6 +173,17 @@
         line-height: normal;
         margin: 0.5rem;
     }
+
+    .reigster {
+        border: none;
+        background: var(--5, #F1F1F1);
+        text-align: start;
+    }
+
+    .reigster:focus {
+        outline: none;
+        box-shadow: none;
+    }
 </style>
 {% endblock %}
 
@@ -206,10 +218,38 @@
                 {% endif %}
             </div>
             {% if post.file %}
-                첨부파일 : <a id="id_uploaded_file" href="{{ post.file.url }}" download>{{ post.file.name }}</a>
+            첨부파일 : <a id="id_uploaded_file" href="{{ post.file.url }}" download>{{ post.file.name }}</a>
             {% endif %}
         </div>
     </div>
+
+    <div id="comments-container" class="comments-container" style="margin-bottom: 7.5rem;">
+        {% for comment in comment_list %}
+        <div class="comments {{comment.id}}" id="my-comments">
+            <span class="comment-id" id="my-comment-id">{{ comment.writer }}</span>
+            <span>:</span>
+            <span class="comment" id="my-comment{{comment.id}}">{{ comment.content }}</span>
+            {% if comment.writer == request.user %}
+            <div id="MD-btn" class="MD-btn{{comment.id}}">
+                <input type="button" onclick="editComment('{{comment.id}}')" value="수정 /">
+                <input type="button" onclick="checkDel('{{comment.id}}', '{{post.id}}')" value="삭제">
+            </div>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+    {% if request.user.is_authenticated %}
+
+    <div class="comments" id="my-comments">
+        <span class="comment-id" id="my-comment-id">{{ request.user }}</span>
+        <span>:</span>
+        <input class="comment reigster" id="comment" type="text" placeholder="댓글 작성하기">
+        <div id="MD-btn">
+            <input type="button" id="reigster" onclick="createCmt('{{ post.id}}')" value="등록">
+        </div>
+    </div>
+
+    {% endif %}
 
 </section>
 <div id="confirmationPopup" class="confirmation-popup">
@@ -219,8 +259,68 @@
     <button id="cancelDelete">아니오</button>
 </div>
 
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <!-- 반응형 container 끝 -->
 <script>
+
+    const createCmt = (post_id) => {
+        content = $('#comment').val()
+        console.log(content)
+
+        $.ajax({
+            url: "{% url 'community:comment-create' %}",  // 해당 시즌 게시물을 가져오는 URL
+            method: 'GET',
+            dataType: 'html',
+            data: { post_id, content },
+            success: function (response) {
+                $('#comments-container').html(response);
+            },
+            error: function (xhr, status, error) {
+                console.error(error);
+            }
+
+        });
+
+        $('#comment').val('');
+    }
+
+    const checkDel = (comment_id, post_id) => {
+        check = confirm('정말 삭제하시겠습니까?')
+        if (check) {
+            $.ajax({
+                url: "{% url 'community:comment-delete' %}",  // 해당 시즌 게시물을 가져오는 URL
+                method: 'GET',
+                dataType: 'html',
+                data: { comment_id, post_id },
+                success: function (response) {
+                    $('#comments-container').html(response);
+                },
+                error: function (xhr, status, error) {
+                    console.error(error);
+                }
+
+            });
+        }
+    }
+
+    const editComment = (comment_id) => {
+        comment = $(`#my-comment${comment_id}`)
+        text = comment.text()
+        // 수정 폼 추가
+        comment.empty().append(
+            `<input class="comment reigster" id="comment" type="text" placeholder="댓글 작성하기" value="${text}">
+            <div id="MD-btn">
+        <input type="button" onclick="updateComment('${comment_id}')" value="등록">
+        </div>`
+        );
+
+        // 수정, 삭제 버튼 숨김
+        $(`.MD-btn${comment_id}`).remove();
+
+        console.log(text)
+    }
+
     const currentDateElem = document.getElementById('currentDate');
     const postContentElem = document.getElementById('postContent');
     const postTitleElem = document.getElementById('postTitle');
@@ -258,7 +358,7 @@
         cancelDelete.style.display = 'none';
 
 
-        
+
 
         // 2초 후에 원하는 링크로 이동
         setTimeout(() => {
