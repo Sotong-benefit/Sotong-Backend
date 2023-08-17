@@ -151,3 +151,10 @@ section{
     line-height: 2.5rem; /* 160% */
     padding-top: 5rem;
 }
+
+.postContent{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
