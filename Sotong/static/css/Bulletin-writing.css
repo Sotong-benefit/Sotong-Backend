@@ -152,7 +152,7 @@ section{
     padding-top: 5rem;
 }
 
-.postContent{
+#postContent{
     display: flex;
     justify-content: center;
     flex-direction: column;
