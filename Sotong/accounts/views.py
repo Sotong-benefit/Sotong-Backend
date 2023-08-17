@@ -1,11 +1,29 @@
 from django.shortcuts import render, redirect
 from .forms import SignUpForm, CustomAuthForm
 from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth import get_user_model
 
+from django.http import HttpResponse
+from django.core.serializers.json import DjangoJSONEncoder
+import json
+from django.contrib import messages
+from django.core.exceptions import PermissionDenied
+import ssl
+from django.core.mail import get_connection
+
+from .helpers import email_auth_num
+from .forms import CustomSetPasswordForm
+
+from django.core.mail import send_mail, EmailMultiAlternatives
+from django.template.loader import render_to_string
+
 from communities.models import Community, Favorite
 from calculators.models import Calculator
+from .forms import RecoveryPwForm
+
+from config.settings import base
 
 User = get_user_model()
 # Create your views here.
@@ -153,3 +171,86 @@ def myPage_plus_view(request):
         }
         return render(request, 'Account/my_page_favorite.html', context)
     
+        
+# 비밀 번호 찾기 페이지
+@login_required
+def recovery_pw_view(request):
+    #template_name = 'Account/find.html'
+    template_name = 'Account/recovery_pw.html'
+    
+    if request.method == 'GET':
+        form = RecoveryPwForm()
+        return render(request, template_name, {'form': form})
+
+
+# 비밀번호찾기 창에서 필드 값들을 입력하고 Ajax요청을 하는 view
+def ajax_find_pw_view(request):
+    username = request.POST.get('username')
+    user = User.objects.get(username=username)
+    print('test')
+    if user:
+        # auth_num = email_auth_num()
+        # user.last_name = auth_num 
+        # user.save()
+        
+
+        # subject = '비밀번호 찾기 인증메일입니다.'
+        # from_email = 'xogk1128@naver.com'
+        # recipient_list = ['xogk1128@naver.com']
+        # auth_num = email_auth_num()
+
+        # #text_content = render_to_string('Account/recovery_email.txt', {'auth_num': auth_num })
+        # html_content = render_to_string('Account/recovery_email.html', {'auth_num': 12 })
+
+        # msg = EmailMultiAlternatives(subject, '', from_email, recipient_list)
+        # msg.attach_alternative(html_content, "text/html")
+
+        # # ...
+
+        # msg.send()
+
+        subject = 'Subject Here'
+        message = 'Here is the message.'
+        from_email = 'xogk1128@naver.com'
+        recipient_list = ['xogk1128@naver.com']
+
+        send_mail(subject, message, from_email, recipient_list)
+        
+    return redirect('index')
+    #return HttpResponse(json.dumps({"result": user.username}, cls=DjangoJSONEncoder), content_type = "application/json")
+
+def auth_confirm_view(request):
+    username = request.POST.get('username')
+    input_auth_num = request.POST.get('input_auth_num')
+    target_user = User.objects.get(username=username, last_name=input_auth_num)
+    target_user.last_name = ""
+    target_user.save()
+    request.session['auth'] = target_user.username  
+    
+    return HttpResponse(json.dumps({"result": target_user.username}, cls=DjangoJSONEncoder), content_type = "application/json")
+
+
+def auth_pw_reset_view(request):
+    if request.method == 'GET':
+        if not request.session.get('auth', False):
+            raise PermissionDenied
+
+    if request.method == 'POST':
+        session_user = request.session['auth']
+        current_user = User.objects.get(user_id=session_user)
+        login(request, current_user)
+
+        reset_password_form = CustomSetPasswordForm(request.user, request.POST)
+        
+        if reset_password_form.is_valid():
+            user = reset_password_form.save()
+            messages.success(request, "비밀번호 변경완료! 변경된 비밀번호로 로그인하세요.")
+            logout(request)
+            return redirect('Account:login')
+        else:
+            logout(request)
+            request.session['auth'] = session_user
+    else:
+        reset_password_form = CustomSetPasswordForm(request.user)
+
+    return render(request, 'Account/password_reset.html', {'form':reset_password_form})

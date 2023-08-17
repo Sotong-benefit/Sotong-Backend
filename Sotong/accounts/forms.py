@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.core.validators import EmailValidator
+from django.contrib.auth.forms import SetPasswordForm
 
 class SignUpForm(UserCreationForm):
     username = forms.EmailField(validators=[EmailValidator(message='이메일 형식이 아닙니다.')])
@@ -44,3 +45,30 @@ class CustomAuthForm(AuthenticationForm):
         # 각 필드에 class 추가
         self.fields['username'].widget.attrs['class'] = 'input-form'
         self.fields['password'].widget.attrs['class'] = 'input-form'
+
+
+class RecoveryPwForm(forms.Form):
+    username = forms.CharField(widget=forms.TextInput,)
+
+    class Meta:
+        fields = ['username']
+
+    def __init__(self, *args, **kwargs):
+        super(RecoveryPwForm, self).__init__(*args, **kwargs)
+        self.fields['username'].label = '아이디'
+        self.fields['username'].widget.attrs.update({
+            'class': 'form-control',
+            'id': 'pw_form_id',
+        })
+
+class CustomSetPasswordForm(SetPasswordForm):
+    def __init__(self, *args, **kwargs):
+        super(CustomSetPasswordForm, self).__init__(*args, **kwargs)
+        self.fields['new_password1'].label = '새 비밀번호'
+        self.fields['new_password1'].widget.attrs.update({
+            'class': 'form-control',
+        })
+        self.fields['new_password2'].label = '새 비밀번호 확인'
+        self.fields['new_password2'].widget.attrs.update({
+            'class': 'form-control',
+        })

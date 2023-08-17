@@ -14,6 +14,7 @@ from django.core.exceptions import ImproperlyConfigured
 import os
 from pathlib import Path
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
@@ -151,3 +152,17 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# send email
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.naver.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'xogk1128'
+EMAIL_HOST_PASSWORD = 'hansung1971341@'
+
+DEFAULT_FROM_MAIL =EMAIL_HOST_USER
+
+# EMAIL_HOST_PASSWORD = '97FHMN1ML5Q9'
+# EMAIL_HOST_PASSWORD = 'E6XWMTL8G3YL'

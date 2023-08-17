@@ -46,10 +46,10 @@
     <button class="post" onclick="writePost()">글쓰기&nbsp;<img src="{% static 'images/Group186.png' %}" alt=""></button>
     <fieldset>
         <label>
-            <input type="radio" name="contact" value="my-writing"><span class="radioContent">내가 쓴 글</span>
+            <input type="radio" class="radio1" name="contact" onclick="changeImage('내가쓴글')" value="my-writing"><span class="radioContent">내가 쓴 글</span>
         </label>
         <label>
-            <input type="radio" name="contact" value="my-interest"><span class="radioContent">내 관심글</span>
+            <input type="radio" class="radio2" name="contact" onclick="changeImage('내관심글')" value="my-interest"><span class="radioContent">내 관심글</span>
         </label>
     </fieldset>
 </div>
@@ -103,34 +103,30 @@
 
     let radioBtn = '';
     function changeImage(selectedRadio) {
-        const radio1Img = document.getElementsByClassName("radio1")[0].getElementsByTagName("img")[0];
-        const radio2Img = document.getElementsByClassName("radio2")[0].getElementsByTagName("img")[0];
+        const radio1Img = document.getElementsByClassName("radio1")[0];
+        const radio2Img = document.getElementsByClassName("radio2")[0];
         
 
-        if (selectedRadio === "radio1") {
+        if (selectedRadio === "내가쓴글") {
             
             if (radioBtn == selectedRadio) {
-                radio1Img.src = "{% static 'images/Ellipse 10.png' %}";
+                $("input:radio[class='radio1']").prop('checked', false);
                 writeType = ""
                 radioBtn = '';
             }
             else {
-                radio1Img.src = "{% static 'images/Ellipse 11.png' %}";
-                radio2Img.src = "{% static 'images/Ellipse 10.png' %}";
                 writeType = "내가쓴글"
                 radioBtn = selectedRadio;
             }
             
         } 
-        else if (selectedRadio === "radio2") {
+        else if (selectedRadio === "내관심글") {
             if (radioBtn == selectedRadio) {
-                radio2Img.src = "{% static 'images/Ellipse 10.png' %}";
+                $("input:radio[class='radio2']").prop('checked', false);
                 writeType = ""
                 radioBtn = '';
             }
             else {
-                radio1Img.src = "{% static 'images/Ellipse 10.png' %}";
-                radio2Img.src = "{% static 'images/Ellipse 11.png' %}";
                 writeType = "내관심글"
                 radioBtn = selectedRadio;
             }
