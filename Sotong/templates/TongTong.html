@@ -133,7 +133,7 @@
     <script src="{% static 'js/Tong-Tong.js' %}"></script>
     
     <!--사진 업로드 부분 AJAX-->
-    <script>
+    {% comment %} <script>
         function uploadFile() {
             var fileInput = document.getElementById("chooseFile");
             var tagInput = document.getElementById("TongTong-tag");
@@ -153,7 +153,7 @@
             };
             xhr.send(formData);
         }
-    </script>
+    </script> {% endcomment %}
 
     {% endblock %}
     
