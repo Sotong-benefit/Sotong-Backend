@@ -585,8 +585,7 @@
 
 /* 라디오 버튼 */
 /* 라디오버튼 */
-[type="radio"],
-span {
+[type="radio"]>span{
     vertical-align: middle;
     margin-left: 0.3rem;
     color: var(--2, #434343);
