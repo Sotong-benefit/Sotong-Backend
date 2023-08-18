@@ -53,3 +53,12 @@ def newbenefit(request):
     context = {'benefits':benefits}
     #context에 모든 정보 저장
     return render(request, 'findbenefit/benefit-album-page.html', context)
+
+
+def benefit_detail_view(request, id):
+    benefit = Benefit.objects.get(id=id)
+    context = {
+        'benefit' : benefit
+    }
+
+    return render(request, 'findbenefit/find-benefit-bulletin.html', context)

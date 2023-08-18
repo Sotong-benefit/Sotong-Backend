@@ -39,6 +39,7 @@ def upload(request):
             request.session['tongtong'] = counter.counts
         else:
             counter = Counter(counts=0, user=request.user)
+            counter.counts += 3
             counter.save()
             request.session['tongtong'] = counter.counts
         
