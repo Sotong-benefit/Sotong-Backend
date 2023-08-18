@@ -76,8 +76,13 @@ def login_view(request):
         form = CustomAuthForm(request, request.POST)
         if form.is_valid():
             # 비즈니스 로직 처리 - 로그인 처리
-            counter = Counter.objects.get(user=request.user)
-            request.session['tongtong'] = counter.counts
+            if Counter.objects.filter(user=request.user).exists:
+                counter = Counter.objects.get(user=request.user)
+                request.session['tongtong'] = counter.counts
+            else:
+                counter = Counter(0, request.user)
+                counter.save()
+            
 
             login(request, form.user_cache)
             # 응답
