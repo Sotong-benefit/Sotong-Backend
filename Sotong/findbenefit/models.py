@@ -5,11 +5,11 @@ User = get_user_model()
 
 
 class Benefit(models.Model):
-    image = models.ImageField(verbose_name='이미지',null=True, blank=True)
+    image = models.ImageField(verbose_name='이미지',null=False, blank=True)
     title = models.CharField(max_length=100, verbose_name='제목', null=False, blank=False)
     tag = models.CharField(max_length=100, verbose_name='태그', null=False, blank=False)
 
-    user= models.ForeignKey(to=User, on_delete=models.CASCADE,null=True, blank=False)
+    user= models.ForeignKey(to=User, on_delete=models.CASCADE,null=False, blank=False)
 
     class Meta:
         db_table = 'benefit'

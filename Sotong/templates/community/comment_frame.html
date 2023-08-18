@@ -1,11 +1,11 @@
 {% for comment in comment_list %}
-<div class="comments" id="my-comments">
+<div class="comments {{comment.id}}" id="my-comments">
     <span class="comment-id" id="my-comment-id">{{ comment.writer }}</span>
     <span>:</span>
-    <span class="comment" id="my-comment">{{ comment.content }}</span>
+    <span class="comment" id="my-comment{{comment.id}}">{{ comment.content }}</span>
     {% if comment.writer == request.user %}
-    <div id="MD-btn">
-        <input type="button" value="수정 /">
+    <div id="MD-btn" class="MD-btn{{comment.id}}">
+        <input type="button" onclick="editComment('{{comment.id}}', '{{post.id}}')" value="수정 /">
         <input type="button" onclick="checkDel('{{comment.id}}', '{{post.id}}')" value="삭제">
     </div>
     {% endif %}

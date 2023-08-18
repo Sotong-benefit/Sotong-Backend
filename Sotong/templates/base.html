@@ -63,11 +63,7 @@
                         <div class="TongTong-wrap">
                             <img src="{% static 'images/myInfo-img.svg' %}">
                             <span class="TongTong">통통이
-                                {% if count %}
-                                    <span id="TongTong-num">{{ count }}개</span>
-                                {% else %}
-                                    <span id="TongTong-num">0개</span>
-                                {% endif %}
+                                    <span id="TongTong-num">{{ request.session.tongtong }}개</span>
                             </span>
                         </div>
 

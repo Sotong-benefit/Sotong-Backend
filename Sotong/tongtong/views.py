@@ -31,13 +31,14 @@ def upload(request):
         post.tag = request.POST.get('tag')
 
         post.save()
-        
-        global count
-        count += 3  # 3개씩 증가
 
-        # counter = Counter.objects.get(user=request.user)
-        # counter.counts += 3
-        # counter.save()
+        counter = Counter.objects.get(user=request.user)
+        counter.counts += 3
 
-    return render(request, 'TongTong.html', {'count': count})
-    # return render(request, 'TongTong.html')
+        request.session['tongtong'] = counter.counts
+
+        counter.save()
+        # global count
+        #count += 3  # 3개씩 증가
+    return render(request, 'TongTong.html')
+
