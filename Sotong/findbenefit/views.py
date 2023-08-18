@@ -19,7 +19,11 @@ def album(request):
     return render(request, 'findbenefit/benefit-album-page.html')
 
 def benefitlist(request):
-    return render(request, "findbenefit/benefit-list-page.html")
+    benefits = Benefit.objects.all()
+    context = {
+        'benefits': benefits
+    }
+    return render(request, "findbenefit/benefit-list-page.html", context)
 
 def post_section_view(request):
     if request.method == 'GET':

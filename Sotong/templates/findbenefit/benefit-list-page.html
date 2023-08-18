@@ -51,7 +51,7 @@
 
         <div class="idx">
             <div class="idx-content">
-                <a href= "{% url 'findbenefit:album' %}">
+                <a href= "{% url 'findbenefit:findbenefit' %}">
                     
                 <div class="index1">
                     <div class="album-icon"><img src="{% static 'images/album.png' %}" alt=""></div>
@@ -66,12 +66,13 @@
             </div>
         </div>
 
+        {% for benefit in benefits %}
         <div class="my-post"><!--my-post부분 반복-->
             <div class="post-content" onclick="moveDetailPost()">
                 <div class="deadline">D-11</div>
                 <div class="con">모두</div>
                 <div class="star"><img src="{% static 'images/Star7.png' %}" class="starImage"></div>
-                <div class="post-title">소득연계형 국가장학금</div>
+                <div class="post-title">{{ benefit.title }}</div>
                 <div class="post-tag">#국가장학금</div>
                 <div class="post-info-container">
                     <div class="post-info1">신청 : 2023.08.01~2023.08.02</div>
@@ -79,6 +80,7 @@
                 </div>
             </div>
         </div>
+        {% endfor %}
 
 
         </section>
