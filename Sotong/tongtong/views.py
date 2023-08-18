@@ -34,6 +34,9 @@ def upload(request):
         
         counter = Counter.objects.get(user=request.user)
         counter.counts += 3
+
+        request.session['tongtong'] = counter.counts
+
         counter.save()
         # global count
         #count += 3  # 3개씩 증가

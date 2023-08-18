@@ -58,7 +58,7 @@
                         <div class="TongTong-wrap">
                             <img src="{% static 'images/myInfo-img.svg' %}">
                             <span class="TongTong">통통이
-                                    <span id="TongTong-num">{{ counter.counts }}개</span>
+                                    <span id="TongTong-num">{{ request.session.tongtong }}개</span>
                             </span>
                         </div>
                     </div>

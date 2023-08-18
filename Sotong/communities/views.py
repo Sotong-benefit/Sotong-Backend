@@ -161,6 +161,27 @@ def comment_create_view(request):
     return render(request, 'community/comment_frame.html', context)
 
 @login_required
+def comment_update_view(request):
+    id = request.FILES.get('comment_id')
+
+    comment = get_object_or_404(Comment, id=id, writer=request.user)
+    
+    content = request.GET.get('text')
+    post_id = request.GET.get('post_id')
+
+    comment.content = content
+    comment.save()
+
+    community = Community.objects.get(id=post_id)
+    comments = Comment.objects.filter(community=community)
+
+    context = {
+        'comment_list' : comments,
+    }
+    
+    return redirect('community/comment_frame.html', context)
+
+@login_required
 def comment_delete_view(request):
     try:
         id = request.GET.get('comment_id')

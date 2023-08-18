@@ -7,6 +7,8 @@ from django.contrib.auth import get_user_model
 from communities.models import Community, Favorite
 from calculators.models import Calculator
 
+from tongtong.models import Counter
+
 User = get_user_model()
 # Create your views here.
 
@@ -74,6 +76,9 @@ def login_view(request):
         form = CustomAuthForm(request, request.POST)
         if form.is_valid():
             # 비즈니스 로직 처리 - 로그인 처리
+            counter = Counter.objects.get(user=request.user)
+            request.session['tongtong'] = counter.counts
+
             login(request, form.user_cache)
             # 응답
             return redirect('index')

@@ -76,7 +76,6 @@
         margin-top: 2.5rem;
         display: flex;
         align-items: center;
-        justify-content: space-between;
     }
 
     .comment {
@@ -231,7 +230,7 @@
             <span class="comment" id="my-comment{{comment.id}}">{{ comment.content }}</span>
             {% if comment.writer == request.user %}
             <div id="MD-btn" class="MD-btn{{comment.id}}">
-                <input type="button" onclick="editComment('{{comment.id}}')" value="수정 /">
+                <input type="button" onclick="editComment('{{comment.id}}', '{{post.id}}')" value="수정 /">
                 <input type="button" onclick="checkDel('{{comment.id}}', '{{post.id}}')" value="삭제">
             </div>
             {% endif %}
@@ -287,6 +286,7 @@
 
     const checkDel = (comment_id, post_id) => {
         check = confirm('정말 삭제하시겠습니까?')
+        console.log(comment_id)
         if (check) {
             $.ajax({
                 url: "{% url 'community:comment-delete' %}",  // 해당 시즌 게시물을 가져오는 URL
@@ -304,21 +304,42 @@
         }
     }
 
-    const editComment = (comment_id) => {
+    const editComment = (comment_id, post_id) => {
+        
         comment = $(`#my-comment${comment_id}`)
         text = comment.text()
         // 수정 폼 추가
         comment.empty().append(
-            `<input class="comment reigster" id="comment" type="text" placeholder="댓글 작성하기" value="${text}">
+            `
+            <input class="comment reigster" id="my-comment${comment_id}" type="text" placeholder="댓글 작성하기" value="${text}">
             <div id="MD-btn">
-        <input type="button" onclick="updateComment('${comment_id}')" value="등록">
+        <input type="button" id="reigster" onclick="updateForm('${comment_id}', '${post_id}')" value="등록">
         </div>`
         );
 
         // 수정, 삭제 버튼 숨김
         $(`.MD-btn${comment_id}`).remove();
 
-        console.log(text)
+        // console.log(text)
+    }
+
+    const updateForm = (comment_id, post_id) => {
+        comment = $(`#my-comment${comment_id}`)
+        text = comment.val()
+        console.log(comment)
+        $.ajax({
+                url: "{% url 'community:comment-update' %}",  // 해당 시즌 게시물을 가져오는 URL
+                method: 'GET',
+                dataType: 'html',
+                data: { comment_id, post_id, text },
+                success: function (response) {
+                    $('#comments-container').html(response);
+                },
+                error: function (xhr, status, error) {
+                    console.error(error);
+                }
+
+            });
     }
 
     const currentDateElem = document.getElementById('currentDate');
