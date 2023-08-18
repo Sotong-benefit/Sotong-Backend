@@ -169,6 +169,10 @@ nav img{
 }
 
 .myInfo-info-letter{
+    margin: 0.25rem;
+}
+
+.myInfo-info-letter a{
     color: #848484;     
     font-family: Pretendard;
     font-size: 1.5625rem;

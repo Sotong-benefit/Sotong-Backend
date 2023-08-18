@@ -346,6 +346,12 @@
     margin-bottom: 0.3rem;
 }
 
+.album-icon img{
+    width: 2.125rem;
+    height: 1.625rem;
+    flex-shrink: 0;
+}
+
 .index1 {
     display: flex;
     justify-content: center;

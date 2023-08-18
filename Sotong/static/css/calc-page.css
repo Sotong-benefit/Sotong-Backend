@@ -67,6 +67,12 @@
     line-height: normal;
 }
 
+.option-title > img{
+    width: 0.5625rem;
+    height: 0.5625rem;
+    flex-shrink: 0;
+}
+
 .option-buttons, .option-buttons2{
     display:flex;
     align-items:center;
@@ -110,6 +116,15 @@
     line-height: normal;
 }
 
+.option1-info p{
+    color: var(--2, #434343);
+    font-family: Pretendard;
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+}
+
 .option2-info{
     margin-top:2rem;
     margin-left:10rem;
@@ -120,6 +135,16 @@
     font-weight: 300;
     line-height: normal;
 }
+
+.option2-info p{
+    color: var(--2, #434343);
+    font-family: Pretendard;
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+}
+
 
 /*input options*/
 .input1{
@@ -303,6 +328,15 @@
     line-height: normal;
 }
 
+.input-info p{
+    color: var(--2, #434343);
+    font-family: Pretendard;
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+}
+
 /*save*/
 .save{
     position:absolute;
@@ -378,3 +412,13 @@
     font-weight: 400;
     line-height: normal;
 }
+
+.warning p{
+    color: var(--unnamed, #FF7474);
+    text-align: center;
+    font-family: Pretendard;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+} 

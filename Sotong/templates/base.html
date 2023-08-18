@@ -44,7 +44,7 @@
                     </div>
                     <div style="margin-top: 0.8rem;">
                         <a href="{% url 'accounts:myPage' %}" class="myInfo-info-letter" id="myInfo-login">내정보</a>
-                        <img src="{% static 'images/horizontal-line.svg' %}">
+                        <img src="{% static 'images/horizontal-line.svg' %}" st>
                         <a href="{% url 'accounts:logout' %}" class="myInfo-info-letter" id="myInfo-new">로그아웃</a>
                         
                         
@@ -62,7 +62,12 @@
                         <br><br><br>
                         <div class="TongTong-wrap">
                             <img src="{% static 'images/myInfo-img.svg' %}">
-                            <span class="TongTong">통통이
+                            <span class="TongTong" style="color: #848484;
+                            font-family: Pretendard;
+                            font-size: 1.5625rem;
+                            font-style: normal;
+                            font-weight: 400;
+                            line-height: normal;">통통이
                                     <span id="TongTong-num">{{ request.session.tongtong }}개</span>
                             </span>
                         </div>
@@ -75,7 +80,12 @@
                         <div><img src="{% static 'images/myInfo-img.svg' %} " class="myInfo-logo-img">
                         </div>
                         <div class="myInfo-info-letter" id="myInfo-UserName"><a href="{% url 'accounts:logout' %}"
-                                style="color:#848484;">통통이</a></div>
+                                style="color: #848484;
+                                font-family: Pretendard;
+                                font-size: 1.5625rem;
+                                font-style: normal;
+                                font-weight: 400;
+                                line-height: normal;">통통이</a></div>
                     </div>
                     <div style="margin-top: 0.8rem;">
                         <a href="{% url 'accounts:login' %}" class="myInfo-info-letter" id="myInfo-login">로그인</a>
