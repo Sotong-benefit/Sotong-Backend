@@ -52,13 +52,13 @@
                 <a href= "{% url 'findbenefit:album' %}">
                     
                 <div class="index1">
-                    <div class="album-icon"><img src="/public/images/album.png" alt=""></div>
+                    <div class="album-icon"><img src="{% static 'images/album.png' %}" alt=""></div>
                     <div class="album-info">앨범형<br>보기</div>
                 </div>
                 </a>
 
                 <div class="index2">
-                    <div class="album-icon"><img src="/public/images/blue-vector.png" alt=""></div>
+                    <div class="album-icon"><img src="{% static 'images/blue-vector.png' %}" alt=""></div>
                     <div class="album-info">목록형<br>보기</div>
                 </div>
             </div>
@@ -68,7 +68,7 @@
             <div class="post-content" onclick="moveDetailPost()">
                 <div class="deadline">D-11</div>
                 <div class="con">모두</div>
-                <div class="star"><img src="/public/images/Star7.png" class="starImage"></div>
+                <div class="star"><img src="{% static 'images/Star7.png' %}" class="starImage"></div>
                 <div class="post-title">소득연계형 국가장학금</div>
                 <div class="post-tag">#국가장학금</div>
                 <div class="post-info-container">
