@@ -21,7 +21,7 @@ def upload_success(request):
     counter = Counter.objects.first()
     return render(request, 'TongTong.html', {'counter': counter})
 
-# count = 0  # 초기 카운터 값
+count = 0  # 초기 카운터 값
 
 def upload(request):
     if request.method == 'POST':
@@ -32,9 +32,12 @@ def upload(request):
 
         post.save()
         
-        counter = Counter.objects.get(user=request.user)
-        counter.counts += 3
-        counter.save()
-        # global count
-        #count += 3  # 3개씩 증가
-    return render(request, 'TongTong.html')
+        global count
+        count += 3  # 3개씩 증가
+
+        # counter = Counter.objects.get(user=request.user)
+        # counter.counts += 3
+        # counter.save()
+
+    return render(request, 'TongTong.html', {'count': count})
+    # return render(request, 'TongTong.html')
