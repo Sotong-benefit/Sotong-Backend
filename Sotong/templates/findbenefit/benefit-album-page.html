@@ -58,7 +58,8 @@
                     <div class="album-info">앨범형<br>보기</div>
                 </div>
 
-                <a href= '{% url "benefit-list-page.html" %}'>
+                <a href= "{% url 'findbenefit:benefitlist' %}">
+                    
                 <div class="index2" >
                     <div class="album-icon"><img src="{% static 'images/Vector.png'  %}" alt=""></div>
                     <div class="album-info">목록형<br>보기</div>
@@ -190,12 +191,15 @@
             </div>
         </section>
 
-        {% comment %} {% for benefit in benefits %} {% endcomment %}
-        <section class="recommend"> <!--여기 section 부분 반복-->
+        {% for benefit in benefits %}
+            {% if forloop.counter0|divisibleby:3 %}
+            <section class="recommend"> 
+            
             <div class="reco">
                 <div class="activity">
-                    {% for benefit in benefits %}
+                
                     <!--혜택 77777777777-->
+                    {% endif %}
                     <div class="activity1">        
                         <div class="act-idx">
                             <div class="deadline">D-11</div>
@@ -203,52 +207,23 @@
                         </div>
                         <div class="act-content" >
                             <div class="star"><img src="{% static 'images/Star7.png' %}" class="starImage"></div>
-                            <img src="{% static 'images/life.jpg' %}" name="image" >
+                            <img src="{{ benefit.image.url }}" name="image"  alt="사진1">
                             <div class="act-name" name="title">{{ benefit.title }}소득연계형 국가장학금</div>
                             <div class="act-tag" name="tag">{{ benefit.tag }}#기초생활 보장</div>
                             <div class="act-info1">신청 : 2023.08.01~2023.08.02</div>
                             <div class="act-info2">진행 : 2023.08.03~2023.08.04</div>
                         </div>
                     </div>
-                    {% endfor %}
-                    <!--혜택 88888888888-->
-                    <div class="activity1">        
-                        <div class="act-idx">
-                            <div class="deadline">D-11</div>
-                            <div class="act-sec">모두</div>
-                        </div>
-                        <div class="act-content">
-                            <div class="star"><img src="{% static 'images/Star7.png' %}" class="starImage"></div>
-                            <img src="{% static 'images/income.jpg' %}" >
-                            <div class="act-name">{{ benefit.title }}소득연계형 국가장학금</div>
-                            <div class="act-tag">{{ benefit.tag }}#소득공제</div>
-                            <div class="act-info1">신청 : 2023.08.17~2023.09.14</div>
-                            <div class="act-info2">진행 : 2023.08.17~2023.09.21</div>
-                        </div>
-                    </div>
-
-                    <!--혜택 9999999999-->
-                    <div class="activity1">        
-                        <div class="act-idx">
-                            <div class="deadline">D-11</div>
-                            <div class="act-sec">모두</div>
-                        </div>
-                        <div class="act-content">
-                            <div class="star"><img src="{% static 'images/Star7.png' %}" class="starImage"></div>
-                            <img src="{% static 'images/tax.jpg' %}" >
-                            <div class="act-name">{{ benefit.title }}소득연계형 국가장학금</div>
-                            <div class="act-tag">{{ benefit.tag }}#세액공제</div>
-                            <div class="act-info1">신청 : 2023.08.01~2023.08.02</div>
-                            <div class="act-info2">진행 : 2023.08.03~2023.08.04</div>
-                        </div>
-                    </div>
-
                     
 
+                    
+            {% if forloop.last or forloop.counter|add:1|divisibleby:4 %}
                 </div>    
             </div>
-        </section>
-        {% comment %} {% endfor %} {% endcomment %}
+            
+            </section>
+            {% endif %}
+        {% endfor %}
 
         </section>
     </div>

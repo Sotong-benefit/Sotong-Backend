@@ -5,13 +5,21 @@ from django.shortcuts import render, redirect
 from findbenefit.models import Benefit, Like
 
 def findbenefit(request):
-    return render(request, 'findbenefit/benefit-album-page.html')
+
+    benefits = Benefit.objects.all()
+    context = {
+        'benefits': benefits
+    }
+    return render(request, 'findbenefit/benefit-album-page.html', context )
 
 def bulletin(request):
     return render(request, 'findbenefit/find-benefit-bulletin.html')
 
 def album(request):
     return render(request, 'findbenefit/benefit-album-page.html')
+
+def benefitlist(request):
+    return render(request, "findbenefit/benefit-list-page.html")
 
 def post_section_view(request):
     if request.method == 'GET':
