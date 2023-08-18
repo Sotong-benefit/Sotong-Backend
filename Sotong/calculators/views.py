@@ -51,14 +51,15 @@ def result_view(request):
             section = 10
         
         if request.user.is_authenticated:
-            calc_res = get_object_or_404(Calculator, user=request.user)
-            calc_res.delete()
-            calc_res.income = result
-            calc_res.section = section
-            calc_res.save()
+            if Calculator.objects.filter(user=request.user).exists():
+                calc_res = get_object_or_404(Calculator, user=request.user)
+                calc_res.delete()
+                calc_res.income = result
+                calc_res.section = section
+                calc_res.save()
+            else:
+                calc = Calculator(income=result, section=section, user=request.user).save()
 
-
-        result = format(result, ',')
 
 
     post_list = Community.objects.all().filter(section=section)
