@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/benefit-list-page.css' %}">
+
+<style>
+    #benefit-page-link{
+        color: var(--1, #00C2FF);
+    }
+</style>
+
+        <div class="choice-buttons">
+            <input type="button" class="btn1" onclick="highlightButton('btn1')" value="1구간">
+            <input type="button" class="btn2" onclick="highlightButton('btn2')" value="2구간">
+            <input type="button" class="btn3" onclick="highlightButton('btn3')" value="3구간">
+            <input type="button" class="btn4" onclick="highlightButton('btn4')" value="4구간">
+            <input type="button" class="btn5" onclick="highlightButton('btn5')" value="5구간">
+            <input type="button" class="btn6" onclick="highlightButton('btn6')" value="6구간">
+            <input type="button" class="btn7" onclick="highlightButton('btn7')" value="7구간">
+            <input type="button" class="btn8" onclick="highlightButton('btn8')" value="8구간">
+            <input type="button" class="btn9" onclick="highlightButton('btn9')" value="9구간">
+            <input type="button" class="btn10" onclick="highlightButton('btn10')" value="10구간">
+        </div>
+
+        <div class="hashtag">
+            <div class="tag-title">추천 태그</div>
+            <input type="button" class="tag" onclick="toggleTag(this)" value="#국가장학금">
+            <input type="button" class="tag" onclick="toggleTag(this)" value="#소득공제">
+            <input type="button" class="tag" onclick="toggleTag(this)" value="#국민기초생활복지제도">
+        </div>
+
+        <div class="opt">
+            <div class="post-num">총, <span>1000</span>개</div>
+            <fieldset>
+                <label style="margin-left: 3rem;">
+                    <input type="radio" name="contact" value="termination"><span class="radioContent">종료 임박순</span>
+                </label>
+                <label>
+                    <input type="radio" name="contact" value="popularity"><span class="radioContent">인기순</span>
+                </label>
+                <label>
+                    <input type="radio" name="contact" value="latest"><span class="radioContent">최신순</span>
+                </label>
+                <label>
+                    <input type="radio" name="contact" value="my-interest"><span class="radioContent">내 관심글</span>
+                </label>
+            </fieldset>
+        </div>
+
+        <div class="idx">
+            <div class="idx-content">
+                <a href= "{% url 'findbenefit:album' %}">
+                    
+                <div class="index1">
+                    <div class="album-icon"><img src="{% static 'images/album.png' %}" alt=""></div>
+                    <div class="album-info">앨범형<br>보기</div>
+                </div>
+                </a>
+
+                <div class="index2">
+                    <div class="album-icon"><img src="{% static 'images/blue-vector.png' %}" alt=""></div>
+                    <div class="album-info">목록형<br>보기</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="my-post"><!--my-post부분 반복-->
+            <div class="post-content" onclick="moveDetailPost()">
+                <div class="deadline">D-11</div>
+                <div class="con">모두</div>
+                <div class="star"><img src="{% static 'images/Star7.png' %}" class="starImage"></div>
+                <div class="post-title">소득연계형 국가장학금</div>
+                <div class="post-tag">#국가장학금</div>
+                <div class="post-info-container">
+                    <div class="post-info1">신청 : 2023.08.01~2023.08.02</div>
+                    <div class="post-info2">진행 : 2023.08.03~2023.08.04</div>
+                </div>
+            </div>
+        </div>
+
+
+        </section>
+    </div>
+    <!-- 반응형 container 끝 -->
+    <script src="{% static 'js/benefit-list-page.js' %}"></script>
+</body>
+{% endblock %}

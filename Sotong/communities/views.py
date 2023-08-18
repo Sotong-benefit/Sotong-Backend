@@ -6,12 +6,18 @@ from django.http import HttpResponse,JsonResponse
 import json
 from tongtong.models import Counter
 from django.db.models import Q
+from findbenefit.models import Benefit
 
 # Create your views here.
 
 def index(request):
 
-    return render(request, 'index.html')
+    benefits = Benefit.objects.all()
+    context = {
+        'benefits': benefits
+    }
+
+    return render(request, 'index.html', context)
 
 
 def post_list_view(request):

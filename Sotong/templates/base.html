@@ -7,10 +7,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
-        content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+        content="width=device-width, initial-scale=1, user-scalable=no" />
 
     <link rel="stylesheet" type="text/css" href="{% static 'css/main-frame.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/TongTong.css' %}">
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 
@@ -46,12 +47,16 @@
                         <img src="{% static 'images/horizontal-line.svg' %}">
                         <a href="{% url 'accounts:logout' %}" class="myInfo-info-letter" id="myInfo-new">로그아웃</a>
                         
+                        
+
                         <!-- 통통이 갯수 -->
-                        <!-- {% comment %} <br>
+                        {% comment %} <br><br><br>
                         <div class="TongTong-wrap">
                             <img src="{% static 'images/myInfo-img.svg' %}">
-                            <span class="TongTong">통통이 <span id="TongTong-num">0{{ count }}개</span></span>
-                        </div> {% endcomment %} -->
+                            <span class="TongTong">통통이
+                                    <span id="TongTong-num">{{ counter.counts }}개</span>
+                            </span>
+                        </div> {% endcomment %}
 
                         <!-- 통통이 갯수 -->
                         <br><br><br>
@@ -61,6 +66,7 @@
                                     <span id="TongTong-num">{{ request.session.tongtong }}개</span>
                             </span>
                         </div>
+
                     </div>
 
                     {% else %} <!--로그인 안 했을 때-->

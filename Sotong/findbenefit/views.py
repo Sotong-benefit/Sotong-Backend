@@ -18,6 +18,9 @@ def bulletin(request):
 def album(request):
     return render(request, 'findbenefit/benefit-album-page.html')
 
+def benefitlist(request):
+    return render(request, "findbenefit/benefit-list-page.html")
+
 def post_section_view(request):
     if request.method == 'GET':
         post_id = request.GET.get('post_id') #좋아요를 누른 게시물id (blog_id)가지고 오기'
