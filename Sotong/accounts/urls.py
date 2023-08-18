@@ -1,6 +1,6 @@
 from django.urls import path
 
-from .views import signup_view, login_view, logout_view, myPage_view, myPage_plus_view, find_out_view, find_view
+from .views import signup_view, login_view, logout_view, myPage_view, myPage_plus_view, find_out_view, find_view, benefit_like_view
 
 app_name = 'accounts'
 
@@ -13,5 +13,7 @@ urlpatterns = [
     
 
     path('myPage/', myPage_view, name='myPage'),
-    path('myPage_plus', myPage_plus_view, name='myPage_plus')
+    path('myPage_plus', myPage_plus_view, name='myPage_plus'),
+
+    path('benefit', benefit_like_view , name='benefit-like')
 ]

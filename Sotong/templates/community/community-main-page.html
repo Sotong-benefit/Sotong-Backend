@@ -76,8 +76,8 @@
                     src="{% static 'images/Star7.png' %}" alt=""></div>
             {% endif %}
         {% else %}
-        <div class="star" href="{% url 'accounts:login' %}"><img class="starImage" src="{% static 'images/Star7.png' %}"
-                alt=""></div>
+        <a class="star" href="{% url 'accounts:login' %}"><img class="starImage" src="{% static 'images/Star7.png' %}"
+                alt=""></a>
         {% endif %}
         <a href="{% url 'community:post-detail' post.id %}">
             <div class="post-title">{{ post.title }}</div>
