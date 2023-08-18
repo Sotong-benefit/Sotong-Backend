@@ -57,10 +57,13 @@
                     <div class="album-icon"><img src="{% static 'images/blue-album.png' %}" alt=""></div>
                     <div class="album-info">앨범형<br>보기</div>
                 </div>
-                <div class="index2" onclick="moveToList()">
+
+                <a href= '{% url "benefit-list-page.html" %}'>
+                <div class="index2" >
                     <div class="album-icon"><img src="{% static 'images/Vector.png'  %}" alt=""></div>
                     <div class="album-info">목록형<br>보기</div>
                 </div>
+                </a>
             </div>
         </div>
 
