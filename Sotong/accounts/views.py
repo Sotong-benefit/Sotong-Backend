@@ -80,14 +80,12 @@ def login_view(request):
             
 
             login(request, form.user_cache)
-            if Counter.objects.filter(user=request.user).exists:
-                counter = Counter.objects.filter(user=request.user)
-                print('test')
+            if Counter.objects.filter(user=request.user).exists():
+                counter = Counter.objects.get(user=request.user)
                 request.session['tongtong'] = counter.counts
             else:
                 counter = Counter(counts=0, user=request.user)
                 counter.save()
-                print('test2')
                 request.session['tongtong'] = counter.counts
                 
             # 응답
