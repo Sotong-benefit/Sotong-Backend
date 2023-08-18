@@ -5,6 +5,10 @@ a{
     text-decoration: none;
 }
 
+html {
+    -webkit-text-size-adjust:none; 
+}
+
 @media screen and (max-width: 1680px) {
     *{
         margin: 0;
