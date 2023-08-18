@@ -32,10 +32,16 @@ def upload(request):
 
         post.save()
 
-        counter = Counter.objects.get(user=request.user)
-        counter.counts += 3
+        if Counter.objects.filter(user=request.user).exists():
+            counter = Counter.objects.get(user=request.user)
+            counter.counts += 3
 
-        request.session['tongtong'] = counter.counts
+            request.session['tongtong'] = counter.counts
+        else:
+            counter = Counter(counts=0, user=request.user)
+            counter.save()
+            request.session['tongtong'] = counter.counts
+        
 
         counter.save()
         # global count
