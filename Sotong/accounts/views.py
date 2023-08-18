@@ -7,6 +7,7 @@ from django.contrib.auth import get_user_model
 from communities.models import Community, Favorite
 from calculators.models import Calculator
 
+from findbenefit.models import Benefit, Like
 from tongtong.models import Counter
 
 User = get_user_model()
@@ -129,6 +130,8 @@ def myPage_view(request):
     # Community 모델에서 즐겨찾기한 community들을 가져옴
     my_favorite = Community.objects.filter(id__in=community_ids)[:5]
 
+    benefits = Benefit.objects.all()[:3]
+
     if Calculator.objects.all().filter(user=request.user).exists():
         section_res = Calculator.objects.all().filter(user=request.user)[0]
         income = section_res.income
@@ -137,11 +140,13 @@ def myPage_view(request):
     else:
         income = '-'
         section = '-'
+
     context ={
         'my_post': my_post,
         'my_favorite' : my_favorite,
         'income' : income,
         'section' : section,
+        'benefits' : benefits,
     }
     return render(request, 'Account/my-page.html', context)
 
@@ -166,3 +171,39 @@ def myPage_plus_view(request):
         }
         return render(request, 'Account/my_page_favorite.html', context)
     
+
+def benefit_like_view(request):
+    if request.method == 'GET':
+        post_id = request.GET.get('post_id') #좋아요를 누른 게시물id (blog_id)가지고 오기'
+
+        print("post_id : " + post_id)
+
+        like_post = Benefit.objects.get(id=post_id) 
+        # like_post = get_object_or_404(Community, id=post_id)
+
+        if Like.objects.filter(user=request.user, benefit=like_post).exists():
+            # 이미 좋아요를 눌렀을 경우 처리
+            like = Like.objects.get(user=request.user, benefit=like_post)
+            like.delete()
+            print("성공")
+
+        else:
+            # 중개 모델을 생성하고 저장
+            like = Like(user=request.user, benefit=like_post)
+            like.save()  
+            
+            # if request.user.is_authenticated:
+            #     for post in like_post:
+            #         post.is_liked = post.favorite_set.filter(user=request.user).exists()
+
+        benefits = Benefit.objects.all().order_by('-created_at')[:3]
+
+        if request.user.is_authenticated:
+            for benefit in benefits:
+                benefit.is_liked = benefit.like_set.filter(user=request.user).exists()
+
+        context ={
+            'benefits': benefits
+        }
+
+        return render(request, 'community/main_frame.html', context)

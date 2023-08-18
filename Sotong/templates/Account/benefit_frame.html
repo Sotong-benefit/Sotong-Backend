@@ -1,0 +1,31 @@
+{% for benefit in benefits %}
+            <div class="activity1">
+                <div class="act-idx">
+                    <div class="deadline">D-11</div>
+                    <div class="act-sec">모두</div>
+                </div>
+
+                <div class="act-content">
+                    {% if user.is_authenticated %}
+                    {% if benefit.is_liked %}
+                    <div class="star" onclick="starClick('{{ post.id }}')">
+                        <img src="{% static 'images/Star8.png' %}" class="starImage">
+                    </div>
+                    {% else %}
+                    <div class="star" onclick="starClick('{{ post.id }}')">
+                        <img src="{% static 'images/Star7.png' %}" class="starImage">
+                    </div>
+                    {% endif %}
+                    {% else %}
+                    <div class="star" href="{% url 'accounts:login' %}">
+                        <img src="{% static 'images/Star7.png' %}" class="starImage">
+                    </div>
+                    {% endif %}
+                    <img src="{{ benefit.image.url  }}">
+                    <div class="act-name">{{ benefit.title }}</div>
+                    <div class="act-tag">{{ benefit.tag }}</div>
+                    <div class="act-info1">신청 : 2023.08.01~2023.08.02</div>
+                    <div class="act-info2">진행 : 2023.08.03~2023.08.04</div>
+                </div>
+            </div>
+            {% endfor %}

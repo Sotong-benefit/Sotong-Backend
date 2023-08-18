@@ -16,6 +16,9 @@ class Benefit(models.Model):
 
 class Like(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    benefit = models.ForeignKey(Benefit, on_delete=models.CASCADE)
+
+    created_at = models.DateTimeField(auto_now_add=True)
     
 
     # class Meta:
